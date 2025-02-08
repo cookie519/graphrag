@@ -49,7 +49,6 @@ def get_local_search_engine(
     llm = get_llm(config)
     text_embedder = get_text_embedder(config)
     token_encoder = tiktoken.get_encoding(default_llm_settings.encoding_model)
-
     ls_config = config.local_search
 
     return LocalSearch(

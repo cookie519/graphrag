@@ -123,6 +123,7 @@ def run_local_search(
     if data_dir:
         cli_overrides["output.base_dir"] = str(data_dir)
     config = load_config(root, config_filepath, cli_overrides)
+    print("config in cli.query.py 125:", config)
 
     dataframe_dict = _resolve_output_files(
         config=config,
@@ -147,6 +148,7 @@ def run_local_search(
     final_covariates: pd.DataFrame | None = dataframe_dict["create_final_covariates"]
 
     # call the Query API
+    print("streaming: ", streaming)
     if streaming:
 
         async def run_streaming_search():
@@ -191,7 +193,7 @@ def run_local_search(
             query=query,
         )
     )
-    logger.success(f"Local Search Response:\n{response}")
+    logger.success(f"Local Search Response:\n{response}") #\n\nContext Data:\n{context_data}
     # NOTE: we return the response and context data here purely as a complete demonstration of the API.
     # External users should use the API directly to get the response and context data.
     return response, context_data

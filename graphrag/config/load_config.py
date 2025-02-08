@@ -181,11 +181,13 @@ def load_config(
     """
     root = root_dir.resolve()
     config_path = _get_config_path(root, config_filepath)
+    print("config_path:", config_path)
     _load_dotenv(config_path)
     config_extension = config_path.suffix
     config_text = config_path.read_text(encoding="utf-8")
     config_text = _parse_env_variables(config_text)
     config_data = _parse(config_extension, config_text)
     if cli_overrides:
+        print("cli_overrides:", cli_overrides)
         _apply_overrides(config_data, cli_overrides)
     return create_graphrag_config(config_data, root_dir=str(root))
