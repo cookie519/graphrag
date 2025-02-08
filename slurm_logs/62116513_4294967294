@@ -1,0 +1,216 @@
+2025/02/07 20:09:56 routes.go:1259: INFO server config env="map[CUDA_VISIBLE_DEVICES:0 GPU_DEVICE_ORDINAL: HIP_VISIBLE_DEVICES: HSA_OVERRIDE_GFX_VERSION: HTTPS_PROXY: HTTP_PROXY: NO_PROXY: OLLAMA_DEBUG:false OLLAMA_FLASH_ATTENTION:false OLLAMA_GPU_OVERHEAD:0 OLLAMA_HOST:http://127.0.0.1:11434 OLLAMA_INTEL_GPU:false OLLAMA_KEEP_ALIVE:5m0s OLLAMA_KV_CACHE_TYPE: OLLAMA_LLM_LIBRARY: OLLAMA_LOAD_TIMEOUT:5m0s OLLAMA_MAX_LOADED_MODELS:0 OLLAMA_MAX_QUEUE:512 OLLAMA_MODELS:/scratch/gpfs/jx0800/models OLLAMA_MULTIUSER_CACHE:false OLLAMA_NOHISTORY:false OLLAMA_NOPRUNE:false OLLAMA_NUM_PARALLEL:0 OLLAMA_ORIGINS:[http://localhost https://localhost http://localhost:* https://localhost:* http://127.0.0.1 https://127.0.0.1 http://127.0.0.1:* https://127.0.0.1:* http://0.0.0.0 https://0.0.0.0 http://0.0.0.0:* https://0.0.0.0:* app://* file://* tauri://* vscode-webview://*] OLLAMA_SCHED_SPREAD:false ROCR_VISIBLE_DEVICES: http_proxy: https_proxy: no_proxy:]"
+time=2025-02-07T20:09:56.624-05:00 level=INFO source=images.go:757 msg="total blobs: 18"
+time=2025-02-07T20:09:56.625-05:00 level=INFO source=images.go:764 msg="total unused blobs removed: 0"
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] POST   /api/pull                 --> github.com/ollama/ollama/server.(*Server).PullHandler-fm (5 handlers)
+[GIN-debug] POST   /api/generate             --> github.com/ollama/ollama/server.(*Server).GenerateHandler-fm (5 handlers)
+[GIN-debug] POST   /api/chat                 --> github.com/ollama/ollama/server.(*Server).ChatHandler-fm (5 handlers)
+[GIN-debug] POST   /api/embed                --> github.com/ollama/ollama/server.(*Server).EmbedHandler-fm (5 handlers)
+[GIN-debug] POST   /api/embeddings           --> github.com/ollama/ollama/server.(*Server).EmbeddingsHandler-fm (5 handlers)
+[GIN-debug] POST   /api/create               --> github.com/ollama/ollama/server.(*Server).CreateHandler-fm (5 handlers)
+[GIN-debug] POST   /api/push                 --> github.com/ollama/ollama/server.(*Server).PushHandler-fm (5 handlers)
+[GIN-debug] POST   /api/copy                 --> github.com/ollama/ollama/server.(*Server).CopyHandler-fm (5 handlers)
+[GIN-debug] DELETE /api/delete               --> github.com/ollama/ollama/server.(*Server).DeleteHandler-fm (5 handlers)
+[GIN-debug] POST   /api/show                 --> github.com/ollama/ollama/server.(*Server).ShowHandler-fm (5 handlers)
+[GIN-debug] POST   /api/blobs/:digest        --> github.com/ollama/ollama/server.(*Server).CreateBlobHandler-fm (5 handlers)
+[GIN-debug] HEAD   /api/blobs/:digest        --> github.com/ollama/ollama/server.(*Server).HeadBlobHandler-fm (5 handlers)
+[GIN-debug] GET    /api/ps                   --> github.com/ollama/ollama/server.(*Server).PsHandler-fm (5 handlers)
+[GIN-debug] POST   /v1/chat/completions      --> github.com/ollama/ollama/server.(*Server).ChatHandler-fm (6 handlers)
+[GIN-debug] POST   /v1/completions           --> github.com/ollama/ollama/server.(*Server).GenerateHandler-fm (6 handlers)
+[GIN-debug] POST   /v1/embeddings            --> github.com/ollama/ollama/server.(*Server).EmbedHandler-fm (6 handlers)
+[GIN-debug] GET    /v1/models                --> github.com/ollama/ollama/server.(*Server).ListHandler-fm (6 handlers)
+[GIN-debug] GET    /v1/models/:model         --> github.com/ollama/ollama/server.(*Server).ShowHandler-fm (6 handlers)
+[GIN-debug] GET    /                         --> github.com/ollama/ollama/server.(*Server).GenerateRoutes.func1 (5 handlers)
+[GIN-debug] GET    /api/tags                 --> github.com/ollama/ollama/server.(*Server).ListHandler-fm (5 handlers)
+[GIN-debug] GET    /api/version              --> github.com/ollama/ollama/server.(*Server).GenerateRoutes.func2 (5 handlers)
+[GIN-debug] HEAD   /                         --> github.com/ollama/ollama/server.(*Server).GenerateRoutes.func1 (5 handlers)
+[GIN-debug] HEAD   /api/tags                 --> github.com/ollama/ollama/server.(*Server).ListHandler-fm (5 handlers)
+[GIN-debug] HEAD   /api/version              --> github.com/ollama/ollama/server.(*Server).GenerateRoutes.func2 (5 handlers)
+time=2025-02-07T20:09:56.625-05:00 level=INFO source=routes.go:1310 msg="Listening on 127.0.0.1:11434 (version 0.5.4)"
+time=2025-02-07T20:09:56.695-05:00 level=INFO source=routes.go:1339 msg="Dynamic LLM libraries" runners="[cpu cpu_avx cpu_avx2 cuda_v11_avx cuda_v12_avx rocm_avx]"
+time=2025-02-07T20:09:56.695-05:00 level=INFO source=gpu.go:226 msg="looking for compatible GPUs"
+time=2025-02-07T20:09:57.166-05:00 level=INFO source=types.go:131 msg="inference compute" id=GPU-ebee4800-f39c-94fe-5d9b-edfa91c00f40 library=cuda variant=v12 compute=8.0 driver=12.6 name="NVIDIA A100-PCIE-40GB" total="39.5 GiB" available="39.1 GiB"
+time=2025-02-07T20:09:58.428-05:00 level=INFO source=sched.go:714 msg="new model will fit in available VRAM in single GPU, loading" model=/scratch/gpfs/jx0800/models/blobs/sha256-970aa74c0a90ef7482477cf803618e776e173c007bf957f635f1015bfcfef0e6 gpu=GPU-ebee4800-f39c-94fe-5d9b-edfa91c00f40 parallel=1 available=41965453312 required="809.9 MiB"
+time=2025-02-07T20:09:58.681-05:00 level=INFO source=server.go:104 msg="system memory" total="755.0 GiB" free="739.0 GiB" free_swap="2.0 GiB"
+time=2025-02-07T20:09:58.681-05:00 level=INFO source=memory.go:356 msg="offload to cuda" layers.requested=-1 layers.model=13 layers.offload=13 layers.split="" memory.available="[39.1 GiB]" memory.gpu_overhead="0 B" memory.required.full="809.9 MiB" memory.required.partial="809.9 MiB" memory.required.kv="24.0 MiB" memory.required.allocations="[809.9 MiB]" memory.weights.total="240.1 MiB" memory.weights.repeating="195.4 MiB" memory.weights.nonrepeating="44.7 MiB" memory.graph.full="48.0 MiB" memory.graph.partial="48.0 MiB"
+time=2025-02-07T20:09:58.684-05:00 level=INFO source=server.go:376 msg="starting llama server" cmd="/home/jx0800/.local/lib/ollama/runners/cuda_v12_avx/ollama_llama_server runner --model /scratch/gpfs/jx0800/models/blobs/sha256-970aa74c0a90ef7482477cf803618e776e173c007bf957f635f1015bfcfef0e6 --ctx-size 8192 --batch-size 512 --n-gpu-layers 13 --threads 128 --parallel 1 --port 35057"
+time=2025-02-07T20:09:58.724-05:00 level=INFO source=sched.go:449 msg="loaded runners" count=1
+time=2025-02-07T20:09:58.724-05:00 level=INFO source=server.go:555 msg="waiting for llama runner to start responding"
+time=2025-02-07T20:09:58.739-05:00 level=INFO source=server.go:589 msg="waiting for server to become available" status="llm server error"
+time=2025-02-07T20:10:03.454-05:00 level=INFO source=runner.go:945 msg="starting go runner"
+ggml_cuda_init: GGML_CUDA_FORCE_MMQ:    no
+ggml_cuda_init: GGML_CUDA_FORCE_CUBLAS: no
+ggml_cuda_init: found 1 CUDA devices:
+  Device 0: NVIDIA A100-PCIE-40GB, compute capability 8.0, VMM: yes
+time=2025-02-07T20:10:03.500-05:00 level=INFO source=runner.go:946 msg=system info="CUDA : ARCHS = 600,610,620,700,720,750,800,860,870,890,900 | USE_GRAPHS = 1 | PEER_MAX_BATCH_SIZE = 128 | CPU : SSE3 = 1 | SSSE3 = 1 | AVX = 1 | LLAMAFILE = 1 | AARCH64_REPACK = 1 | cgo(gcc)" threads=128
+time=2025-02-07T20:10:03.500-05:00 level=INFO source=.:0 msg="Server listening on 127.0.0.1:35057"
+llama_load_model_from_file: using device CUDA0 (NVIDIA A100-PCIE-40GB) - 40021 MiB free
+llama_model_loader: loaded meta data with 24 key-value pairs and 112 tensors from /scratch/gpfs/jx0800/models/blobs/sha256-970aa74c0a90ef7482477cf803618e776e173c007bf957f635f1015bfcfef0e6 (version GGUF V3 (latest))
+llama_model_loader: Dumping metadata keys/values. Note: KV overrides do not apply in this output.
+llama_model_loader: - kv   0:                       general.architecture str              = nomic-bert
+llama_model_loader: - kv   1:                               general.name str              = nomic-embed-text-v1.5
+llama_model_loader: - kv   2:                     nomic-bert.block_count u32              = 12
+llama_model_loader: - kv   3:                  nomic-bert.context_length u32              = 2048
+llama_model_loader: - kv   4:                nomic-bert.embedding_length u32              = 768
+llama_model_loader: - kv   5:             nomic-bert.feed_forward_length u32              = 3072
+llama_model_loader: - kv   6:            nomic-bert.attention.head_count u32              = 12
+llama_model_loader: - kv   7:    nomic-bert.attention.layer_norm_epsilon f32              = 0.000000
+llama_model_loader: - kv   8:                          general.file_type u32              = 1
+llama_model_loader: - kv   9:                nomic-bert.attention.causal bool             = false
+llama_model_loader: - kv  10:                    nomic-bert.pooling_type u32              = 1
+llama_model_loader: - kv  11:                  nomic-bert.rope.freq_base f32              = 1000.000000
+llama_model_loader: - kv  12:            tokenizer.ggml.token_type_count u32              = 2
+llama_model_loader: - kv  13:                tokenizer.ggml.bos_token_id u32              = 101
+llama_model_loader: - kv  14:                tokenizer.ggml.eos_token_id u32              = 102
+llama_model_loader: - kv  15:                       tokenizer.ggml.model str              = bert
+llama_model_loader: - kv  16:                      tokenizer.ggml.tokens arr[str,30522]   = ["[PAD]", "[unused0]", "[unused1]", "...
+llama_model_loader: - kv  17:                      tokenizer.ggml.scores arr[f32,30522]   = [-1000.000000, -1000.000000, -1000.00...
+llama_model_loader: - kv  18:                  tokenizer.ggml.token_type arr[i32,30522]   = [3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, ...
+llama_model_loader: - kv  19:            tokenizer.ggml.unknown_token_id u32              = 100
+llama_model_loader: - kv  20:          tokenizer.ggml.seperator_token_id u32              = 102
+llama_model_loader: - kv  21:            tokenizer.ggml.padding_token_id u32              = 0
+llama_model_loader: - kv  22:                tokenizer.ggml.cls_token_id u32              = 101
+llama_model_loader: - kv  23:               tokenizer.ggml.mask_token_id u32              = 103
+llama_model_loader: - type  f32:   51 tensors
+llama_model_loader: - type  f16:   61 tensors
+time=2025-02-07T20:10:03.754-05:00 level=INFO source=server.go:589 msg="waiting for server to become available" status="llm server loading model"
+llm_load_vocab: special_eos_id is not in special_eog_ids - the tokenizer config may be incorrect
+llm_load_vocab: special tokens cache size = 5
+llm_load_vocab: token to piece cache size = 0.2032 MB
+llm_load_print_meta: format           = GGUF V3 (latest)
+llm_load_print_meta: arch             = nomic-bert
+llm_load_print_meta: vocab type       = WPM
+llm_load_print_meta: n_vocab          = 30522
+llm_load_print_meta: n_merges         = 0
+llm_load_print_meta: vocab_only       = 0
+llm_load_print_meta: n_ctx_train      = 2048
+llm_load_print_meta: n_embd           = 768
+llm_load_print_meta: n_layer          = 12
+llm_load_print_meta: n_head           = 12
+llm_load_print_meta: n_head_kv        = 12
+llm_load_print_meta: n_rot            = 64
+llm_load_print_meta: n_swa            = 0
+llm_load_print_meta: n_embd_head_k    = 64
+llm_load_print_meta: n_embd_head_v    = 64
+llm_load_print_meta: n_gqa            = 1
+llm_load_print_meta: n_embd_k_gqa     = 768
+llm_load_print_meta: n_embd_v_gqa     = 768
+llm_load_print_meta: f_norm_eps       = 1.0e-12
+llm_load_print_meta: f_norm_rms_eps   = 0.0e+00
+llm_load_print_meta: f_clamp_kqv      = 0.0e+00
+llm_load_print_meta: f_max_alibi_bias = 0.0e+00
+llm_load_print_meta: f_logit_scale    = 0.0e+00
+llm_load_print_meta: n_ff             = 3072
+llm_load_print_meta: n_expert         = 0
+llm_load_print_meta: n_expert_used    = 0
+llm_load_print_meta: causal attn      = 0
+llm_load_print_meta: pooling type     = 1
+llm_load_print_meta: rope type        = 2
+llm_load_print_meta: rope scaling     = linear
+llm_load_print_meta: freq_base_train  = 1000.0
+llm_load_print_meta: freq_scale_train = 1
+llm_load_print_meta: n_ctx_orig_yarn  = 2048
+llm_load_print_meta: rope_finetuned   = unknown
+llm_load_print_meta: ssm_d_conv       = 0
+llm_load_print_meta: ssm_d_inner      = 0
+llm_load_print_meta: ssm_d_state      = 0
+llm_load_print_meta: ssm_dt_rank      = 0
+llm_load_print_meta: ssm_dt_b_c_rms   = 0
+llm_load_print_meta: model type       = 137M
+llm_load_print_meta: model ftype      = F16
+llm_load_print_meta: model params     = 136.73 M
+llm_load_print_meta: model size       = 260.86 MiB (16.00 BPW) 
+llm_load_print_meta: general.name     = nomic-embed-text-v1.5
+llm_load_print_meta: BOS token        = 101 '[CLS]'
+llm_load_print_meta: EOS token        = 102 '[SEP]'
+llm_load_print_meta: UNK token        = 100 '[UNK]'
+llm_load_print_meta: SEP token        = 102 '[SEP]'
+llm_load_print_meta: PAD token        = 0 '[PAD]'
+llm_load_print_meta: CLS token        = 101 '[CLS]'
+llm_load_print_meta: MASK token       = 103 '[MASK]'
+llm_load_print_meta: LF token         = 0 '[PAD]'
+llm_load_print_meta: EOG token        = 102 '[SEP]'
+llm_load_print_meta: max token length = 21
+llm_load_tensors: offloading 12 repeating layers to GPU
+llm_load_tensors: offloading output layer to GPU
+llm_load_tensors: offloaded 13/13 layers to GPU
+llm_load_tensors:        CUDA0 model buffer size =   216.14 MiB
+llm_load_tensors:   CPU_Mapped model buffer size =    44.72 MiB
+llama_new_context_with_model: n_seq_max     = 1
+llama_new_context_with_model: n_ctx         = 8192
+llama_new_context_with_model: n_ctx_per_seq = 8192
+llama_new_context_with_model: n_batch       = 512
+llama_new_context_with_model: n_ubatch      = 512
+llama_new_context_with_model: flash_attn    = 0
+llama_new_context_with_model: freq_base     = 1000.0
+llama_new_context_with_model: freq_scale    = 1
+llama_new_context_with_model: n_ctx_pre_seq (8192) > n_ctx_train (2048) -- possible training context overflow
+llama_kv_cache_init:      CUDA0 KV buffer size =   288.00 MiB
+llama_new_context_with_model: KV self size  =  288.00 MiB, K (f16):  144.00 MiB, V (f16):  144.00 MiB
+llama_new_context_with_model:  CUDA_Host  output buffer size =     0.00 MiB
+llama_new_context_with_model:      CUDA0 compute buffer size =    23.50 MiB
+llama_new_context_with_model:  CUDA_Host compute buffer size =     3.50 MiB
+llama_new_context_with_model: graph nodes  = 453
+llama_new_context_with_model: graph splits = 4 (with bs=512), 2 (with bs=1)
+time=2025-02-07T20:10:04.261-05:00 level=INFO source=server.go:594 msg="llama runner started in 5.54 seconds"
+llama_model_loader: loaded meta data with 24 key-value pairs and 112 tensors from /scratch/gpfs/jx0800/models/blobs/sha256-970aa74c0a90ef7482477cf803618e776e173c007bf957f635f1015bfcfef0e6 (version GGUF V3 (latest))
+llama_model_loader: Dumping metadata keys/values. Note: KV overrides do not apply in this output.
+llama_model_loader: - kv   0:                       general.architecture str              = nomic-bert
+llama_model_loader: - kv   1:                               general.name str              = nomic-embed-text-v1.5
+llama_model_loader: - kv   2:                     nomic-bert.block_count u32              = 12
+llama_model_loader: - kv   3:                  nomic-bert.context_length u32              = 2048
+llama_model_loader: - kv   4:                nomic-bert.embedding_length u32              = 768
+llama_model_loader: - kv   5:             nomic-bert.feed_forward_length u32              = 3072
+llama_model_loader: - kv   6:            nomic-bert.attention.head_count u32              = 12
+llama_model_loader: - kv   7:    nomic-bert.attention.layer_norm_epsilon f32              = 0.000000
+llama_model_loader: - kv   8:                          general.file_type u32              = 1
+llama_model_loader: - kv   9:                nomic-bert.attention.causal bool             = false
+llama_model_loader: - kv  10:                    nomic-bert.pooling_type u32              = 1
+llama_model_loader: - kv  11:                  nomic-bert.rope.freq_base f32              = 1000.000000
+llama_model_loader: - kv  12:            tokenizer.ggml.token_type_count u32              = 2
+llama_model_loader: - kv  13:                tokenizer.ggml.bos_token_id u32              = 101
+llama_model_loader: - kv  14:                tokenizer.ggml.eos_token_id u32              = 102
+llama_model_loader: - kv  15:                       tokenizer.ggml.model str              = bert
+llama_model_loader: - kv  16:                      tokenizer.ggml.tokens arr[str,30522]   = ["[PAD]", "[unused0]", "[unused1]", "...
+llama_model_loader: - kv  17:                      tokenizer.ggml.scores arr[f32,30522]   = [-1000.000000, -1000.000000, -1000.00...
+llama_model_loader: - kv  18:                  tokenizer.ggml.token_type arr[i32,30522]   = [3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, ...
+llama_model_loader: - kv  19:            tokenizer.ggml.unknown_token_id u32              = 100
+llama_model_loader: - kv  20:          tokenizer.ggml.seperator_token_id u32              = 102
+llama_model_loader: - kv  21:            tokenizer.ggml.padding_token_id u32              = 0
+llama_model_loader: - kv  22:                tokenizer.ggml.cls_token_id u32              = 101
+llama_model_loader: - kv  23:               tokenizer.ggml.mask_token_id u32              = 103
+llama_model_loader: - type  f32:   51 tensors
+llama_model_loader: - type  f16:   61 tensors
+llm_load_vocab: special_eos_id is not in special_eog_ids - the tokenizer config may be incorrect
+llm_load_vocab: special tokens cache size = 5
+llm_load_vocab: token to piece cache size = 0.2032 MB
+llm_load_print_meta: format           = GGUF V3 (latest)
+llm_load_print_meta: arch             = nomic-bert
+llm_load_print_meta: vocab type       = WPM
+llm_load_print_meta: n_vocab          = 30522
+llm_load_print_meta: n_merges         = 0
+llm_load_print_meta: vocab_only       = 1
+llm_load_print_meta: model type       = ?B
+llm_load_print_meta: model ftype      = all F32
+llm_load_print_meta: model params     = 136.73 M
+llm_load_print_meta: model size       = 260.86 MiB (16.00 BPW) 
+llm_load_print_meta: general.name     = nomic-embed-text-v1.5
+llm_load_print_meta: BOS token        = 101 '[CLS]'
+llm_load_print_meta: EOS token        = 102 '[SEP]'
+llm_load_print_meta: UNK token        = 100 '[UNK]'
+llm_load_print_meta: SEP token        = 102 '[SEP]'
+llm_load_print_meta: PAD token        = 0 '[PAD]'
+llm_load_print_meta: CLS token        = 101 '[CLS]'
+llm_load_print_meta: MASK token       = 103 '[MASK]'
+llm_load_print_meta: LF token         = 0 '[PAD]'
+llm_load_print_meta: EOG token        = 102 '[SEP]'
+llm_load_print_meta: max token length = 21
+llama_model_load: vocab only - skipping tensors
+[GIN] 2025/02/07 - 20:10:20 | 200 | 22.840220004s |       127.0.0.1 | POST     "/v1/embeddings"
+Embedding: [0.048378285, 0.039821412, -0.13938752, -0.0091944765, 0.059095196, -0.042958595, 0.016768135, -0.03292541, -0.004142163, -0.028535703, 0.012229069, 0.049275458, 0.08586344, 0.0059068454, -0.03250861, -0.021092987, -0.025021454, -0.055496193, -0.026001696, -0.01606942, -0.027579619, 0.010314321, 0.054398116, -0.0012533724, 0.07273565, 0.04201543, -0.036038622, -0.037896007, -0.00477757, 0.03189026, 0.032105505, -0.041232478, 0.035199337, -0.050473917, -0.06828289, -0.014731422, 0.054734427, 0.03517479, 0.026421983, 0.011412847, -0.0440322, 0.031429272, -0.014285809, 0.011349603, 0.044227857, -0.019011037, 0.0387716, 0.015578314, 0.049005166, 0.04673176, 0.04082162, -0.06544358, -0.0018620349, 0.013538708, 0.076011136, 0.00024313082, -0.023574926, 0.0121991495, -0.026531547, -0.08614872, 0.13619988, 0.049043406, -0.07435324, 0.09495087, 0.024727132, 0.018811373, -0.029978935, 0.028866455, -0.00022390418, 0.011257225, -0.0032150212, -0.04005365, 0.00044212362, 0.02988662, -0.03014502, -0.015788538, -0.018411888, -0.0038673535, -0.04147641, 0.03298665, 0.072195075, -0.051991116, 0.04310795, 0.012947875, 0.07209585, 0.022243904, -0.05289461, 0.0068507185, -0.06263839, 0.09990803, -0.015631916, 0.016811289, 0.061032165, 0.011992891, -0.04226246, 0.00023627539, -0.042182356, -0.0023364588, -0.048617564, -0.024368733, -0.04507851, -0.0054491535, 0.024008524, -0.058803722, 0.031469066, 0.0009164182, 0.029654637, -0.007631605, 0.0048501804, 0.00039922938, 7.64866e-05, 0.04872093, -0.031108597, -0.011051053, -0.048112396, -0.026804304, 0.054169048, -0.017406126, 0.026538782, 0.03623914, 0.0011935525, -0.01683028, -0.013779876, 0.029846305, -0.02505175, 0.09824599, -0.036110975, -0.00011660324, 0.027637048, -0.03496471, 0.009472839, -0.0021787537, -0.035165228, -0.059614066, 0.027942477, 0.07217234, -0.054456387, -0.070243634, 0.06402548, 0.028875757, 0.017259985, 0.010743265, 0.014153766, -0.011227056, -0.008196598, -0.01804567, 0.039775614, 0.025938194, -0.034275297, 0.05153129, -0.0018937944, 0.065085955, -0.067386754, -0.00016970468, 0.028541645, -0.0052521224, -0.018935343, -0.00017816726, 0.063448735, 0.033770896, 0.045475416, 0.00822134, -0.062185667, 0.015184785, -0.025669327, -0.03474578, 0.005816361, 0.03699936, 0.039739955, 0.009155329, -0.04627439, -0.011197728, 0.010938972, 0.0035925447, 0.050603114, 0.028114123, -0.00213749, -0.039839182, 0.012863508, -0.03806965, 0.0021155262, -0.04058544, 0.04162938, 0.053001072, 0.020944793, 0.002206903, -0.026623018, 0.01704301, -0.04149501, -0.08206805, -0.019443227, 0.040999915, -0.027633108, -0.047233574, -0.03667636, -0.010039383, -0.014753127, -0.027496414, 0.044728123, -0.021502176, 0.04160974, -0.009757537, -0.044353567, -0.0027685696, -0.042619053, 0.027906625, -0.011811494, -0.004567103, -0.011641984, 0.043446194, 0.045085747, -0.0037611506, 0.010249591, -0.028265156, 0.0036146378, -0.033600353, -0.011211553, -0.0017597085, 0.028743973, 0.013292952, 0.014323406, -0.007695042, 0.0106537305, -0.025998464, 0.019267388, -0.0029575087, -0.029956905, 0.010469329, -0.034537833, 0.054489464, -0.019826049, -0.06752319, 0.021083815, 0.018673325, 0.010075688, -0.012106587, 0.03718644, 0.037150778, -0.022983316, -0.015528071, -0.00032726445, 0.059837323, -0.0157366, 0.032407578, -0.037443288, 0.0020475662, 0.054956652, -0.033871673, -0.0021028647, 0.02338061, 0.05153749, 0.022576556, 0.016120067, -0.003596037, 0.016367098, -0.025252076, 0.0042300187, 0.015708242, 0.017918358, -0.017734038, 0.029010125, 0.015493316, 0.043050066, 0.0011708782, -0.01804851, -0.040224712, 0.023001147, 0.021356298, -0.00026834902, 0.0036996512, -0.01637007, 0.025813708, 0.061553106, -0.023393335, -0.022886546, 0.018770095, 0.016120324, -0.029338295, -0.011811622, -0.004377218, 0.008682132, -0.073505685, -0.052092537, -0.014228833, -0.044138964, -0.024174543, 0.05680783, -0.005155093, -0.00079438824, -0.004377759, -0.015708197, -0.037602462, -0.030006517, 0.003991515, 0.00026683087, -0.015378456, 0.051207773, 0.021383688, 0.050508026, -0.009696581, -0.036904782, -0.0007132504, 0.04415518, 0.014632712, 0.02019427, -0.046394806, 0.015343055, -0.007401629, 0.02025086, 0.0028479225, -0.04294619, 0.032410678, -0.057195436, 0.015428587, -0.05299901, -0.013052011, -0.023123499, 0.035102695, 0.05449773, -0.027850423, 0.0010122847, -0.037214864, -0.034854114, -0.005668277, 0.009213372, 0.04997676, -0.04522115, 0.013341226, -0.007324367, -0.03413266, 0.054433648, 0.06594385, -0.0039399634, -0.018950071, -0.03888827, -0.0296215, -0.019872561, 0.027752744, 0.019368576, 0.028241899, 0.059668586, -0.020482903, -0.0041700704, -0.021919612, 0.0001461261, 0.04323043, -0.059853863, -0.017274084, 0.03687584, -0.008191171, -0.022482343, 0.023095852, 0.016670978, -0.007127207, 0.021303842, -0.0060589784, 0.041448496, 0.033050478, 0.017719824, -0.011908588, 0.009724909, -0.04546818, -0.023760974, -0.045791697, -0.0108618075, 0.0020868438, 0.06135517, -0.012047737, 0.03137449, -0.02599433, 0.014452737, -0.03965416, -0.030981721, 0.05614116, -0.0025479922, 0.0077675562, -0.07195734, -0.019589225, -0.020183418, -0.0062306216, 0.001337094, 0.019700853, 0.0025627853, -0.0054685334, 0.008740596, 0.027216824, 0.009420643, -0.018323837, 0.0077958186, 0.029297274, -0.008321535, -0.016907156, -0.049552776, 0.036601935, 0.01791905, -0.0018418477, 0.0326882, -0.0008124117, 0.0623097, 0.02484419, -0.033576068, -0.037856214, -0.035200372, 0.0179113, -0.019799724, 0.020490654, -0.018638406, -0.03639625, 0.038597822, 0.013106081, -0.00012945857, -0.004153104, -0.038230896, -0.05733265, 0.032162096, -0.021433365, 0.058493637, 0.06635729, -0.03737352, 0.014598734, 0.021811083, 0.013852472, -0.021927299, 0.0037731666, 0.004373237, 0.0033957076, -0.014124309, 0.045243885, 0.017001148, -0.080153815, 0.003453978, 0.0054391404, -0.01177816, -0.040631954, -0.024370283, 5.1680136e-06, -0.017201731, 0.0215618, 0.017467918, 0.035908908, 0.037946656, -0.075932585, -0.0044738203, 0.007813035, 0.018402262, 0.11149058, 0.05276335, -0.011932636, -0.06463944, 0.011737592, 0.015404556, 0.014548806, 0.018858984, 0.012262144, 0.095657855, -0.021859663, 0.0022966326, 0.009180717, 0.030386884, 0.044503313, 0.030743347, -0.01684362, -0.03755466, 0.020689882, -0.012696776, 0.020181285, 0.015074189, -0.026901431, 0.02497494, 0.1279848, -0.03514559, 0.030757947, 0.0574373, -0.01920395, 0.010416647, -0.03790144, -0.011311489, -0.026179863, 0.07585403, 0.00082300615, -0.0061864993, -0.042198896, -0.040048484, -0.09317308, -0.0038229409, 0.029074468, 0.020864561, 0.016382342, 0.015610056, -0.0058893547, 0.01290905, 0.025808541, 0.0044475435, -0.027463855, -0.027834661, -0.020069463, -0.052637246, 0.040525492, 0.024907239, -0.019477725, -0.012282364, 0.034684088, 0.0054830043, 0.002960949, 0.0051208553, -0.0024801297, 0.04262009, -0.043264024, -0.06316862, 0.052319933, -3.9276903e-05, -0.014970571, 0.013024167, 0.05171941, 0.03269298, -0.06854026, 0.020809362, 0.07359458, -0.045437172, -0.019862482, 0.037291996, -0.035030343, -0.025659703, -0.037014086, -0.06801622, 0.0017721117, -0.0017024323, 0.0052690483, 0.012334755, 0.019081337, 0.06830046, -0.004914054, -0.00958731, -0.017832747, -0.029280024, 0.002516903, 0.030807963, 0.04906305, 0.031151166, 0.016753487, 0.057522055, 0.0019426562, 0.024594832, -0.04947959, -0.047254242, 0.0098208, -0.028014248, 0.00084690796, 0.0044130953, -0.07251446, 0.013966555, -0.029466977, -0.037823655, -0.019693747, 0.026461728, 0.0030933144, -0.048610847, -0.051653255, -0.017697603, -0.00032480963, -0.03459675, 0.013516163, 0.041051593, -0.027124317, -0.011445599, -0.0066376664, -0.0031741776, -0.028719682, 0.0033208362, 0.037057757, 0.01610986, -0.033936277, 0.016173813, 0.0520853, -0.0030894384, -0.019102527, 0.010482928, -0.01093361, -0.041538425, -0.02703801, 0.04715954, -0.072811104, -0.017466206, -0.00320714, 0.016530924, -0.016773561, -0.08437092, 0.0023292236, 0.027357977, -0.02602508, 0.0040008174, 0.03571045, -0.051994342, -0.03711667, -0.012099094, 0.0047276984, -0.0038330187, 0.002094079, -0.018350644, -0.039129097, 0.022690937, -0.0029940845, 0.067006394, -0.044665072, 0.0034381503, 0.09189554, 0.026475083, 0.0715253, 0.027491374, 0.051262293, -0.011717178, 0.030250836, 7.390242e-05, 0.015945647, 0.054613493, -0.004922274, 0.008551511, -0.030110652, -0.028703146, -0.061427005, -0.046350874, -0.0584647, 0.07002865, -0.027330907, 0.020918114, 0.023782164, -0.02676359, -0.020523474, 0.043609764, 0.049539544, -0.047587063, 0.015708465, -0.045929167, -0.03713476, -0.035980742, 0.012775199, -0.0575696, 0.0246761, -0.013498591, 0.054450188, 0.0068897367, 0.00832793, -0.035154894, -0.0065557538, 0.013355438, -0.063280255, 0.07268087, 0.090634555, 0.0042041787, -0.01576399, 0.045165334, 0.07175476, 0.018419832, -0.049218092, -0.05415458, 0.005852904, 0.029765816, 0.005461298, 0.003481432, -0.035532672, -0.011192237, -0.0072907745, -0.043544482, -0.006598326, 0.03912858, -0.019718038, -0.077545, -0.043852657, -0.072467946, -0.036231905, 0.036456198, 0.009755205, 0.03476936, -0.028734671, -0.023522923, 0.034236792, 0.046338476, 0.021552423, -0.0014068948, -0.030544763, -0.028419161, 0.022168258, 0.036879975, -0.018181717, -0.0102539845, -0.017392948, 0.039109457, -0.032598794, 0.010720526, -0.09168056, -0.013929605, -0.016776081, 0.0096275555, -0.016971497, -0.006322951, -0.0006423193, -0.033387948, 0.041938428, 0.040770452, 0.029646566, -0.010453453, 0.029053017, -0.0028466708, 0.057154093, -0.024482429, -0.012529203, 0.0016186541, 0.007791522, -0.031489737, -0.04895349, -0.042051088, -0.00947271, -0.02068045, 0.078500055, -0.038491234, -0.011483067, -0.0062306854, 0.0015144862, -0.022868456, 0.031515576, 0.028110892, 0.035078924, -0.030284436, -0.014119917, -0.053393845, -0.052608307, 0.041274853, -0.09481236, -0.010101657, -0.0029690238, 0.037691355, -0.01319187, -0.060294174, 0.03576885, 0.014697989, -0.018791832, -0.061112788, 0.032180183, -0.04164773, -0.01765135, 0.000843985, 0.01738006, 0.040572006, 0.013686449, 0.0064884406, -0.022112895, -0.050036706, 0.00816391, 0.023861362, -0.031511445, -0.01602213, 0.0055363635, -0.046005655, 0.0082176095, 0.018970484, 0.018577715, -0.05114266, 0.04743409, 0.14342271, -0.018059913, 0.033884853, -0.024754783, 0.018630687, -0.027374966, -0.028356628, 0.029442688, -0.070619866, -0.01338076]
+slurmstepd: error: *** JOB 62116513 ON della-i14g9 CANCELLED AT 2025-02-07T20:11:46 ***
