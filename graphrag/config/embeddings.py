@@ -34,17 +34,17 @@ required_embeddings: set[str] = {
 
 def get_embedded_fields(settings: GraphRagConfig) -> set[str]:
     """Get the fields to embed based on the enum or specifically selected embeddings."""
-    match settings.embeddings.target:
+    match settings.embed_text.target:
         case TextEmbeddingTarget.all:
             return all_embeddings
         case TextEmbeddingTarget.required:
             return required_embeddings
         case TextEmbeddingTarget.selected:
-            return set(settings.embeddings.names)
+            return set(settings.embed_text.names)
         case TextEmbeddingTarget.none:
             return set()
         case _:
-            msg = f"Unknown embeddings target: {settings.embeddings.target}"
+            msg = f"Unknown embeddings target: {settings.embed_text.target}"
             raise ValueError(msg)
 
 
@@ -55,26 +55,18 @@ def get_embedding_settings(
     """Transform GraphRAG config into settings for workflows."""
     # TEMP
     embeddings_llm_settings = settings.get_language_model_config(
-        settings.embeddings.model_id
+        settings.embed_text.model_id
     )
-    num_entries = len(settings.vector_store)
-    if num_entries == 1:
-        store = next(iter(settings.vector_store.values()))
-        vector_store_settings = store.model_dump()
-    else:
-        # The vector_store dict should only have more than one entry for multi-index query
-        vector_store_settings = None
+    vector_store_settings = settings.get_vector_store_config(
+        settings.embed_text.vector_store_id
+    ).model_dump()
 
-    if vector_store_settings is None:
-        return {
-            "strategy": settings.embeddings.resolved_strategy(embeddings_llm_settings)
-        }
     #
     # If we get to this point, settings.vector_store is defined, and there's a specific setting for this embedding.
     # settings.vector_store.base contains connection information, or may be undefined
     # settings.vector_store.<vector_name> contains the specific settings for this embedding
     #
-    strategy = settings.embeddings.resolved_strategy(
+    strategy = settings.embed_text.resolved_strategy(
         embeddings_llm_settings
     )  # get the default strategy
     strategy.update({

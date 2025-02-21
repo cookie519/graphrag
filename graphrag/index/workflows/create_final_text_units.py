@@ -11,7 +11,11 @@ from graphrag.index.context import PipelineRunContext
 from graphrag.index.flows.create_final_text_units import (
     create_final_text_units,
 )
-from graphrag.utils.storage import load_table_from_storage, write_table_to_storage
+from graphrag.utils.storage import (
+    load_table_from_storage,
+    storage_has_table,
+    write_table_to_storage,
+)
 
 workflow_name = "create_final_text_units"
 
@@ -22,20 +26,16 @@ async def run_workflow(
     _callbacks: WorkflowCallbacks,
 ) -> pd.DataFrame | None:
     """All the steps to transform the text units."""
-    text_units = await load_table_from_storage(
-        "create_base_text_units", context.storage
-    )
-    final_entities = await load_table_from_storage(
-        "create_final_entities", context.storage
-    )
+    text_units = await load_table_from_storage("text_units", context.storage)
+    final_entities = await load_table_from_storage("entities", context.storage)
     final_relationships = await load_table_from_storage(
-        "create_final_relationships", context.storage
+        "relationships", context.storage
     )
     final_covariates = None
-    if config.claim_extraction.enabled:
-        final_covariates = await load_table_from_storage(
-            "create_final_covariates", context.storage
-        )
+    if config.extract_claims.enabled and await storage_has_table(
+        "covariates", context.storage
+    ):
+        final_covariates = await load_table_from_storage("covariates", context.storage)
 
     output = create_final_text_units(
         text_units,
@@ -44,6 +44,6 @@ async def run_workflow(
         final_covariates,
     )
 
-    await write_table_to_storage(output, workflow_name, context.storage)
+    await write_table_to_storage(output, "text_units", context.storage)
 
     return output

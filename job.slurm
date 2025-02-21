@@ -14,7 +14,7 @@
 
 ##SBATCH --array=0-9              # job array with index values 0, 1, 2,...
 
-#SBATCH --time=00:05:00          # total run time limit (HH:MM:SS)
+#SBATCH --time=00:59:00          # total run time limit (HH:MM:SS)
 
 ##SBATCH -p gpu-ee
 ##SBATCH --partition=pli
@@ -36,9 +36,26 @@ module load anaconda3/2024.6
 conda activate graphrag
 cd /home/jx0800/graphrag
 
-ollama serve &
+# ollama serve &
 
-# Run 'python test.py' in the foreground
-graphrag query --root /scratch/gpfs/jx0800/data/graphrag --method local --query "What's the difference between CNN and GNN? Concluse the pros and cons.What's the difference between CNN and GNN? Concluse the pros and cons.What's the difference between CNN and GNN? Concluse the pros and cons.What's the difference between CNN and GNN? Concluse the pros and cons.What's the difference between CNN and GNN? Concluse the pros and cons.What's the difference between CNN and GNN? Concluse the pros and cons."
+# graphrag index --root /scratch/gpfs/jx0800/data/graphrag
+#graphrag query --root /scratch/gpfs/jx0800/data/graphrag --method local --query "What's the difference between CNN and GNN? Concluse the pros and cons."
 #python test.py
 
+#!/bin/bash
+
+# Start Ollama
+# ollama serve &
+
+# graphrag index --root /scratch/gpfs/jx0800/data/graphrag
+
+vllm serve /scratch/gpfs/jx0800/models/Llama-3.2-3B-Instruct --port 11434 & 
+
+# Wait until port 11434 is available
+while ! nc -z localhost 11434; do 
+  sleep 2
+done
+
+python test.py
+
+ 

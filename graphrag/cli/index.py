@@ -10,7 +10,7 @@ import warnings
 from pathlib import Path
 
 import graphrag.api as api
-from graphrag.config.enums import CacheType
+from graphrag.config.enums import CacheType, IndexingMethod
 from graphrag.config.load_config import load_config
 from graphrag.config.logging import enable_logging_with_config
 from graphrag.index.validate_config import validate_config_names
@@ -63,6 +63,7 @@ def _register_signal_handlers(logger: ProgressLogger):
 
 def index_cli(
     root_dir: Path,
+    method: IndexingMethod,
     verbose: bool,
     memprofile: bool,
     cache: bool,
@@ -78,9 +79,11 @@ def index_cli(
         cli_overrides["output.base_dir"] = str(output_dir)
         cli_overrides["reporting.base_dir"] = str(output_dir)
     config = load_config(root_dir, config_filepath, cli_overrides)
+    #print(f"config: {config}")
 
     _run_index(
         config=config,
+        method=method,
         verbose=verbose,
         memprofile=memprofile,
         cache=cache,
@@ -92,6 +95,7 @@ def index_cli(
 
 def update_cli(
     root_dir: Path,
+    method: IndexingMethod,
     verbose: bool,
     memprofile: bool,
     cache: bool,
@@ -119,6 +123,7 @@ def update_cli(
 
     _run_index(
         config=config,
+        method=method,
         verbose=verbose,
         memprofile=memprofile,
         cache=cache,
@@ -130,6 +135,7 @@ def update_cli(
 
 def _run_index(
     config,
+    method,
     verbose,
     memprofile,
     cache,
@@ -170,6 +176,7 @@ def _run_index(
     outputs = asyncio.run(
         api.build_index(
             config=config,
+            method=method,
             memory_profile=memprofile,
             progress_logger=progress_logger,
         )

@@ -6,7 +6,7 @@
 #     api_key="ollama",  # Ollama does not require authentication, so use a dummy key
 # )
 
-# # Call the model
+# Call the model
 # response = client.completions.create(
 #     model="llama3.2:3b",  # Adjust model name if necessary
 #     prompt="What is reinforcement learning?",
@@ -16,7 +16,7 @@
 # # Print the output
 # print(response.choices[0].text.strip())
 
-## text embedding
+# text embedding
 # text = "Reinforcement learning is a branch of machine learning."
 
 # # Call the embedding model
@@ -27,6 +27,7 @@
 
 # # Extract and print embeddings
 # embedding = response.data[0].embedding
+# print("len Embedding:", len(embedding))
 # print("Embedding:", embedding)
 
 if __name__ == "__main__":
@@ -51,3 +52,18 @@ if __name__ == "__main__":
 
     # # validate
     # assert os.path.exists(os.path.join(tiktoken_cache_dir, cache_key))
+    from openai import OpenAI
+    client = OpenAI(
+        base_url="http://localhost:11434/v1",
+    )
+
+    completion = client.chat.completions.create(
+    model="/scratch/gpfs/jx0800/models/Llama-3.2-3B-Instruct",
+    messages=[
+        {"role": "user", "content": "Hello!"}
+    ]
+    )
+
+    print(completion.choices[0].message)
+
+

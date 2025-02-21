@@ -25,7 +25,7 @@ models:
     #parallelization_num_threads: 50
     #parallelization_stagger: 0.3
     #async_mode: threaded # or asyncio
-    api_base: http://localhost:11434/api # http://localhost:11434/api
+    api_base: http://localhost:11434/v1 # http://localhost:11434/api
     # api_version: 2024-02-15-preview
     # audience: "https://cognitiveservices.azure.com/.default"
     # organization: <organization_id>

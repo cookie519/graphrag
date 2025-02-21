@@ -1,0 +1,75 @@
+2025/02/08 07:53:13 routes.go:1259: INFO server config env="map[CUDA_VISIBLE_DEVICES:0,1 GPU_DEVICE_ORDINAL: HIP_VISIBLE_DEVICES: HSA_OVERRIDE_GFX_VERSION: HTTPS_PROXY: HTTP_PROXY: NO_PROXY: OLLAMA_DEBUG:false OLLAMA_FLASH_ATTENTION:false OLLAMA_GPU_OVERHEAD:0 OLLAMA_HOST:http://127.0.0.1:11434 OLLAMA_INTEL_GPU:false OLLAMA_KEEP_ALIVE:5m0s OLLAMA_KV_CACHE_TYPE: OLLAMA_LLM_LIBRARY: OLLAMA_LOAD_TIMEOUT:5m0s OLLAMA_MAX_LOADED_MODELS:0 OLLAMA_MAX_QUEUE:512 OLLAMA_MODELS:/scratch/gpfs/jx0800/models OLLAMA_MULTIUSER_CACHE:false OLLAMA_NOHISTORY:false OLLAMA_NOPRUNE:false OLLAMA_NUM_PARALLEL:0 OLLAMA_ORIGINS:[http://localhost https://localhost http://localhost:* https://localhost:* http://127.0.0.1 https://127.0.0.1 http://127.0.0.1:* https://127.0.0.1:* http://0.0.0.0 https://0.0.0.0 http://0.0.0.0:* https://0.0.0.0:* app://* file://* tauri://* vscode-webview://*] OLLAMA_SCHED_SPREAD:false ROCR_VISIBLE_DEVICES: http_proxy: https_proxy: no_proxy:]"
+time=2025-02-08T07:53:13.397-05:00 level=INFO source=images.go:757 msg="total blobs: 21"
+time=2025-02-08T07:53:13.398-05:00 level=INFO source=images.go:764 msg="total unused blobs removed: 0"
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] POST   /api/pull                 --> github.com/ollama/ollama/server.(*Server).PullHandler-fm (5 handlers)
+[GIN-debug] POST   /api/generate             --> github.com/ollama/ollama/server.(*Server).GenerateHandler-fm (5 handlers)
+[GIN-debug] POST   /api/chat                 --> github.com/ollama/ollama/server.(*Server).ChatHandler-fm (5 handlers)
+[GIN-debug] POST   /api/embed                --> github.com/ollama/ollama/server.(*Server).EmbedHandler-fm (5 handlers)
+[GIN-debug] POST   /api/embeddings           --> github.com/ollama/ollama/server.(*Server).EmbeddingsHandler-fm (5 handlers)
+[GIN-debug] POST   /api/create               --> github.com/ollama/ollama/server.(*Server).CreateHandler-fm (5 handlers)
+[GIN-debug] POST   /api/push                 --> github.com/ollama/ollama/server.(*Server).PushHandler-fm (5 handlers)
+[GIN-debug] POST   /api/copy                 --> github.com/ollama/ollama/server.(*Server).CopyHandler-fm (5 handlers)
+[GIN-debug] DELETE /api/delete               --> github.com/ollama/ollama/server.(*Server).DeleteHandler-fm (5 handlers)
+[GIN-debug] POST   /api/show                 --> github.com/ollama/ollama/server.(*Server).ShowHandler-fm (5 handlers)
+[GIN-debug] POST   /api/blobs/:digest        --> github.com/ollama/ollama/server.(*Server).CreateBlobHandler-fm (5 handlers)
+[GIN-debug] HEAD   /api/blobs/:digest        --> github.com/ollama/ollama/server.(*Server).HeadBlobHandler-fm (5 handlers)
+[GIN-debug] GET    /api/ps                   --> github.com/ollama/ollama/server.(*Server).PsHandler-fm (5 handlers)
+[GIN-debug] POST   /v1/chat/completions      --> github.com/ollama/ollama/server.(*Server).ChatHandler-fm (6 handlers)
+[GIN-debug] POST   /v1/completions           --> github.com/ollama/ollama/server.(*Server).GenerateHandler-fm (6 handlers)
+[GIN-debug] POST   /v1/embeddings            --> github.com/ollama/ollama/server.(*Server).EmbedHandler-fm (6 handlers)
+[GIN-debug] GET    /v1/models                --> github.com/ollama/ollama/server.(*Server).ListHandler-fm (6 handlers)
+[GIN-debug] GET    /v1/models/:model         --> github.com/ollama/ollama/server.(*Server).ShowHandler-fm (6 handlers)
+[GIN-debug] GET    /                         --> github.com/ollama/ollama/server.(*Server).GenerateRoutes.func1 (5 handlers)
+[GIN-debug] GET    /api/tags                 --> github.com/ollama/ollama/server.(*Server).ListHandler-fm (5 handlers)
+[GIN-debug] GET    /api/version              --> github.com/ollama/ollama/server.(*Server).GenerateRoutes.func2 (5 handlers)
+[GIN-debug] HEAD   /                         --> github.com/ollama/ollama/server.(*Server).GenerateRoutes.func1 (5 handlers)
+[GIN-debug] HEAD   /api/tags                 --> github.com/ollama/ollama/server.(*Server).ListHandler-fm (5 handlers)
+[GIN-debug] HEAD   /api/version              --> github.com/ollama/ollama/server.(*Server).GenerateRoutes.func2 (5 handlers)
+time=2025-02-08T07:53:13.398-05:00 level=INFO source=routes.go:1310 msg="Listening on 127.0.0.1:11434 (version 0.5.4)"
+time=2025-02-08T07:53:13.402-05:00 level=INFO source=routes.go:1339 msg="Dynamic LLM libraries" runners="[cpu cpu_avx cpu_avx2 cuda_v11_avx cuda_v12_avx rocm_avx]"
+time=2025-02-08T07:53:13.403-05:00 level=INFO source=gpu.go:226 msg="looking for compatible GPUs"
+time=2025-02-08T07:53:14.438-05:00 level=INFO source=types.go:131 msg="inference compute" id=GPU-67c9e358-f42d-3718-c960-b7c4b11564a6 library=cuda variant=v12 compute=8.0 driver=12.6 name="NVIDIA A100-SXM4-80GB" total="79.3 GiB" available="78.8 GiB"
+time=2025-02-08T07:53:14.438-05:00 level=INFO source=types.go:131 msg="inference compute" id=GPU-cce560e4-45f2-ad0a-1908-0c3f5c78db9b library=cuda variant=v12 compute=8.0 driver=12.6 name="NVIDIA A100-SXM4-80GB" total="79.3 GiB" available="78.8 GiB"
+
+config_path: /scratch/gpfs/jx0800/data/graphrag/settings.yaml
+Logging enabled at /scratch/gpfs/jx0800/data/graphrag/logs/indexing-engine.log
+Running standard indexing.
+🚀 create_base_text_units
+                                                  id  ... n_tokens
+0  e72fce0bdeb62991ec38c3b6cf3aa675f8eabcce43a303...  ...      701
+1  826236e9b53b61f612c6be568d84689b52b02eaab67617...  ...      849
+2  bcfc6a23d78c876f7cc226f911e6ce8375526d89093e88...  ...      926
+3  332527ce3f7779776fcfae343ec912a32806bb50e27d75...  ...      819
+
+[4 rows x 4 columns]
+🚀 create_final_documents
+                                                  id  ...                       
+text_unit_ids
+0  60fc9c195dd446cea71026da21b6a6a4741d6bba079baa...  ...  
+[e72fce0bdeb62991ec38c3b6cf3aa675f8eabcce43a30...
+1  9e68811b4cd4f15f8ecc47c135b57630624ac5217352bc...  ...  
+[bcfc6a23d78c876f7cc226f911e6ce8375526d89093e8...
+2  deffe383fea4e5e43d969b23593899dfe4ee8f4533fc02...  ...  
+[332527ce3f7779776fcfae343ec912a32806bb50e27d7...
+3  88eb9b650c09283b91b10a3bc047224790471845d07fff...  ...  
+[826236e9b53b61f612c6be568d84689b52b02eaab6761...
+
+[4 rows x 5 columns]
+extracted_entities: Empty DataFrame
+Columns: [title, type, description, source_id]
+Index: []
+extracted_relationships: Empty DataFrame
+Columns: [source, target, description, source_id, weight, sum]
+Index: []
+❌ extract_graph
+None
+⠋ GraphRAG Indexer 
+├── Loading Input (InputFileType.text) - 4 files loaded (0 filtered) ━ 100% … 0…
+├── create_base_text_units ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100% 0:00:00 0:00:00
+├── create_final_documents ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100% 0:00:00 0:00:00❌ Errors occurred during the pipeline run, see logs for more details.

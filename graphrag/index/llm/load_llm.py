@@ -297,6 +297,10 @@ def _create_openai_chat_llm(
 ) -> ChatLLM:
     """Create an openAI chat llm."""
     client = create_openai_client(configuration)
+    print(f"configuration: {configuration}")
+    print(f"client: {client}")
+    print(f"cache: {cache}")
+    print(f"events: {GraphRagLLMEvents(on_error)}")
     return create_openai_chat_llm(
         configuration,
         client=client,
@@ -312,6 +316,10 @@ def _create_openai_embeddings_llm(
 ) -> EmbeddingsLLM:
     """Create an openAI embeddings llm."""
     client = create_openai_client(configuration)
+    print(f"configuration: {configuration}")
+    print(f"client: {client}")
+    print(f"cache: {cache}")
+    print(f"events: {GraphRagLLMEvents(on_error)}")
     return create_openai_embeddings_llm(
         configuration,
         client=client,

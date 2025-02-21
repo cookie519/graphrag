@@ -16,6 +16,7 @@ models:
   {defs.DEFAULT_CHAT_MODEL_ID}:
     api_key: ${{GRAPHRAG_API_KEY}} # set this in the generated .env file
     type: {defs.LLM_TYPE.value} # or azure_openai_chat
+    auth_type: {defs.AUTH_TYPE.value} # or azure_managed_identity
     model: {defs.LLM_MODEL}
     model_supports_json: true # recommended if this is available for your model.
     parallelization_num_threads: {defs.PARALLELIZATION_NUM_THREADS}
@@ -29,6 +30,7 @@ models:
   {defs.DEFAULT_EMBEDDING_MODEL_ID}:
     api_key: ${{GRAPHRAG_API_KEY}}
     type: {defs.EMBEDDING_TYPE.value} # or azure_openai_embedding
+    auth_type: {defs.AUTH_TYPE.value} # or azure_managed_identity
     model: {defs.EMBEDDING_MODEL}
     parallelization_num_threads: {defs.PARALLELIZATION_NUM_THREADS}
     parallelization_stagger: {defs.PARALLELIZATION_STAGGER}
@@ -40,14 +42,15 @@ models:
     # deployment_name: <azure_model_deployment_name>
 
 vector_store:
-  {defs.VECTOR_STORE_INDEX_NAME}:
+  {defs.VECTOR_STORE_DEFAULT_ID}:
     type: {defs.VECTOR_STORE_TYPE}
     db_uri: {defs.VECTOR_STORE_DB_URI}
     container_name: {defs.VECTOR_STORE_CONTAINER_NAME}
     overwrite: {defs.VECTOR_STORE_OVERWRITE}
 
-embeddings:
+embed_text:
   model_id: {defs.DEFAULT_EMBEDDING_MODEL_ID}
+  vector_store_id: {defs.VECTOR_STORE_DEFAULT_ID}
 
 ### Input settings ###
 
@@ -68,41 +71,45 @@ chunks:
 ## connection_string and container_name must be provided
 
 cache:
-  type: {defs.CACHE_TYPE.value} # one of [blob, cosmosdb, file]
+  type: {defs.CACHE_TYPE.value} # [file, blob, cosmosdb]
   base_dir: "{defs.CACHE_BASE_DIR}"
 
 reporting:
-  type: {defs.REPORTING_TYPE.value} # or console, blob
+  type: {defs.REPORTING_TYPE.value} # [file, blob, cosmosdb]
   base_dir: "{defs.REPORTING_BASE_DIR}"
 
 output:
-  type: {defs.OUTPUT_TYPE.value} # one of [blob, cosmosdb, file]
+  type: {defs.OUTPUT_TYPE.value} # [file, blob, cosmosdb]
   base_dir: "{defs.OUTPUT_BASE_DIR}"
 
 ## only turn this on if running `graphrag index` with custom settings
 ## we normally use `graphrag update` with the defaults
 update_index_output:
-  # type: {defs.OUTPUT_TYPE.value} # or blob
+  # type: {defs.OUTPUT_TYPE.value} # [file, blob, cosmosdb]
   # base_dir: "{defs.UPDATE_OUTPUT_BASE_DIR}"
 
 ### Workflow settings ###
 
-entity_extraction:
-  model_id: {defs.ENTITY_EXTRACTION_MODEL_ID}
-  prompt: "prompts/entity_extraction.txt"
-  entity_types: [{",".join(defs.ENTITY_EXTRACTION_ENTITY_TYPES)}]
-  max_gleanings: {defs.ENTITY_EXTRACTION_MAX_GLEANINGS}
+extract_graph:
+  model_id: {defs.EXTRACT_GRAPH_MODEL_ID}
+  prompt: "prompts/extract_graph.txt"
+  entity_types: [{",".join(defs.EXTRACT_GRAPH_ENTITY_TYPES)}]
+  max_gleanings: {defs.EXTRACT_GRAPH_MAX_GLEANINGS}
 
 summarize_descriptions:
   model_id: {defs.SUMMARIZE_MODEL_ID}
   prompt: "prompts/summarize_descriptions.txt"
   max_length: {defs.SUMMARIZE_DESCRIPTIONS_MAX_LENGTH}
 
-claim_extraction:
+extract_graph_nlp:
+  text_analyzer:
+    extractor_type: {defs.NLP_EXTRACTOR_TYPE.value} # [regex_english, syntactic_parser, cfg]
+
+extract_claims:
   enabled: false
-  model_id: {defs.CLAIM_EXTRACTION_MODEL_ID}
-  prompt: "prompts/claim_extraction.txt"
-  description: "{defs.CLAIM_DESCRIPTION}"
+  model_id: {defs.EXTRACT_CLAIMS_MODEL_ID}
+  prompt: "prompts/extract_claims.txt"
+  description: "{defs.DESCRIPTION}"
   max_gleanings: {defs.CLAIM_MAX_GLEANINGS}
 
 community_reports:
@@ -123,7 +130,6 @@ umap:
 snapshots:
   graphml: false
   embeddings: false
-  transient: false
 
 ### Query settings ###
 ## The prompt locations are required here, but each search method has a number of optional knobs that can be tuned.

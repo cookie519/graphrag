@@ -13,17 +13,19 @@ from graphrag.config.errors import LanguageModelConfigMissingError
 from graphrag.config.models.basic_search_config import BasicSearchConfig
 from graphrag.config.models.cache_config import CacheConfig
 from graphrag.config.models.chunking_config import ChunkingConfig
-from graphrag.config.models.claim_extraction_config import ClaimExtractionConfig
 from graphrag.config.models.cluster_graph_config import ClusterGraphConfig
 from graphrag.config.models.community_reports_config import CommunityReportsConfig
 from graphrag.config.models.drift_search_config import DRIFTSearchConfig
 from graphrag.config.models.embed_graph_config import EmbedGraphConfig
-from graphrag.config.models.entity_extraction_config import EntityExtractionConfig
+from graphrag.config.models.extract_claims_config import ClaimExtractionConfig
+from graphrag.config.models.extract_graph_config import ExtractGraphConfig
+from graphrag.config.models.extract_graph_nlp_config import ExtractGraphNLPConfig
 from graphrag.config.models.global_search_config import GlobalSearchConfig
 from graphrag.config.models.input_config import InputConfig
 from graphrag.config.models.language_model_config import LanguageModelConfig
 from graphrag.config.models.local_search_config import LocalSearchConfig
 from graphrag.config.models.output_config import OutputConfig
+from graphrag.config.models.prune_graph_config import PruneGraphConfig
 from graphrag.config.models.reporting_config import ReportingConfig
 from graphrag.config.models.snapshots_config import SnapshotsConfig
 from graphrag.config.models.summarize_descriptions_config import (
@@ -100,7 +102,8 @@ class GraphRagConfig(BaseModel):
             )
 
     output: OutputConfig = Field(
-        description="The output configuration.", default=OutputConfig()
+        description="The output configuration.",
+        default=OutputConfig(),
     )
     """The output configuration."""
 
@@ -113,6 +116,23 @@ class GraphRagConfig(BaseModel):
             self.output.base_dir = str(
                 (Path(self.root_dir) / self.output.base_dir).resolve()
             )
+
+    outputs: dict[str, OutputConfig] | None = Field(
+        description="A list of output configurations used for multi-index query.",
+        default=None,
+    )
+
+    def _validate_multi_output_base_dirs(self) -> None:
+        """Validate the outputs dict base directories."""
+        if self.outputs:
+            for output in self.outputs.values():
+                if output.type == defs.OutputType.file:
+                    if output.base_dir.strip() == "":
+                        msg = "Output base directory is required for file output. Please rerun `graphrag init` and set the output configuration."
+                        raise ValueError(msg)
+                    output.base_dir = str(
+                        (Path(self.root_dir) / output.base_dir).resolve()
+                    )
 
     update_index_output: OutputConfig | None = Field(
         description="The output configuration for the updated index.",
@@ -149,11 +169,11 @@ class GraphRagConfig(BaseModel):
     )
     """Graph Embedding configuration."""
 
-    embeddings: TextEmbeddingConfig = Field(
-        description="The embeddings LLM configuration to use.",
+    embed_text: TextEmbeddingConfig = Field(
+        description="Text embedding configuration.",
         default=TextEmbeddingConfig(),
     )
-    """The embeddings LLM configuration to use."""
+    """Text embedding configuration."""
 
     chunks: ChunkingConfig = Field(
         description="The chunking configuration to use.",
@@ -167,11 +187,17 @@ class GraphRagConfig(BaseModel):
     )
     """The snapshots configuration to use."""
 
-    entity_extraction: EntityExtractionConfig = Field(
+    extract_graph: ExtractGraphConfig = Field(
         description="The entity extraction configuration to use.",
-        default=EntityExtractionConfig(),
+        default=ExtractGraphConfig(),
     )
     """The entity extraction configuration to use."""
+
+    extract_graph_nlp: ExtractGraphNLPConfig = Field(
+        description="The NLP-based graph extraction configuration to use.",
+        default=ExtractGraphNLPConfig(),
+    )
+    """The NLP-based graph extraction configuration to use."""
 
     summarize_descriptions: SummarizeDescriptionsConfig = Field(
         description="The description summarization configuration to use.",
@@ -185,13 +211,19 @@ class GraphRagConfig(BaseModel):
     )
     """The community reports configuration to use."""
 
-    claim_extraction: ClaimExtractionConfig = Field(
+    extract_claims: ClaimExtractionConfig = Field(
         description="The claim extraction configuration to use.",
         default=ClaimExtractionConfig(
-            enabled=defs.CLAIM_EXTRACTION_ENABLED,
+            enabled=defs.EXTRACT_CLAIMS_ENABLED,
         ),
     )
     """The claim extraction configuration to use."""
+
+    prune_graph: PruneGraphConfig = Field(
+        description="The graph pruning configuration to use.",
+        default=PruneGraphConfig(),
+    )
+    """The graph pruning configuration to use."""
 
     cluster_graph: ClusterGraphConfig = Field(
         description="The cluster graph configuration to use.",
@@ -226,9 +258,15 @@ class GraphRagConfig(BaseModel):
 
     vector_store: dict[str, VectorStoreConfig] = Field(
         description="The vector store configuration.",
-        default={"output": VectorStoreConfig()},
+        default={defs.VECTOR_STORE_DEFAULT_ID: VectorStoreConfig()},
     )
     """The vector store configuration."""
+
+    workflows: list[str] | None = Field(
+        description="List of workflows to run, in execution order. This always overrides any built-in workflow methods.",
+        default=None,
+    )
+    """List of workflows to run, in execution order."""
 
     def _validate_vector_store_db_uri(self) -> None:
         """Validate the vector store configuration."""
@@ -263,6 +301,30 @@ class GraphRagConfig(BaseModel):
 
         return self.models[model_id]
 
+    def get_vector_store_config(self, vector_store_id: str) -> VectorStoreConfig:
+        """Get a vector store configuration by ID.
+
+        Parameters
+        ----------
+        vector_store_id : str
+            The ID of the vector store to get. Should match an ID in the vector_store list.
+
+        Returns
+        -------
+        VectorStoreConfig
+            The vector store configuration if found.
+
+        Raises
+        ------
+        ValueError
+            If the vector store ID is not found in the configuration.
+        """
+        if vector_store_id not in self.vector_store:
+            err_msg = f"Vector Store ID {vector_store_id} not found in configuration. Please rerun `graphrag init` and set the vector store configuration."
+            raise ValueError(err_msg)
+
+        return self.vector_store[vector_store_id]
+
     @model_validator(mode="after")
     def _validate_model(self):
         """Validate the model configuration."""
@@ -270,6 +332,7 @@ class GraphRagConfig(BaseModel):
         self._validate_models()
         self._validate_reporting_base_dir()
         self._validate_output_base_dir()
+        self._validate_multi_output_base_dirs()
         self._validate_update_index_output_base_dir()
         self._validate_vector_store_db_uri()
         return self
