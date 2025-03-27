@@ -92,6 +92,7 @@ class LocalSearch(BaseSearch[LocalContextBuilder]):
                 {"role": "system", "content": search_prompt},
                 {"role": "user", "content": query},
             ]
+            print("search_prompt: ", search_prompt)
 
             response = await self.llm.agenerate(
                 messages=search_messages,

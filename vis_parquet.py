@@ -11,7 +11,7 @@ import pandas as pd
 
 
 # Directory containing Parquet files
-parquet_dir = "/scratch/gpfs/jx0800/data/graphrag/output_api"
+parquet_dir = "/scratch/gpfs/jx0800/data/graphrag/output"
 
 # Get list of all .parquet files in the directory
 parquet_files = [f for f in os.listdir(parquet_dir) if f.endswith(".parquet")]

@@ -1,7 +1,7 @@
 import lance
 
 # Path to the Lance dataset
-dataset_path = "/scratch/gpfs/jx0800/data/graphrag/output_api/lancedb/default-entity-description.lance"
+dataset_path = "/scratch/gpfs/jx0800/data/graphrag/output/lancedb/default-entity-description.lance"
 
 # Open the dataset
 dataset = lance.dataset(dataset_path)

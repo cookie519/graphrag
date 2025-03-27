@@ -79,7 +79,7 @@ class FilePipelineStorage(PipelineStorage):
     ) -> Any:
         """Get method definition."""
         file_path = join_path(self._root_dir, key)
-
+        print(f"file_path: {file_path}")
         if await self.has(key):
             return await self._read_file(file_path, as_bytes, encoding)
         if await exists(key):

@@ -67,8 +67,14 @@ def read_indexer_relationships(final_relationships: pd.DataFrame) -> list[Relati
     """Read in the Relationships from the raw indexing outputs."""
     return read_relationships(
         df=final_relationships,
+        id_col="id",
         short_id_col="human_readable_id",
-        rank_col="combined_degree",
+        source_col = "source",
+        target_col = "target",
+        description_col = "description",
+        rank_col = "combined_degree",
+        text_unit_ids_col = "text_unit_ids" if "text_unit_ids" in final_relationships.columns else None,
+        weight_col="weight" if "weight" in final_relationships.columns else None,
         description_embedding_col=None,
         attributes_cols=None,
     )
@@ -133,45 +139,63 @@ def read_indexer_report_embeddings(
 
 def read_indexer_entities(
     final_entities: pd.DataFrame,
-    final_communities: pd.DataFrame,
+    final_communities: pd.DataFrame | None,
     community_level: int | None,
 ) -> list[Entity]:
     """Read in the Entities from the raw indexing outputs."""
-    community_join = final_communities.explode("entity_ids").loc[
-        :, ["community", "level", "entity_ids"]
-    ]
-    nodes_df = final_entities.merge(
-        community_join, left_on="id", right_on="entity_ids", how="left"
-    )
-    entities_df = final_entities
+    if final_communities is None:
+        # read only entity dataframe to knowledge model objects
+        # entity dataframe should contain at least the following columns: id, title
+        return read_entities(
+            df=final_entities,
+            id_col="id",
+            title_col="title",
+            type_col="type" if "type" in final_entities.columns else None,
+            short_id_col="human_readable_id" if "human_readable_id" in final_entities.columns else None,
+            description_col="description" if "description" in final_entities.columns else None,
+            community_col="community" if "community" in final_entities.columns else None,
+            rank_col="degree" if "degree" in final_entities.columns else None,
+            name_embedding_col=None,
+            description_embedding_col="description_embedding" if "description_embedding" in final_entities.columns else None,
+            text_unit_ids_col="text_unit_ids" if "text_unit_ids" in final_entities.columns else None,
+        )
+        
+    else:
+        community_join = final_communities.explode("entity_ids").loc[
+            :, ["community", "level", "entity_ids"]
+        ]
+        nodes_df = final_entities.merge(
+            community_join, left_on="id", right_on="entity_ids", how="left"
+        )
+        entities_df = final_entities
 
-    if community_level is not None:
-        nodes_df = _filter_under_community_level(nodes_df, community_level)
+        if community_level is not None:
+            nodes_df = _filter_under_community_level(nodes_df, community_level)
 
-    nodes_df = nodes_df.loc[:, ["id", "community"]]
+        nodes_df = nodes_df.loc[:, ["id", "community"]]
 
-    # group entities by id and degree and remove duplicated community IDs
-    nodes_df = nodes_df.groupby(["id"]).agg({"community": set}).reset_index()
-    nodes_df["community"] = nodes_df["community"].apply(
-        lambda x: [str(int(i)) for i in x]
-    )
-    final_df = nodes_df.merge(entities_df, on="id", how="inner").drop_duplicates(
-        subset=["id"]
-    )
-    # read entity dataframe to knowledge model objects
-    return read_entities(
-        df=final_df,
-        id_col="id",
-        title_col="title",
-        type_col="type",
-        short_id_col="human_readable_id",
-        description_col="description",
-        community_col="community",
-        rank_col="degree",
-        name_embedding_col=None,
-        description_embedding_col="description_embedding",
-        text_unit_ids_col="text_unit_ids",
-    )
+        # group entities by id and degree and remove duplicated community IDs
+        nodes_df = nodes_df.groupby(["id"]).agg({"community": set}).reset_index()
+        nodes_df["community"] = nodes_df["community"].apply(
+            lambda x: [str(int(i)) for i in x]
+        )
+        final_df = nodes_df.merge(entities_df, on="id", how="inner").drop_duplicates(
+            subset=["id"]
+        )
+        # read entity dataframe to knowledge model objects
+        return read_entities(
+            df=final_df,
+            id_col="id",
+            title_col="title",
+            type_col="type",
+            short_id_col="human_readable_id",
+            description_col="description",
+            community_col="community",
+            rank_col="degree",
+            name_embedding_col=None,
+            description_embedding_col="description_embedding",
+            text_unit_ids_col="text_unit_ids",
+        )
 
 
 def read_indexer_communities(

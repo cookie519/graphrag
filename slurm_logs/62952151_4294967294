@@ -1,0 +1,63 @@
+INFO 03-17 13:36:59 __init__.py:190] Automatically detected platform cuda.
+INFO:__main__:batch size: 1000
+INFO:__main__:num: 30
+INFO:__main__:start_idx: 0
+INFO:__main__:stop_idx: 30000
+INFO:__main__:Loading LLM
+INFO 03-17 13:37:09 config.py:542] This model supports multiple tasks: {'embed', 'generate', 'classify', 'reward', 'score'}. Defaulting to 'generate'.
+WARNING 03-17 13:37:09 arg_utils.py:1135] Chunked prefill is enabled by default for models with max_model_len > 32K. Currently, chunked prefill might not work with some features or models. If you encounter any issues, please disable chunked prefill by setting --enable-chunked-prefill=False.
+INFO 03-17 13:37:09 config.py:1556] Chunked prefill is enabled with max_num_batched_tokens=2048.
+INFO 03-17 13:37:09 llm_engine.py:234] Initializing a V0 LLM engine (v0.7.2) with config: model='/scratch/gpfs/JHA/models/Llama-3.1-8B-Instruct', speculative_config=None, tokenizer='/scratch/gpfs/JHA/models/Llama-3.1-8B-Instruct', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, override_neuron_config=None, tokenizer_revision=None, trust_remote_code=False, dtype=torch.bfloat16, max_seq_len=131072, download_dir=None, load_format=LoadFormat.AUTO, tensor_parallel_size=1, pipeline_parallel_size=1, disable_custom_all_reduce=False, quantization=None, enforce_eager=False, kv_cache_dtype=auto,  device_config=cuda, decoding_config=DecodingConfig(guided_decoding_backend='xgrammar'), observability_config=ObservabilityConfig(otlp_traces_endpoint=None, collect_model_forward_time=False, collect_model_execute_time=False), seed=0, served_model_name=/scratch/gpfs/JHA/models/Llama-3.1-8B-Instruct, num_scheduler_steps=1, multi_step_stream_outputs=True, enable_prefix_caching=False, chunked_prefill_enabled=True, use_async_output_proc=True, disable_mm_preprocessor_cache=False, mm_processor_kwargs=None, pooler_config=None, compilation_config={"splitting_ops":[],"compile_sizes":[],"cudagraph_capture_sizes":[256,248,240,232,224,216,208,200,192,184,176,168,160,152,144,136,128,120,112,104,96,88,80,72,64,56,48,40,32,24,16,8,4,2,1],"max_capture_size":256}, use_cached_outputs=False, 
+/home/jx0800/.conda/envs/graphrag/lib/python3.11/site-packages/vllm/executor/uniproc_executor.py:29: UserWarning: Failed to get the IP address, using 0.0.0.0 by default.The value can be set by the environment variable VLLM_HOST_IP or HOST_IP.
+  get_ip(), get_open_port())
+INFO 03-17 13:37:09 cuda.py:230] Using Flash Attention backend.
+INFO 03-17 13:37:10 model_runner.py:1110] Starting to load model /scratch/gpfs/JHA/models/Llama-3.1-8B-Instruct...
+Loading safetensors checkpoint shards:   0% Completed | 0/4 [00:00<?, ?it/s]
+Loading safetensors checkpoint shards:  25% Completed | 1/4 [00:05<00:15,  5.20s/it]
+Loading safetensors checkpoint shards:  50% Completed | 2/4 [00:09<00:09,  4.65s/it]
+Loading safetensors checkpoint shards:  75% Completed | 3/4 [00:10<00:03,  3.10s/it]
+Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:15<00:00,  3.85s/it]
+Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:15<00:00,  3.93s/it]
+
+INFO 03-17 13:37:26 model_runner.py:1115] Loading model weights took 14.9888 GB
+INFO 03-17 13:37:27 worker.py:267] Memory profiling takes 0.57 seconds
+INFO 03-17 13:37:27 worker.py:267] the current vLLM instance can use total_gpu_memory (79.19GiB) x gpu_memory_utilization (0.90) = 71.27GiB
+INFO 03-17 13:37:27 worker.py:267] model weights take 14.99GiB; non_torch_memory takes 0.16GiB; PyTorch activation peak memory takes 1.21GiB; the rest of the memory reserved for KV Cache is 54.91GiB.
+INFO 03-17 13:37:27 executor_base.py:110] # CUDA blocks: 28115, # CPU blocks: 2048
+INFO 03-17 13:37:27 executor_base.py:115] Maximum concurrency for 131072 tokens per request: 3.43x
+INFO 03-17 13:37:30 model_runner.py:1434] Capturing cudagraphs for decoding. This may lead to unexpected consequences if the model is not static. To run the model in eager mode, set 'enforce_eager=True' or use '--enforce-eager' in the CLI. If out-of-memory error occurs during cudagraph capture, consider decreasing `gpu_memory_utilization` or switching to eager mode. You can also reduce the `max_num_seqs` as needed to decrease memory usage.
+Capturing CUDA graph shapes:   0%|          | 0/35 [00:00<?, ?it/s]Capturing CUDA graph shapes:   3%|▎         | 1/35 [00:00<00:10,  3.21it/s]Capturing CUDA graph shapes:   6%|▌         | 2/35 [00:00<00:08,  3.75it/s]Capturing CUDA graph shapes:   9%|▊         | 3/35 [00:00<00:08,  3.96it/s]Capturing CUDA graph shapes:  11%|█▏        | 4/35 [00:01<00:07,  4.06it/s]Capturing CUDA graph shapes:  14%|█▍        | 5/35 [00:01<00:07,  4.07it/s]Capturing CUDA graph shapes:  17%|█▋        | 6/35 [00:01<00:07,  4.09it/s]Capturing CUDA graph shapes:  20%|██        | 7/35 [00:01<00:06,  4.14it/s]Capturing CUDA graph shapes:  23%|██▎       | 8/35 [00:01<00:06,  4.18it/s]Capturing CUDA graph shapes:  26%|██▌       | 9/35 [00:02<00:06,  4.21it/s]Capturing CUDA graph shapes:  29%|██▊       | 10/35 [00:02<00:05,  4.24it/s]Capturing CUDA graph shapes:  31%|███▏      | 11/35 [00:02<00:05,  4.24it/s]Capturing CUDA graph shapes:  34%|███▍      | 12/35 [00:02<00:05,  4.26it/s]Capturing CUDA graph shapes:  37%|███▋      | 13/35 [00:03<00:05,  4.21it/s]Capturing CUDA graph shapes:  40%|████      | 14/35 [00:03<00:04,  4.22it/s]Capturing CUDA graph shapes:  43%|████▎     | 15/35 [00:03<00:04,  4.20it/s]Capturing CUDA graph shapes:  46%|████▌     | 16/35 [00:03<00:04,  4.23it/s]Capturing CUDA graph shapes:  49%|████▊     | 17/35 [00:04<00:04,  4.25it/s]Capturing CUDA graph shapes:  51%|█████▏    | 18/35 [00:04<00:03,  4.28it/s]Capturing CUDA graph shapes:  54%|█████▍    | 19/35 [00:04<00:03,  4.30it/s]Capturing CUDA graph shapes:  57%|█████▋    | 20/35 [00:04<00:03,  4.30it/s]Capturing CUDA graph shapes:  60%|██████    | 21/35 [00:05<00:03,  4.27it/s]Capturing CUDA graph shapes:  63%|██████▎   | 22/35 [00:05<00:03,  4.24it/s]Capturing CUDA graph shapes:  66%|██████▌   | 23/35 [00:05<00:02,  4.27it/s]Capturing CUDA graph shapes:  69%|██████▊   | 24/35 [00:05<00:02,  4.12it/s]Capturing CUDA graph shapes:  71%|███████▏  | 25/35 [00:05<00:02,  4.19it/s]Capturing CUDA graph shapes:  74%|███████▍  | 26/35 [00:06<00:02,  4.25it/s]Capturing CUDA graph shapes:  77%|███████▋  | 27/35 [00:06<00:01,  4.28it/s]Capturing CUDA graph shapes:  80%|████████  | 28/35 [00:06<00:01,  4.24it/s]Capturing CUDA graph shapes:  83%|████████▎ | 29/35 [00:06<00:01,  4.23it/s]Capturing CUDA graph shapes:  86%|████████▌ | 30/35 [00:07<00:01,  4.26it/s]Capturing CUDA graph shapes:  89%|████████▊ | 31/35 [00:07<00:00,  4.28it/s]Capturing CUDA graph shapes:  91%|█████████▏| 32/35 [00:07<00:00,  4.29it/s]Capturing CUDA graph shapes:  94%|█████████▍| 33/35 [00:07<00:00,  4.32it/s]Capturing CUDA graph shapes:  97%|█████████▋| 34/35 [00:08<00:00,  4.25it/s]Capturing CUDA graph shapes: 100%|██████████| 35/35 [00:08<00:00,  4.17it/s]Capturing CUDA graph shapes: 100%|██████████| 35/35 [00:08<00:00,  4.20it/s]
+INFO 03-17 13:37:38 model_runner.py:1562] Graph capturing finished in 8 secs, took 0.32 GiB
+INFO 03-17 13:37:38 llm_engine.py:431] init engine (profile, create kv cache, warmup model) took 11.52 seconds
+INFO:__main__:Processing batch to idx 999:
+INFO 03-17 13:37:38 chat_utils.py:332] Detected the chat template content format to be 'string'. You can set `--chat-template-content-format` to override this.
+INFO:__main__:Processing batch to idx 1999:
+INFO:__main__:Processing batch to idx 2999:
+INFO:__main__:Processing batch to idx 3999:
+INFO:__main__:Processing batch to idx 4999:
+INFO:__main__:Processing batch to idx 5999:
+INFO:__main__:Processing batch to idx 6999:
+INFO:__main__:Processing batch to idx 7999:
+INFO:__main__:Processing batch to idx 8999:
+INFO:__main__:Processing batch to idx 9999:
+INFO:__main__:Processing batch to idx 10999:
+INFO:__main__:Processing batch to idx 11999:
+INFO:__main__:Processing batch to idx 12999:
+INFO:__main__:Processing batch to idx 13999:
+INFO:__main__:Processing batch to idx 14999:
+INFO:__main__:Processing batch to idx 15999:
+INFO:__main__:Processing batch to idx 16999:
+INFO:__main__:Processing batch to idx 17999:
+INFO:__main__:Processing batch to idx 18999:
+INFO:__main__:Processing batch to idx 19999:
+INFO:__main__:Processing batch to idx 20999:
+INFO:__main__:Processing batch to idx 21999:
+INFO:__main__:Processing batch to idx 22999:
+INFO:__main__:Processing batch to idx 23999:
+INFO:__main__:Processing batch to idx 24999:
+INFO:__main__:Processing batch to idx 25999:
+INFO:__main__:Processing batch to idx 26999:
+INFO:__main__:Processing batch to idx 27999:
+INFO:__main__:Processing batch to idx 28999:
+INFO:__main__:Processing batch to idx 29999:
+[rank0]:[W317 13:58:28.809993794 ProcessGroupNCCL.cpp:1250] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())

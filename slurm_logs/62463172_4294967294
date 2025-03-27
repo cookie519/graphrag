@@ -1,0 +1,888 @@
+/var/spool/slurmd/job62463172/slurm_script: line 55: Wait: command not found
+2025/02/23 12:05:27 routes.go:1259: INFO server config env="map[CUDA_VISIBLE_DEVICES:0,1 GPU_DEVICE_ORDINAL: HIP_VISIBLE_DEVICES: HSA_OVERRIDE_GFX_VERSION: HTTPS_PROXY: HTTP_PROXY: NO_PROXY: OLLAMA_DEBUG:false OLLAMA_FLASH_ATTENTION:false OLLAMA_GPU_OVERHEAD:0 OLLAMA_HOST:http://127.0.0.1:11434 OLLAMA_INTEL_GPU:false OLLAMA_KEEP_ALIVE:5m0s OLLAMA_KV_CACHE_TYPE: OLLAMA_LLM_LIBRARY: OLLAMA_LOAD_TIMEOUT:5m0s OLLAMA_MAX_LOADED_MODELS:0 OLLAMA_MAX_QUEUE:512 OLLAMA_MODELS:/scratch/gpfs/jx0800/models OLLAMA_MULTIUSER_CACHE:false OLLAMA_NOHISTORY:false OLLAMA_NOPRUNE:false OLLAMA_NUM_PARALLEL:0 OLLAMA_ORIGINS:[http://localhost https://localhost http://localhost:* https://localhost:* http://127.0.0.1 https://127.0.0.1 http://127.0.0.1:* https://127.0.0.1:* http://0.0.0.0 https://0.0.0.0 http://0.0.0.0:* https://0.0.0.0:* app://* file://* tauri://* vscode-webview://*] OLLAMA_SCHED_SPREAD:false ROCR_VISIBLE_DEVICES: http_proxy: https_proxy: no_proxy:]"
+time=2025-02-23T12:05:27.586-05:00 level=INFO source=images.go:757 msg="total blobs: 25"
+time=2025-02-23T12:05:27.586-05:00 level=INFO source=images.go:764 msg="total unused blobs removed: 0"
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] POST   /api/pull                 --> github.com/ollama/ollama/server.(*Server).PullHandler-fm (5 handlers)
+[GIN-debug] POST   /api/generate             --> github.com/ollama/ollama/server.(*Server).GenerateHandler-fm (5 handlers)
+[GIN-debug] POST   /api/chat                 --> github.com/ollama/ollama/server.(*Server).ChatHandler-fm (5 handlers)
+[GIN-debug] POST   /api/embed                --> github.com/ollama/ollama/server.(*Server).EmbedHandler-fm (5 handlers)
+[GIN-debug] POST   /api/embeddings           --> github.com/ollama/ollama/server.(*Server).EmbeddingsHandler-fm (5 handlers)
+[GIN-debug] POST   /api/create               --> github.com/ollama/ollama/server.(*Server).CreateHandler-fm (5 handlers)
+[GIN-debug] POST   /api/push                 --> github.com/ollama/ollama/server.(*Server).PushHandler-fm (5 handlers)
+[GIN-debug] POST   /api/copy                 --> github.com/ollama/ollama/server.(*Server).CopyHandler-fm (5 handlers)
+[GIN-debug] DELETE /api/delete               --> github.com/ollama/ollama/server.(*Server).DeleteHandler-fm (5 handlers)
+[GIN-debug] POST   /api/show                 --> github.com/ollama/ollama/server.(*Server).ShowHandler-fm (5 handlers)
+[GIN-debug] POST   /api/blobs/:digest        --> github.com/ollama/ollama/server.(*Server).CreateBlobHandler-fm (5 handlers)
+[GIN-debug] HEAD   /api/blobs/:digest        --> github.com/ollama/ollama/server.(*Server).HeadBlobHandler-fm (5 handlers)
+[GIN-debug] GET    /api/ps                   --> github.com/ollama/ollama/server.(*Server).PsHandler-fm (5 handlers)
+[GIN-debug] POST   /v1/chat/completions      --> github.com/ollama/ollama/server.(*Server).ChatHandler-fm (6 handlers)
+[GIN-debug] POST   /v1/completions           --> github.com/ollama/ollama/server.(*Server).GenerateHandler-fm (6 handlers)
+[GIN-debug] POST   /v1/embeddings            --> github.com/ollama/ollama/server.(*Server).EmbedHandler-fm (6 handlers)
+[GIN-debug] GET    /v1/models                --> github.com/ollama/ollama/server.(*Server).ListHandler-fm (6 handlers)
+[GIN-debug] GET    /v1/models/:model         --> github.com/ollama/ollama/server.(*Server).ShowHandler-fm (6 handlers)
+[GIN-debug] GET    /                         --> github.com/ollama/ollama/server.(*Server).GenerateRoutes.func1 (5 handlers)
+[GIN-debug] GET    /api/tags                 --> github.com/ollama/ollama/server.(*Server).ListHandler-fm (5 handlers)
+[GIN-debug] GET    /api/version              --> github.com/ollama/ollama/server.(*Server).GenerateRoutes.func2 (5 handlers)
+[GIN-debug] HEAD   /                         --> github.com/ollama/ollama/server.(*Server).GenerateRoutes.func1 (5 handlers)
+[GIN-debug] HEAD   /api/tags                 --> github.com/ollama/ollama/server.(*Server).ListHandler-fm (5 handlers)
+[GIN-debug] HEAD   /api/version              --> github.com/ollama/ollama/server.(*Server).GenerateRoutes.func2 (5 handlers)
+time=2025-02-23T12:05:27.587-05:00 level=INFO source=routes.go:1310 msg="Listening on 127.0.0.1:11434 (version 0.5.4)"
+time=2025-02-23T12:05:27.588-05:00 level=INFO source=routes.go:1339 msg="Dynamic LLM libraries" runners="[cuda_v11_avx cuda_v12_avx rocm_avx cpu cpu_avx cpu_avx2]"
+time=2025-02-23T12:05:27.588-05:00 level=INFO source=gpu.go:226 msg="looking for compatible GPUs"
+time=2025-02-23T12:05:28.439-05:00 level=INFO source=types.go:131 msg="inference compute" id=GPU-b699e1a3-e92c-87bf-e3aa-cdfcdc247d48 library=cuda variant=v12 compute=8.0 driver=12.8 name="NVIDIA A100-SXM4-80GB" total="79.3 GiB" available="78.8 GiB"
+time=2025-02-23T12:05:28.439-05:00 level=INFO source=types.go:131 msg="inference compute" id=GPU-3381dd17-7010-579b-5469-12eb37bac35c library=cuda variant=v12 compute=8.0 driver=12.8 name="NVIDIA A100-SXM4-80GB" total="79.3 GiB" available="78.8 GiB"
+time=2025-02-23T12:06:06.402-05:00 level=INFO source=sched.go:714 msg="new model will fit in available VRAM in single GPU, loading" model=/scratch/gpfs/jx0800/models/blobs/sha256-970aa74c0a90ef7482477cf803618e776e173c007bf957f635f1015bfcfef0e6 gpu=GPU-b699e1a3-e92c-87bf-e3aa-cdfcdc247d48 parallel=1 available=84651016192 required="809.9 MiB"
+time=2025-02-23T12:06:06.960-05:00 level=INFO source=server.go:104 msg="system memory" total="1007.0 GiB" free="994.9 GiB" free_swap="2.0 GiB"
+time=2025-02-23T12:06:06.960-05:00 level=INFO source=memory.go:356 msg="offload to cuda" layers.requested=-1 layers.model=13 layers.offload=13 layers.split="" memory.available="[78.8 GiB]" memory.gpu_overhead="0 B" memory.required.full="809.9 MiB" memory.required.partial="809.9 MiB" memory.required.kv="24.0 MiB" memory.required.allocations="[809.9 MiB]" memory.weights.total="240.1 MiB" memory.weights.repeating="195.4 MiB" memory.weights.nonrepeating="44.7 MiB" memory.graph.full="48.0 MiB" memory.graph.partial="48.0 MiB"
+time=2025-02-23T12:06:06.963-05:00 level=INFO source=server.go:376 msg="starting llama server" cmd="/home/jx0800/.local/lib/ollama/runners/cuda_v12_avx/ollama_llama_server runner --model /scratch/gpfs/jx0800/models/blobs/sha256-970aa74c0a90ef7482477cf803618e776e173c007bf957f635f1015bfcfef0e6 --ctx-size 8192 --batch-size 512 --n-gpu-layers 13 --threads 48 --parallel 1 --port 34263"
+time=2025-02-23T12:06:06.964-05:00 level=INFO source=sched.go:449 msg="loaded runners" count=1
+time=2025-02-23T12:06:06.964-05:00 level=INFO source=server.go:555 msg="waiting for llama runner to start responding"
+time=2025-02-23T12:06:06.964-05:00 level=INFO source=server.go:589 msg="waiting for server to become available" status="llm server error"
+time=2025-02-23T12:06:07.050-05:00 level=INFO source=runner.go:945 msg="starting go runner"
+ggml_cuda_init: GGML_CUDA_FORCE_MMQ:    no
+ggml_cuda_init: GGML_CUDA_FORCE_CUBLAS: no
+ggml_cuda_init: found 1 CUDA devices:
+  Device 0: NVIDIA A100-SXM4-80GB, compute capability 8.0, VMM: yes
+time=2025-02-23T12:06:07.087-05:00 level=INFO source=runner.go:946 msg=system info="CUDA : ARCHS = 600,610,620,700,720,750,800,860,870,890,900 | USE_GRAPHS = 1 | PEER_MAX_BATCH_SIZE = 128 | CPU : SSE3 = 1 | SSSE3 = 1 | AVX = 1 | LLAMAFILE = 1 | AARCH64_REPACK = 1 | cgo(gcc)" threads=48
+time=2025-02-23T12:06:07.087-05:00 level=INFO source=.:0 msg="Server listening on 127.0.0.1:34263"
+time=2025-02-23T12:06:07.232-05:00 level=INFO source=server.go:589 msg="waiting for server to become available" status="llm server loading model"
+llama_load_model_from_file: using device CUDA0 (NVIDIA A100-SXM4-80GB) - 80729 MiB free
+llama_model_loader: loaded meta data with 24 key-value pairs and 112 tensors from /scratch/gpfs/jx0800/models/blobs/sha256-970aa74c0a90ef7482477cf803618e776e173c007bf957f635f1015bfcfef0e6 (version GGUF V3 (latest))
+llama_model_loader: Dumping metadata keys/values. Note: KV overrides do not apply in this output.
+llama_model_loader: - kv   0:                       general.architecture str              = nomic-bert
+llama_model_loader: - kv   1:                               general.name str              = nomic-embed-text-v1.5
+llama_model_loader: - kv   2:                     nomic-bert.block_count u32              = 12
+llama_model_loader: - kv   3:                  nomic-bert.context_length u32              = 2048
+llama_model_loader: - kv   4:                nomic-bert.embedding_length u32              = 768
+llama_model_loader: - kv   5:             nomic-bert.feed_forward_length u32              = 3072
+llama_model_loader: - kv   6:            nomic-bert.attention.head_count u32              = 12
+llama_model_loader: - kv   7:    nomic-bert.attention.layer_norm_epsilon f32              = 0.000000
+llama_model_loader: - kv   8:                          general.file_type u32              = 1
+llama_model_loader: - kv   9:                nomic-bert.attention.causal bool             = false
+llama_model_loader: - kv  10:                    nomic-bert.pooling_type u32              = 1
+llama_model_loader: - kv  11:                  nomic-bert.rope.freq_base f32              = 1000.000000
+llama_model_loader: - kv  12:            tokenizer.ggml.token_type_count u32              = 2
+llama_model_loader: - kv  13:                tokenizer.ggml.bos_token_id u32              = 101
+llama_model_loader: - kv  14:                tokenizer.ggml.eos_token_id u32              = 102
+llama_model_loader: - kv  15:                       tokenizer.ggml.model str              = bert
+llama_model_loader: - kv  16:                      tokenizer.ggml.tokens arr[str,30522]   = ["[PAD]", "[unused0]", "[unused1]", "...
+llama_model_loader: - kv  17:                      tokenizer.ggml.scores arr[f32,30522]   = [-1000.000000, -1000.000000, -1000.00...
+llama_model_loader: - kv  18:                  tokenizer.ggml.token_type arr[i32,30522]   = [3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, ...
+llama_model_loader: - kv  19:            tokenizer.ggml.unknown_token_id u32              = 100
+llama_model_loader: - kv  20:          tokenizer.ggml.seperator_token_id u32              = 102
+llama_model_loader: - kv  21:            tokenizer.ggml.padding_token_id u32              = 0
+llama_model_loader: - kv  22:                tokenizer.ggml.cls_token_id u32              = 101
+llama_model_loader: - kv  23:               tokenizer.ggml.mask_token_id u32              = 103
+llama_model_loader: - type  f32:   51 tensors
+llama_model_loader: - type  f16:   61 tensors
+llm_load_vocab: special_eos_id is not in special_eog_ids - the tokenizer config may be incorrect
+llm_load_vocab: special tokens cache size = 5
+llm_load_vocab: token to piece cache size = 0.2032 MB
+llm_load_print_meta: format           = GGUF V3 (latest)
+llm_load_print_meta: arch             = nomic-bert
+llm_load_print_meta: vocab type       = WPM
+llm_load_print_meta: n_vocab          = 30522
+llm_load_print_meta: n_merges         = 0
+llm_load_print_meta: vocab_only       = 0
+llm_load_print_meta: n_ctx_train      = 2048
+llm_load_print_meta: n_embd           = 768
+llm_load_print_meta: n_layer          = 12
+llm_load_print_meta: n_head           = 12
+llm_load_print_meta: n_head_kv        = 12
+llm_load_print_meta: n_rot            = 64
+llm_load_print_meta: n_swa            = 0
+llm_load_print_meta: n_embd_head_k    = 64
+llm_load_print_meta: n_embd_head_v    = 64
+llm_load_print_meta: n_gqa            = 1
+llm_load_print_meta: n_embd_k_gqa     = 768
+llm_load_print_meta: n_embd_v_gqa     = 768
+llm_load_print_meta: f_norm_eps       = 1.0e-12
+llm_load_print_meta: f_norm_rms_eps   = 0.0e+00
+llm_load_print_meta: f_clamp_kqv      = 0.0e+00
+llm_load_print_meta: f_max_alibi_bias = 0.0e+00
+llm_load_print_meta: f_logit_scale    = 0.0e+00
+llm_load_print_meta: n_ff             = 3072
+llm_load_print_meta: n_expert         = 0
+llm_load_print_meta: n_expert_used    = 0
+llm_load_print_meta: causal attn      = 0
+llm_load_print_meta: pooling type     = 1
+llm_load_print_meta: rope type        = 2
+llm_load_print_meta: rope scaling     = linear
+llm_load_print_meta: freq_base_train  = 1000.0
+llm_load_print_meta: freq_scale_train = 1
+llm_load_print_meta: n_ctx_orig_yarn  = 2048
+llm_load_print_meta: rope_finetuned   = unknown
+llm_load_print_meta: ssm_d_conv       = 0
+llm_load_print_meta: ssm_d_inner      = 0
+llm_load_print_meta: ssm_d_state      = 0
+llm_load_print_meta: ssm_dt_rank      = 0
+llm_load_print_meta: ssm_dt_b_c_rms   = 0
+llm_load_print_meta: model type       = 137M
+llm_load_print_meta: model ftype      = F16
+llm_load_print_meta: model params     = 136.73 M
+llm_load_print_meta: model size       = 260.86 MiB (16.00 BPW) 
+llm_load_print_meta: general.name     = nomic-embed-text-v1.5
+llm_load_print_meta: BOS token        = 101 '[CLS]'
+llm_load_print_meta: EOS token        = 102 '[SEP]'
+llm_load_print_meta: UNK token        = 100 '[UNK]'
+llm_load_print_meta: SEP token        = 102 '[SEP]'
+llm_load_print_meta: PAD token        = 0 '[PAD]'
+llm_load_print_meta: CLS token        = 101 '[CLS]'
+llm_load_print_meta: MASK token       = 103 '[MASK]'
+llm_load_print_meta: LF token         = 0 '[PAD]'
+llm_load_print_meta: EOG token        = 102 '[SEP]'
+llm_load_print_meta: max token length = 21
+llm_load_tensors: offloading 12 repeating layers to GPU
+llm_load_tensors: offloading output layer to GPU
+llm_load_tensors: offloaded 13/13 layers to GPU
+llm_load_tensors:        CUDA0 model buffer size =   216.14 MiB
+llm_load_tensors:   CPU_Mapped model buffer size =    44.72 MiB
+llama_new_context_with_model: n_seq_max     = 1
+llama_new_context_with_model: n_ctx         = 8192
+llama_new_context_with_model: n_ctx_per_seq = 8192
+llama_new_context_with_model: n_batch       = 512
+llama_new_context_with_model: n_ubatch      = 512
+llama_new_context_with_model: flash_attn    = 0
+llama_new_context_with_model: freq_base     = 1000.0
+llama_new_context_with_model: freq_scale    = 1
+llama_new_context_with_model: n_ctx_pre_seq (8192) > n_ctx_train (2048) -- possible training context overflow
+llama_kv_cache_init:      CUDA0 KV buffer size =   288.00 MiB
+llama_new_context_with_model: KV self size  =  288.00 MiB, K (f16):  144.00 MiB, V (f16):  144.00 MiB
+llama_new_context_with_model:  CUDA_Host  output buffer size =     0.00 MiB
+llama_new_context_with_model:      CUDA0 compute buffer size =    23.50 MiB
+llama_new_context_with_model:  CUDA_Host compute buffer size =     3.50 MiB
+llama_new_context_with_model: graph nodes  = 453
+llama_new_context_with_model: graph splits = 4 (with bs=512), 2 (with bs=1)
+time=2025-02-23T12:06:07.740-05:00 level=INFO source=server.go:594 msg="llama runner started in 0.78 seconds"
+llama_model_loader: loaded meta data with 24 key-value pairs and 112 tensors from /scratch/gpfs/jx0800/models/blobs/sha256-970aa74c0a90ef7482477cf803618e776e173c007bf957f635f1015bfcfef0e6 (version GGUF V3 (latest))
+llama_model_loader: Dumping metadata keys/values. Note: KV overrides do not apply in this output.
+llama_model_loader: - kv   0:                       general.architecture str              = nomic-bert
+llama_model_loader: - kv   1:                               general.name str              = nomic-embed-text-v1.5
+llama_model_loader: - kv   2:                     nomic-bert.block_count u32              = 12
+llama_model_loader: - kv   3:                  nomic-bert.context_length u32              = 2048
+llama_model_loader: - kv   4:                nomic-bert.embedding_length u32              = 768
+llama_model_loader: - kv   5:             nomic-bert.feed_forward_length u32              = 3072
+llama_model_loader: - kv   6:            nomic-bert.attention.head_count u32              = 12
+llama_model_loader: - kv   7:    nomic-bert.attention.layer_norm_epsilon f32              = 0.000000
+llama_model_loader: - kv   8:                          general.file_type u32              = 1
+llama_model_loader: - kv   9:                nomic-bert.attention.causal bool             = false
+llama_model_loader: - kv  10:                    nomic-bert.pooling_type u32              = 1
+llama_model_loader: - kv  11:                  nomic-bert.rope.freq_base f32              = 1000.000000
+llama_model_loader: - kv  12:            tokenizer.ggml.token_type_count u32              = 2
+llama_model_loader: - kv  13:                tokenizer.ggml.bos_token_id u32              = 101
+llama_model_loader: - kv  14:                tokenizer.ggml.eos_token_id u32              = 102
+llama_model_loader: - kv  15:                       tokenizer.ggml.model str              = bert
+llama_model_loader: - kv  16:                      tokenizer.ggml.tokens arr[str,30522]   = ["[PAD]", "[unused0]", "[unused1]", "...
+llama_model_loader: - kv  17:                      tokenizer.ggml.scores arr[f32,30522]   = [-1000.000000, -1000.000000, -1000.00...
+llama_model_loader: - kv  18:                  tokenizer.ggml.token_type arr[i32,30522]   = [3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, ...
+llama_model_loader: - kv  19:            tokenizer.ggml.unknown_token_id u32              = 100
+llama_model_loader: - kv  20:          tokenizer.ggml.seperator_token_id u32              = 102
+llama_model_loader: - kv  21:            tokenizer.ggml.padding_token_id u32              = 0
+llama_model_loader: - kv  22:                tokenizer.ggml.cls_token_id u32              = 101
+llama_model_loader: - kv  23:               tokenizer.ggml.mask_token_id u32              = 103
+llama_model_loader: - type  f32:   51 tensors
+llama_model_loader: - type  f16:   61 tensors
+llm_load_vocab: special_eos_id is not in special_eog_ids - the tokenizer config may be incorrect
+llm_load_vocab: special tokens cache size = 5
+llm_load_vocab: token to piece cache size = 0.2032 MB
+llm_load_print_meta: format           = GGUF V3 (latest)
+llm_load_print_meta: arch             = nomic-bert
+llm_load_print_meta: vocab type       = WPM
+llm_load_print_meta: n_vocab          = 30522
+llm_load_print_meta: n_merges         = 0
+llm_load_print_meta: vocab_only       = 1
+llm_load_print_meta: model type       = ?B
+llm_load_print_meta: model ftype      = all F32
+llm_load_print_meta: model params     = 136.73 M
+llm_load_print_meta: model size       = 260.86 MiB (16.00 BPW) 
+llm_load_print_meta: general.name     = nomic-embed-text-v1.5
+llm_load_print_meta: BOS token        = 101 '[CLS]'
+llm_load_print_meta: EOS token        = 102 '[SEP]'
+llm_load_print_meta: UNK token        = 100 '[UNK]'
+llm_load_print_meta: SEP token        = 102 '[SEP]'
+llm_load_print_meta: PAD token        = 0 '[PAD]'
+llm_load_print_meta: CLS token        = 101 '[CLS]'
+llm_load_print_meta: MASK token       = 103 '[MASK]'
+llm_load_print_meta: LF token         = 0 '[PAD]'
+llm_load_print_meta: EOG token        = 102 '[SEP]'
+llm_load_print_meta: max token length = 21
+llama_model_load: vocab only - skipping tensors
+[GIN] 2025/02/23 - 12:06:07 | 200 |  2.111026453s |       127.0.0.1 | POST     "/v1/embeddings"
+time=2025-02-23T12:06:10.707-05:00 level=INFO source=sched.go:507 msg="updated VRAM based on existing loaded models" gpu=GPU-b699e1a3-e92c-87bf-e3aa-cdfcdc247d48 library=cuda total="79.3 GiB" available="77.9 GiB"
+time=2025-02-23T12:06:10.707-05:00 level=INFO source=sched.go:507 msg="updated VRAM based on existing loaded models" gpu=GPU-3381dd17-7010-579b-5469-12eb37bac35c library=cuda total="79.3 GiB" available="78.8 GiB"
+time=2025-02-23T12:06:10.707-05:00 level=INFO source=sched.go:714 msg="new model will fit in available VRAM in single GPU, loading" model=/scratch/gpfs/jx0800/models/blobs/sha256-4824460d29f2058aaf6e1118a63a7a197a09bed509f0e7d4e2efb1ee273b447d gpu=GPU-3381dd17-7010-579b-5469-12eb37bac35c parallel=4 available=84651016192 required="43.6 GiB"
+time=2025-02-23T12:06:11.253-05:00 level=INFO source=server.go:104 msg="system memory" total="1007.0 GiB" free="994.2 GiB" free_swap="2.0 GiB"
+time=2025-02-23T12:06:11.254-05:00 level=INFO source=memory.go:356 msg="offload to cuda" layers.requested=-1 layers.model=81 layers.offload=81 layers.split="" memory.available="[78.8 GiB]" memory.gpu_overhead="0 B" memory.required.full="43.6 GiB" memory.required.partial="43.6 GiB" memory.required.kv="2.5 GiB" memory.required.allocations="[43.6 GiB]" memory.weights.total="40.7 GiB" memory.weights.repeating="39.9 GiB" memory.weights.nonrepeating="822.0 MiB" memory.graph.full="1.1 GiB" memory.graph.partial="1.1 GiB"
+time=2025-02-23T12:06:11.256-05:00 level=INFO source=server.go:376 msg="starting llama server" cmd="/home/jx0800/.local/lib/ollama/runners/cuda_v12_avx/ollama_llama_server runner --model /scratch/gpfs/jx0800/models/blobs/sha256-4824460d29f2058aaf6e1118a63a7a197a09bed509f0e7d4e2efb1ee273b447d --ctx-size 8192 --batch-size 512 --n-gpu-layers 81 --threads 48 --parallel 4 --port 44747"
+time=2025-02-23T12:06:11.256-05:00 level=INFO source=sched.go:449 msg="loaded runners" count=2
+time=2025-02-23T12:06:11.256-05:00 level=INFO source=server.go:555 msg="waiting for llama runner to start responding"
+time=2025-02-23T12:06:11.257-05:00 level=INFO source=server.go:589 msg="waiting for server to become available" status="llm server error"
+time=2025-02-23T12:06:11.276-05:00 level=INFO source=runner.go:945 msg="starting go runner"
+ggml_cuda_init: GGML_CUDA_FORCE_MMQ:    no
+ggml_cuda_init: GGML_CUDA_FORCE_CUBLAS: no
+ggml_cuda_init: found 1 CUDA devices:
+  Device 0: NVIDIA A100-SXM4-80GB, compute capability 8.0, VMM: yes
+time=2025-02-23T12:06:11.320-05:00 level=INFO source=runner.go:946 msg=system info="CUDA : ARCHS = 600,610,620,700,720,750,800,860,870,890,900 | USE_GRAPHS = 1 | PEER_MAX_BATCH_SIZE = 128 | CPU : SSE3 = 1 | SSSE3 = 1 | AVX = 1 | LLAMAFILE = 1 | AARCH64_REPACK = 1 | cgo(gcc)" threads=48
+time=2025-02-23T12:06:11.320-05:00 level=INFO source=.:0 msg="Server listening on 127.0.0.1:44747"
+llama_load_model_from_file: using device CUDA0 (NVIDIA A100-SXM4-80GB) - 80729 MiB free
+time=2025-02-23T12:06:11.514-05:00 level=INFO source=server.go:589 msg="waiting for server to become available" status="llm server loading model"
+llama_model_loader: loaded meta data with 36 key-value pairs and 724 tensors from /scratch/gpfs/jx0800/models/blobs/sha256-4824460d29f2058aaf6e1118a63a7a197a09bed509f0e7d4e2efb1ee273b447d (version GGUF V3 (latest))
+llama_model_loader: Dumping metadata keys/values. Note: KV overrides do not apply in this output.
+llama_model_loader: - kv   0:                       general.architecture str              = llama
+llama_model_loader: - kv   1:                               general.type str              = model
+llama_model_loader: - kv   2:                               general.name str              = Llama 3.1 70B Instruct 2024 12
+llama_model_loader: - kv   3:                            general.version str              = 2024-12
+llama_model_loader: - kv   4:                           general.finetune str              = Instruct
+llama_model_loader: - kv   5:                           general.basename str              = Llama-3.1
+llama_model_loader: - kv   6:                         general.size_label str              = 70B
+llama_model_loader: - kv   7:                            general.license str              = llama3.1
+llama_model_loader: - kv   8:                   general.base_model.count u32              = 1
+llama_model_loader: - kv   9:                  general.base_model.0.name str              = Llama 3.1 70B
+llama_model_loader: - kv  10:          general.base_model.0.organization str              = Meta Llama
+llama_model_loader: - kv  11:              general.base_model.0.repo_url str              = https://huggingface.co/meta-llama/Lla...
+llama_model_loader: - kv  12:                               general.tags arr[str,5]       = ["facebook", "meta", "pytorch", "llam...
+llama_model_loader: - kv  13:                          general.languages arr[str,7]       = ["fr", "it", "pt", "hi", "es", "th", ...
+llama_model_loader: - kv  14:                          llama.block_count u32              = 80
+llama_model_loader: - kv  15:                       llama.context_length u32              = 131072
+llama_model_loader: - kv  16:                     llama.embedding_length u32              = 8192
+llama_model_loader: - kv  17:                  llama.feed_forward_length u32              = 28672
+llama_model_loader: - kv  18:                 llama.attention.head_count u32              = 64
+llama_model_loader: - kv  19:              llama.attention.head_count_kv u32              = 8
+llama_model_loader: - kv  20:                       llama.rope.freq_base f32              = 500000.000000
+llama_model_loader: - kv  21:     llama.attention.layer_norm_rms_epsilon f32              = 0.000010
+llama_model_loader: - kv  22:                 llama.attention.key_length u32              = 128
+llama_model_loader: - kv  23:               llama.attention.value_length u32              = 128
+llama_model_loader: - kv  24:                          general.file_type u32              = 15
+llama_model_loader: - kv  25:                           llama.vocab_size u32              = 128256
+llama_model_loader: - kv  26:                 llama.rope.dimension_count u32              = 128
+llama_model_loader: - kv  27:                       tokenizer.ggml.model str              = gpt2
+llama_model_loader: - kv  28:                         tokenizer.ggml.pre str              = llama-bpe
+llama_model_loader: - kv  29:                      tokenizer.ggml.tokens arr[str,128256]  = ["!", "\"", "#", "$", "%", "&", "'", ...
+llama_model_loader: - kv  30:                  tokenizer.ggml.token_type arr[i32,128256]  = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, ...
+llama_model_loader: - kv  31:                      tokenizer.ggml.merges arr[str,280147]  = ["Ġ Ġ", "Ġ ĠĠĠ", "ĠĠ ĠĠ", "...
+llama_model_loader: - kv  32:                tokenizer.ggml.bos_token_id u32              = 128000
+llama_model_loader: - kv  33:                tokenizer.ggml.eos_token_id u32              = 128009
+llama_model_loader: - kv  34:                    tokenizer.chat_template str              = {{- bos_token }}\n{%- if custom_tools ...
+llama_model_loader: - kv  35:               general.quantization_version u32              = 2
+llama_model_loader: - type  f32:  162 tensors
+llama_model_loader: - type q4_K:  441 tensors
+llama_model_loader: - type q5_K:   40 tensors
+llama_model_loader: - type q6_K:   81 tensors
+llm_load_vocab: special tokens cache size = 256
+llm_load_vocab: token to piece cache size = 0.7999 MB
+llm_load_print_meta: format           = GGUF V3 (latest)
+llm_load_print_meta: arch             = llama
+llm_load_print_meta: vocab type       = BPE
+llm_load_print_meta: n_vocab          = 128256
+llm_load_print_meta: n_merges         = 280147
+llm_load_print_meta: vocab_only       = 0
+llm_load_print_meta: n_ctx_train      = 131072
+llm_load_print_meta: n_embd           = 8192
+llm_load_print_meta: n_layer          = 80
+llm_load_print_meta: n_head           = 64
+llm_load_print_meta: n_head_kv        = 8
+llm_load_print_meta: n_rot            = 128
+llm_load_print_meta: n_swa            = 0
+llm_load_print_meta: n_embd_head_k    = 128
+llm_load_print_meta: n_embd_head_v    = 128
+llm_load_print_meta: n_gqa            = 8
+llm_load_print_meta: n_embd_k_gqa     = 1024
+llm_load_print_meta: n_embd_v_gqa     = 1024
+llm_load_print_meta: f_norm_eps       = 0.0e+00
+llm_load_print_meta: f_norm_rms_eps   = 1.0e-05
+llm_load_print_meta: f_clamp_kqv      = 0.0e+00
+llm_load_print_meta: f_max_alibi_bias = 0.0e+00
+llm_load_print_meta: f_logit_scale    = 0.0e+00
+llm_load_print_meta: n_ff             = 28672
+llm_load_print_meta: n_expert         = 0
+llm_load_print_meta: n_expert_used    = 0
+llm_load_print_meta: causal attn      = 1
+llm_load_print_meta: pooling type     = 0
+llm_load_print_meta: rope type        = 0
+llm_load_print_meta: rope scaling     = linear
+llm_load_print_meta: freq_base_train  = 500000.0
+llm_load_print_meta: freq_scale_train = 1
+llm_load_print_meta: n_ctx_orig_yarn  = 131072
+llm_load_print_meta: rope_finetuned   = unknown
+llm_load_print_meta: ssm_d_conv       = 0
+llm_load_print_meta: ssm_d_inner      = 0
+llm_load_print_meta: ssm_d_state      = 0
+llm_load_print_meta: ssm_dt_rank      = 0
+llm_load_print_meta: ssm_dt_b_c_rms   = 0
+llm_load_print_meta: model type       = 70B
+llm_load_print_meta: model ftype      = Q4_K - Medium
+llm_load_print_meta: model params     = 70.55 B
+llm_load_print_meta: model size       = 39.59 GiB (4.82 BPW) 
+llm_load_print_meta: general.name     = Llama 3.1 70B Instruct 2024 12
+llm_load_print_meta: BOS token        = 128000 '<|begin_of_text|>'
+llm_load_print_meta: EOS token        = 128009 '<|eot_id|>'
+llm_load_print_meta: EOT token        = 128009 '<|eot_id|>'
+llm_load_print_meta: EOM token        = 128008 '<|eom_id|>'
+llm_load_print_meta: LF token         = 128 'Ä'
+llm_load_print_meta: EOG token        = 128008 '<|eom_id|>'
+llm_load_print_meta: EOG token        = 128009 '<|eot_id|>'
+llm_load_print_meta: max token length = 256
+llm_load_tensors: offloading 80 repeating layers to GPU
+llm_load_tensors: offloading output layer to GPU
+llm_load_tensors: offloaded 81/81 layers to GPU
+llm_load_tensors:        CUDA0 model buffer size = 39979.48 MiB
+llm_load_tensors:   CPU_Mapped model buffer size =   563.62 MiB
+time=2025-02-23T12:09:10.926-05:00 level=WARN source=server.go:562 msg="client connection closed before server finished loading, aborting load"
+time=2025-02-23T12:09:11.052-05:00 level=ERROR source=sched.go:455 msg="error loading llama server" error="timed out waiting for llama runner to start: context canceled"
+[GIN] 2025/02/23 - 12:09:11 | 499 |          3m1s |       127.0.0.1 | POST     "/v1/chat/completions"
+time=2025-02-23T12:09:14.683-05:00 level=INFO source=sched.go:507 msg="updated VRAM based on existing loaded models" gpu=GPU-b699e1a3-e92c-87bf-e3aa-cdfcdc247d48 library=cuda total="79.3 GiB" available="77.9 GiB"
+time=2025-02-23T12:09:14.683-05:00 level=INFO source=sched.go:507 msg="updated VRAM based on existing loaded models" gpu=GPU-3381dd17-7010-579b-5469-12eb37bac35c library=cuda total="79.3 GiB" available="78.8 GiB"
+time=2025-02-23T12:09:14.684-05:00 level=INFO source=sched.go:714 msg="new model will fit in available VRAM in single GPU, loading" model=/scratch/gpfs/jx0800/models/blobs/sha256-4824460d29f2058aaf6e1118a63a7a197a09bed509f0e7d4e2efb1ee273b447d gpu=GPU-3381dd17-7010-579b-5469-12eb37bac35c parallel=4 available=84651016192 required="43.6 GiB"
+time=2025-02-23T12:09:15.230-05:00 level=INFO source=server.go:104 msg="system memory" total="1007.0 GiB" free="984.5 GiB" free_swap="1.3 MiB"
+time=2025-02-23T12:09:15.230-05:00 level=INFO source=memory.go:356 msg="offload to cuda" layers.requested=-1 layers.model=81 layers.offload=81 layers.split="" memory.available="[78.8 GiB]" memory.gpu_overhead="0 B" memory.required.full="43.6 GiB" memory.required.partial="43.6 GiB" memory.required.kv="2.5 GiB" memory.required.allocations="[43.6 GiB]" memory.weights.total="40.7 GiB" memory.weights.repeating="39.9 GiB" memory.weights.nonrepeating="822.0 MiB" memory.graph.full="1.1 GiB" memory.graph.partial="1.1 GiB"
+time=2025-02-23T12:09:15.235-05:00 level=INFO source=server.go:376 msg="starting llama server" cmd="/home/jx0800/.local/lib/ollama/runners/cuda_v12_avx/ollama_llama_server runner --model /scratch/gpfs/jx0800/models/blobs/sha256-4824460d29f2058aaf6e1118a63a7a197a09bed509f0e7d4e2efb1ee273b447d --ctx-size 8192 --batch-size 512 --n-gpu-layers 81 --threads 48 --parallel 4 --port 45105"
+time=2025-02-23T12:09:15.235-05:00 level=INFO source=sched.go:449 msg="loaded runners" count=2
+time=2025-02-23T12:09:15.235-05:00 level=INFO source=server.go:555 msg="waiting for llama runner to start responding"
+time=2025-02-23T12:09:15.236-05:00 level=INFO source=server.go:589 msg="waiting for server to become available" status="llm server error"
+time=2025-02-23T12:09:15.318-05:00 level=INFO source=runner.go:945 msg="starting go runner"
+ggml_cuda_init: GGML_CUDA_FORCE_MMQ:    no
+ggml_cuda_init: GGML_CUDA_FORCE_CUBLAS: no
+ggml_cuda_init: found 1 CUDA devices:
+  Device 0: NVIDIA A100-SXM4-80GB, compute capability 8.0, VMM: yes
+time=2025-02-23T12:09:15.363-05:00 level=INFO source=runner.go:946 msg=system info="CUDA : ARCHS = 600,610,620,700,720,750,800,860,870,890,900 | USE_GRAPHS = 1 | PEER_MAX_BATCH_SIZE = 128 | CPU : SSE3 = 1 | SSSE3 = 1 | AVX = 1 | LLAMAFILE = 1 | AARCH64_REPACK = 1 | cgo(gcc)" threads=48
+time=2025-02-23T12:09:15.364-05:00 level=INFO source=.:0 msg="Server listening on 127.0.0.1:45105"
+time=2025-02-23T12:09:15.499-05:00 level=INFO source=server.go:589 msg="waiting for server to become available" status="llm server loading model"
+llama_load_model_from_file: using device CUDA0 (NVIDIA A100-SXM4-80GB) - 80729 MiB free
+llama_model_loader: loaded meta data with 36 key-value pairs and 724 tensors from /scratch/gpfs/jx0800/models/blobs/sha256-4824460d29f2058aaf6e1118a63a7a197a09bed509f0e7d4e2efb1ee273b447d (version GGUF V3 (latest))
+llama_model_loader: Dumping metadata keys/values. Note: KV overrides do not apply in this output.
+llama_model_loader: - kv   0:                       general.architecture str              = llama
+llama_model_loader: - kv   1:                               general.type str              = model
+llama_model_loader: - kv   2:                               general.name str              = Llama 3.1 70B Instruct 2024 12
+llama_model_loader: - kv   3:                            general.version str              = 2024-12
+llama_model_loader: - kv   4:                           general.finetune str              = Instruct
+llama_model_loader: - kv   5:                           general.basename str              = Llama-3.1
+llama_model_loader: - kv   6:                         general.size_label str              = 70B
+llama_model_loader: - kv   7:                            general.license str              = llama3.1
+llama_model_loader: - kv   8:                   general.base_model.count u32              = 1
+llama_model_loader: - kv   9:                  general.base_model.0.name str              = Llama 3.1 70B
+llama_model_loader: - kv  10:          general.base_model.0.organization str              = Meta Llama
+llama_model_loader: - kv  11:              general.base_model.0.repo_url str              = https://huggingface.co/meta-llama/Lla...
+llama_model_loader: - kv  12:                               general.tags arr[str,5]       = ["facebook", "meta", "pytorch", "llam...
+llama_model_loader: - kv  13:                          general.languages arr[str,7]       = ["fr", "it", "pt", "hi", "es", "th", ...
+llama_model_loader: - kv  14:                          llama.block_count u32              = 80
+llama_model_loader: - kv  15:                       llama.context_length u32              = 131072
+llama_model_loader: - kv  16:                     llama.embedding_length u32              = 8192
+llama_model_loader: - kv  17:                  llama.feed_forward_length u32              = 28672
+llama_model_loader: - kv  18:                 llama.attention.head_count u32              = 64
+llama_model_loader: - kv  19:              llama.attention.head_count_kv u32              = 8
+llama_model_loader: - kv  20:                       llama.rope.freq_base f32              = 500000.000000
+llama_model_loader: - kv  21:     llama.attention.layer_norm_rms_epsilon f32              = 0.000010
+llama_model_loader: - kv  22:                 llama.attention.key_length u32              = 128
+llama_model_loader: - kv  23:               llama.attention.value_length u32              = 128
+llama_model_loader: - kv  24:                          general.file_type u32              = 15
+llama_model_loader: - kv  25:                           llama.vocab_size u32              = 128256
+llama_model_loader: - kv  26:                 llama.rope.dimension_count u32              = 128
+llama_model_loader: - kv  27:                       tokenizer.ggml.model str              = gpt2
+llama_model_loader: - kv  28:                         tokenizer.ggml.pre str              = llama-bpe
+llama_model_loader: - kv  29:                      tokenizer.ggml.tokens arr[str,128256]  = ["!", "\"", "#", "$", "%", "&", "'", ...
+llama_model_loader: - kv  30:                  tokenizer.ggml.token_type arr[i32,128256]  = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, ...
+llama_model_loader: - kv  31:                      tokenizer.ggml.merges arr[str,280147]  = ["Ġ Ġ", "Ġ ĠĠĠ", "ĠĠ ĠĠ", "...
+llama_model_loader: - kv  32:                tokenizer.ggml.bos_token_id u32              = 128000
+llama_model_loader: - kv  33:                tokenizer.ggml.eos_token_id u32              = 128009
+llama_model_loader: - kv  34:                    tokenizer.chat_template str              = {{- bos_token }}\n{%- if custom_tools ...
+llama_model_loader: - kv  35:               general.quantization_version u32              = 2
+llama_model_loader: - type  f32:  162 tensors
+llama_model_loader: - type q4_K:  441 tensors
+llama_model_loader: - type q5_K:   40 tensors
+llama_model_loader: - type q6_K:   81 tensors
+llm_load_vocab: special tokens cache size = 256
+llm_load_vocab: token to piece cache size = 0.7999 MB
+llm_load_print_meta: format           = GGUF V3 (latest)
+llm_load_print_meta: arch             = llama
+llm_load_print_meta: vocab type       = BPE
+llm_load_print_meta: n_vocab          = 128256
+llm_load_print_meta: n_merges         = 280147
+llm_load_print_meta: vocab_only       = 0
+llm_load_print_meta: n_ctx_train      = 131072
+llm_load_print_meta: n_embd           = 8192
+llm_load_print_meta: n_layer          = 80
+llm_load_print_meta: n_head           = 64
+llm_load_print_meta: n_head_kv        = 8
+llm_load_print_meta: n_rot            = 128
+llm_load_print_meta: n_swa            = 0
+llm_load_print_meta: n_embd_head_k    = 128
+llm_load_print_meta: n_embd_head_v    = 128
+llm_load_print_meta: n_gqa            = 8
+llm_load_print_meta: n_embd_k_gqa     = 1024
+llm_load_print_meta: n_embd_v_gqa     = 1024
+llm_load_print_meta: f_norm_eps       = 0.0e+00
+llm_load_print_meta: f_norm_rms_eps   = 1.0e-05
+llm_load_print_meta: f_clamp_kqv      = 0.0e+00
+llm_load_print_meta: f_max_alibi_bias = 0.0e+00
+llm_load_print_meta: f_logit_scale    = 0.0e+00
+llm_load_print_meta: n_ff             = 28672
+llm_load_print_meta: n_expert         = 0
+llm_load_print_meta: n_expert_used    = 0
+llm_load_print_meta: causal attn      = 1
+llm_load_print_meta: pooling type     = 0
+llm_load_print_meta: rope type        = 0
+llm_load_print_meta: rope scaling     = linear
+llm_load_print_meta: freq_base_train  = 500000.0
+llm_load_print_meta: freq_scale_train = 1
+llm_load_print_meta: n_ctx_orig_yarn  = 131072
+llm_load_print_meta: rope_finetuned   = unknown
+llm_load_print_meta: ssm_d_conv       = 0
+llm_load_print_meta: ssm_d_inner      = 0
+llm_load_print_meta: ssm_d_state      = 0
+llm_load_print_meta: ssm_dt_rank      = 0
+llm_load_print_meta: ssm_dt_b_c_rms   = 0
+llm_load_print_meta: model type       = 70B
+llm_load_print_meta: model ftype      = Q4_K - Medium
+llm_load_print_meta: model params     = 70.55 B
+llm_load_print_meta: model size       = 39.59 GiB (4.82 BPW) 
+llm_load_print_meta: general.name     = Llama 3.1 70B Instruct 2024 12
+llm_load_print_meta: BOS token        = 128000 '<|begin_of_text|>'
+llm_load_print_meta: EOS token        = 128009 '<|eot_id|>'
+llm_load_print_meta: EOT token        = 128009 '<|eot_id|>'
+llm_load_print_meta: EOM token        = 128008 '<|eom_id|>'
+llm_load_print_meta: LF token         = 128 'Ä'
+llm_load_print_meta: EOG token        = 128008 '<|eom_id|>'
+llm_load_print_meta: EOG token        = 128009 '<|eot_id|>'
+llm_load_print_meta: max token length = 256
+llm_load_tensors: offloading 80 repeating layers to GPU
+llm_load_tensors: offloading output layer to GPU
+llm_load_tensors: offloaded 81/81 layers to GPU
+llm_load_tensors:        CUDA0 model buffer size = 39979.48 MiB
+llm_load_tensors:   CPU_Mapped model buffer size =   563.62 MiB
+time=2025-02-23T12:12:14.403-05:00 level=WARN source=server.go:562 msg="client connection closed before server finished loading, aborting load"
+time=2025-02-23T12:12:14.550-05:00 level=ERROR source=sched.go:455 msg="error loading llama server" error="timed out waiting for llama runner to start: context canceled"
+[GIN] 2025/02/23 - 12:12:14 | 499 |          3m0s |       127.0.0.1 | POST     "/v1/chat/completions"
+time=2025-02-23T12:12:17.461-05:00 level=INFO source=sched.go:714 msg="new model will fit in available VRAM in single GPU, loading" model=/scratch/gpfs/jx0800/models/blobs/sha256-4824460d29f2058aaf6e1118a63a7a197a09bed509f0e7d4e2efb1ee273b447d gpu=GPU-b699e1a3-e92c-87bf-e3aa-cdfcdc247d48 parallel=4 available=84651016192 required="43.6 GiB"
+time=2025-02-23T12:12:18.015-05:00 level=INFO source=server.go:104 msg="system memory" total="1007.0 GiB" free="983.9 GiB" free_swap="211.8 MiB"
+time=2025-02-23T12:12:18.017-05:00 level=INFO source=memory.go:356 msg="offload to cuda" layers.requested=-1 layers.model=81 layers.offload=81 layers.split="" memory.available="[78.8 GiB]" memory.gpu_overhead="0 B" memory.required.full="43.6 GiB" memory.required.partial="43.6 GiB" memory.required.kv="2.5 GiB" memory.required.allocations="[43.6 GiB]" memory.weights.total="40.7 GiB" memory.weights.repeating="39.9 GiB" memory.weights.nonrepeating="822.0 MiB" memory.graph.full="1.1 GiB" memory.graph.partial="1.1 GiB"
+time=2025-02-23T12:12:18.021-05:00 level=INFO source=server.go:376 msg="starting llama server" cmd="/home/jx0800/.local/lib/ollama/runners/cuda_v12_avx/ollama_llama_server runner --model /scratch/gpfs/jx0800/models/blobs/sha256-4824460d29f2058aaf6e1118a63a7a197a09bed509f0e7d4e2efb1ee273b447d --ctx-size 8192 --batch-size 512 --n-gpu-layers 81 --threads 48 --parallel 4 --port 45867"
+time=2025-02-23T12:12:18.021-05:00 level=INFO source=sched.go:449 msg="loaded runners" count=1
+time=2025-02-23T12:12:18.022-05:00 level=INFO source=server.go:555 msg="waiting for llama runner to start responding"
+time=2025-02-23T12:12:18.022-05:00 level=INFO source=server.go:589 msg="waiting for server to become available" status="llm server error"
+time=2025-02-23T12:12:18.110-05:00 level=INFO source=runner.go:945 msg="starting go runner"
+ggml_cuda_init: GGML_CUDA_FORCE_MMQ:    no
+ggml_cuda_init: GGML_CUDA_FORCE_CUBLAS: no
+ggml_cuda_init: found 1 CUDA devices:
+  Device 0: NVIDIA A100-SXM4-80GB, compute capability 8.0, VMM: yes
+time=2025-02-23T12:12:18.155-05:00 level=INFO source=runner.go:946 msg=system info="CUDA : ARCHS = 600,610,620,700,720,750,800,860,870,890,900 | USE_GRAPHS = 1 | PEER_MAX_BATCH_SIZE = 128 | CPU : SSE3 = 1 | SSSE3 = 1 | AVX = 1 | LLAMAFILE = 1 | AARCH64_REPACK = 1 | cgo(gcc)" threads=48
+time=2025-02-23T12:12:18.155-05:00 level=INFO source=.:0 msg="Server listening on 127.0.0.1:45867"
+time=2025-02-23T12:12:18.294-05:00 level=INFO source=server.go:589 msg="waiting for server to become available" status="llm server loading model"
+llama_load_model_from_file: using device CUDA0 (NVIDIA A100-SXM4-80GB) - 80729 MiB free
+llama_model_loader: loaded meta data with 36 key-value pairs and 724 tensors from /scratch/gpfs/jx0800/models/blobs/sha256-4824460d29f2058aaf6e1118a63a7a197a09bed509f0e7d4e2efb1ee273b447d (version GGUF V3 (latest))
+llama_model_loader: Dumping metadata keys/values. Note: KV overrides do not apply in this output.
+llama_model_loader: - kv   0:                       general.architecture str              = llama
+llama_model_loader: - kv   1:                               general.type str              = model
+llama_model_loader: - kv   2:                               general.name str              = Llama 3.1 70B Instruct 2024 12
+llama_model_loader: - kv   3:                            general.version str              = 2024-12
+llama_model_loader: - kv   4:                           general.finetune str              = Instruct
+llama_model_loader: - kv   5:                           general.basename str              = Llama-3.1
+llama_model_loader: - kv   6:                         general.size_label str              = 70B
+llama_model_loader: - kv   7:                            general.license str              = llama3.1
+llama_model_loader: - kv   8:                   general.base_model.count u32              = 1
+llama_model_loader: - kv   9:                  general.base_model.0.name str              = Llama 3.1 70B
+llama_model_loader: - kv  10:          general.base_model.0.organization str              = Meta Llama
+llama_model_loader: - kv  11:              general.base_model.0.repo_url str              = https://huggingface.co/meta-llama/Lla...
+llama_model_loader: - kv  12:                               general.tags arr[str,5]       = ["facebook", "meta", "pytorch", "llam...
+llama_model_loader: - kv  13:                          general.languages arr[str,7]       = ["fr", "it", "pt", "hi", "es", "th", ...
+llama_model_loader: - kv  14:                          llama.block_count u32              = 80
+llama_model_loader: - kv  15:                       llama.context_length u32              = 131072
+llama_model_loader: - kv  16:                     llama.embedding_length u32              = 8192
+llama_model_loader: - kv  17:                  llama.feed_forward_length u32              = 28672
+llama_model_loader: - kv  18:                 llama.attention.head_count u32              = 64
+llama_model_loader: - kv  19:              llama.attention.head_count_kv u32              = 8
+llama_model_loader: - kv  20:                       llama.rope.freq_base f32              = 500000.000000
+llama_model_loader: - kv  21:     llama.attention.layer_norm_rms_epsilon f32              = 0.000010
+llama_model_loader: - kv  22:                 llama.attention.key_length u32              = 128
+llama_model_loader: - kv  23:               llama.attention.value_length u32              = 128
+llama_model_loader: - kv  24:                          general.file_type u32              = 15
+llama_model_loader: - kv  25:                           llama.vocab_size u32              = 128256
+llama_model_loader: - kv  26:                 llama.rope.dimension_count u32              = 128
+llama_model_loader: - kv  27:                       tokenizer.ggml.model str              = gpt2
+llama_model_loader: - kv  28:                         tokenizer.ggml.pre str              = llama-bpe
+llama_model_loader: - kv  29:                      tokenizer.ggml.tokens arr[str,128256]  = ["!", "\"", "#", "$", "%", "&", "'", ...
+llama_model_loader: - kv  30:                  tokenizer.ggml.token_type arr[i32,128256]  = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, ...
+llama_model_loader: - kv  31:                      tokenizer.ggml.merges arr[str,280147]  = ["Ġ Ġ", "Ġ ĠĠĠ", "ĠĠ ĠĠ", "...
+llama_model_loader: - kv  32:                tokenizer.ggml.bos_token_id u32              = 128000
+llama_model_loader: - kv  33:                tokenizer.ggml.eos_token_id u32              = 128009
+llama_model_loader: - kv  34:                    tokenizer.chat_template str              = {{- bos_token }}\n{%- if custom_tools ...
+llama_model_loader: - kv  35:               general.quantization_version u32              = 2
+llama_model_loader: - type  f32:  162 tensors
+llama_model_loader: - type q4_K:  441 tensors
+llama_model_loader: - type q5_K:   40 tensors
+llama_model_loader: - type q6_K:   81 tensors
+llm_load_vocab: special tokens cache size = 256
+llm_load_vocab: token to piece cache size = 0.7999 MB
+llm_load_print_meta: format           = GGUF V3 (latest)
+llm_load_print_meta: arch             = llama
+llm_load_print_meta: vocab type       = BPE
+llm_load_print_meta: n_vocab          = 128256
+llm_load_print_meta: n_merges         = 280147
+llm_load_print_meta: vocab_only       = 0
+llm_load_print_meta: n_ctx_train      = 131072
+llm_load_print_meta: n_embd           = 8192
+llm_load_print_meta: n_layer          = 80
+llm_load_print_meta: n_head           = 64
+llm_load_print_meta: n_head_kv        = 8
+llm_load_print_meta: n_rot            = 128
+llm_load_print_meta: n_swa            = 0
+llm_load_print_meta: n_embd_head_k    = 128
+llm_load_print_meta: n_embd_head_v    = 128
+llm_load_print_meta: n_gqa            = 8
+llm_load_print_meta: n_embd_k_gqa     = 1024
+llm_load_print_meta: n_embd_v_gqa     = 1024
+llm_load_print_meta: f_norm_eps       = 0.0e+00
+llm_load_print_meta: f_norm_rms_eps   = 1.0e-05
+llm_load_print_meta: f_clamp_kqv      = 0.0e+00
+llm_load_print_meta: f_max_alibi_bias = 0.0e+00
+llm_load_print_meta: f_logit_scale    = 0.0e+00
+llm_load_print_meta: n_ff             = 28672
+llm_load_print_meta: n_expert         = 0
+llm_load_print_meta: n_expert_used    = 0
+llm_load_print_meta: causal attn      = 1
+llm_load_print_meta: pooling type     = 0
+llm_load_print_meta: rope type        = 0
+llm_load_print_meta: rope scaling     = linear
+llm_load_print_meta: freq_base_train  = 500000.0
+llm_load_print_meta: freq_scale_train = 1
+llm_load_print_meta: n_ctx_orig_yarn  = 131072
+llm_load_print_meta: rope_finetuned   = unknown
+llm_load_print_meta: ssm_d_conv       = 0
+llm_load_print_meta: ssm_d_inner      = 0
+llm_load_print_meta: ssm_d_state      = 0
+llm_load_print_meta: ssm_dt_rank      = 0
+llm_load_print_meta: ssm_dt_b_c_rms   = 0
+llm_load_print_meta: model type       = 70B
+llm_load_print_meta: model ftype      = Q4_K - Medium
+llm_load_print_meta: model params     = 70.55 B
+llm_load_print_meta: model size       = 39.59 GiB (4.82 BPW) 
+llm_load_print_meta: general.name     = Llama 3.1 70B Instruct 2024 12
+llm_load_print_meta: BOS token        = 128000 '<|begin_of_text|>'
+llm_load_print_meta: EOS token        = 128009 '<|eot_id|>'
+llm_load_print_meta: EOT token        = 128009 '<|eot_id|>'
+llm_load_print_meta: EOM token        = 128008 '<|eom_id|>'
+llm_load_print_meta: LF token         = 128 'Ä'
+llm_load_print_meta: EOG token        = 128008 '<|eom_id|>'
+llm_load_print_meta: EOG token        = 128009 '<|eot_id|>'
+llm_load_print_meta: max token length = 256
+time=2025-02-23T12:13:36.344-05:00 level=INFO source=server.go:589 msg="waiting for server to become available" status="llm server not responding"
+time=2025-02-23T12:13:36.833-05:00 level=INFO source=server.go:589 msg="waiting for server to become available" status="llm server loading model"
+llm_load_tensors: offloading 80 repeating layers to GPU
+llm_load_tensors: offloading output layer to GPU
+llm_load_tensors: offloaded 81/81 layers to GPU
+llm_load_tensors:        CUDA0 model buffer size = 39979.48 MiB
+llm_load_tensors:   CPU_Mapped model buffer size =   563.62 MiB
+llama_new_context_with_model: n_seq_max     = 4
+llama_new_context_with_model: n_ctx         = 8192
+llama_new_context_with_model: n_ctx_per_seq = 2048
+llama_new_context_with_model: n_batch       = 2048
+llama_new_context_with_model: n_ubatch      = 512
+llama_new_context_with_model: flash_attn    = 0
+llama_new_context_with_model: freq_base     = 500000.0
+llama_new_context_with_model: freq_scale    = 1
+llama_new_context_with_model: n_ctx_per_seq (2048) < n_ctx_train (131072) -- the full capacity of the model will not be utilized
+llama_kv_cache_init:      CUDA0 KV buffer size =  2560.00 MiB
+llama_new_context_with_model: KV self size  = 2560.00 MiB, K (f16): 1280.00 MiB, V (f16): 1280.00 MiB
+llama_new_context_with_model:  CUDA_Host  output buffer size =     2.08 MiB
+llama_new_context_with_model:      CUDA0 compute buffer size =  1104.00 MiB
+llama_new_context_with_model:  CUDA_Host compute buffer size =    32.01 MiB
+llama_new_context_with_model: graph nodes  = 2566
+llama_new_context_with_model: graph splits = 2
+time=2025-02-23T12:15:14.920-05:00 level=INFO source=server.go:594 msg="llama runner started in 176.90 seconds"
+llama_model_loader: loaded meta data with 36 key-value pairs and 724 tensors from /scratch/gpfs/jx0800/models/blobs/sha256-4824460d29f2058aaf6e1118a63a7a197a09bed509f0e7d4e2efb1ee273b447d (version GGUF V3 (latest))
+llama_model_loader: Dumping metadata keys/values. Note: KV overrides do not apply in this output.
+llama_model_loader: - kv   0:                       general.architecture str              = llama
+llama_model_loader: - kv   1:                               general.type str              = model
+llama_model_loader: - kv   2:                               general.name str              = Llama 3.1 70B Instruct 2024 12
+llama_model_loader: - kv   3:                            general.version str              = 2024-12
+llama_model_loader: - kv   4:                           general.finetune str              = Instruct
+llama_model_loader: - kv   5:                           general.basename str              = Llama-3.1
+llama_model_loader: - kv   6:                         general.size_label str              = 70B
+llama_model_loader: - kv   7:                            general.license str              = llama3.1
+llama_model_loader: - kv   8:                   general.base_model.count u32              = 1
+llama_model_loader: - kv   9:                  general.base_model.0.name str              = Llama 3.1 70B
+llama_model_loader: - kv  10:          general.base_model.0.organization str              = Meta Llama
+llama_model_loader: - kv  11:              general.base_model.0.repo_url str              = https://huggingface.co/meta-llama/Lla...
+llama_model_loader: - kv  12:                               general.tags arr[str,5]       = ["facebook", "meta", "pytorch", "llam...
+llama_model_loader: - kv  13:                          general.languages arr[str,7]       = ["fr", "it", "pt", "hi", "es", "th", ...
+llama_model_loader: - kv  14:                          llama.block_count u32              = 80
+llama_model_loader: - kv  15:                       llama.context_length u32              = 131072
+llama_model_loader: - kv  16:                     llama.embedding_length u32              = 8192
+llama_model_loader: - kv  17:                  llama.feed_forward_length u32              = 28672
+llama_model_loader: - kv  18:                 llama.attention.head_count u32              = 64
+llama_model_loader: - kv  19:              llama.attention.head_count_kv u32              = 8
+llama_model_loader: - kv  20:                       llama.rope.freq_base f32              = 500000.000000
+llama_model_loader: - kv  21:     llama.attention.layer_norm_rms_epsilon f32              = 0.000010
+llama_model_loader: - kv  22:                 llama.attention.key_length u32              = 128
+llama_model_loader: - kv  23:               llama.attention.value_length u32              = 128
+llama_model_loader: - kv  24:                          general.file_type u32              = 15
+llama_model_loader: - kv  25:                           llama.vocab_size u32              = 128256
+llama_model_loader: - kv  26:                 llama.rope.dimension_count u32              = 128
+llama_model_loader: - kv  27:                       tokenizer.ggml.model str              = gpt2
+llama_model_loader: - kv  28:                         tokenizer.ggml.pre str              = llama-bpe
+llama_model_loader: - kv  29:                      tokenizer.ggml.tokens arr[str,128256]  = ["!", "\"", "#", "$", "%", "&", "'", ...
+llama_model_loader: - kv  30:                  tokenizer.ggml.token_type arr[i32,128256]  = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, ...
+llama_model_loader: - kv  31:                      tokenizer.ggml.merges arr[str,280147]  = ["Ġ Ġ", "Ġ ĠĠĠ", "ĠĠ ĠĠ", "...
+llama_model_loader: - kv  32:                tokenizer.ggml.bos_token_id u32              = 128000
+llama_model_loader: - kv  33:                tokenizer.ggml.eos_token_id u32              = 128009
+llama_model_loader: - kv  34:                    tokenizer.chat_template str              = {{- bos_token }}\n{%- if custom_tools ...
+llama_model_loader: - kv  35:               general.quantization_version u32              = 2
+llama_model_loader: - type  f32:  162 tensors
+llama_model_loader: - type q4_K:  441 tensors
+llama_model_loader: - type q5_K:   40 tensors
+llama_model_loader: - type q6_K:   81 tensors
+llm_load_vocab: special tokens cache size = 256
+llm_load_vocab: token to piece cache size = 0.7999 MB
+llm_load_print_meta: format           = GGUF V3 (latest)
+llm_load_print_meta: arch             = llama
+llm_load_print_meta: vocab type       = BPE
+llm_load_print_meta: n_vocab          = 128256
+llm_load_print_meta: n_merges         = 280147
+llm_load_print_meta: vocab_only       = 1
+llm_load_print_meta: model type       = ?B
+llm_load_print_meta: model ftype      = all F32
+llm_load_print_meta: model params     = 70.55 B
+llm_load_print_meta: model size       = 39.59 GiB (4.82 BPW) 
+llm_load_print_meta: general.name     = Llama 3.1 70B Instruct 2024 12
+llm_load_print_meta: BOS token        = 128000 '<|begin_of_text|>'
+llm_load_print_meta: EOS token        = 128009 '<|eot_id|>'
+llm_load_print_meta: EOT token        = 128009 '<|eot_id|>'
+llm_load_print_meta: EOM token        = 128008 '<|eom_id|>'
+llm_load_print_meta: LF token         = 128 'Ä'
+llm_load_print_meta: EOG token        = 128008 '<|eom_id|>'
+llm_load_print_meta: EOG token        = 128009 '<|eot_id|>'
+llm_load_print_meta: max token length = 256
+llama_model_load: vocab only - skipping tensors
+[GIN] 2025/02/23 - 12:15:15 | 200 |          3m0s |       127.0.0.1 | POST     "/v1/chat/completions"
+time=2025-02-23T12:15:15.496-05:00 level=INFO source=server.go:726 msg="aborting completion request due to client closing the connection"
+[GIN] 2025/02/23 - 12:15:35 | 200 | 18.267791829s |       127.0.0.1 | POST     "/v1/chat/completions"
+
+
+config_path: /scratch/gpfs/jx0800/data/graphrag/settings.yaml
+file_path: /scratch/gpfs/jx0800/data/graphrag/output/relationships.parquet
+file_path: /scratch/gpfs/jx0800/data/graphrag/output/entities.parquet
+streaming:  False
+
+INFO: Vector Store Args: {
+    "default_vector_store": {
+        "type": "lancedb",
+        "db_uri": "/scratch/gpfs/jx0800/data/graphrag/output/lancedb",
+        "url": null,
+        "audience": null,
+        "container_name": "==== REDACTED ====",
+        "database_name": null,
+        "overwrite": true
+    }
+}
+creating llm client with {'api_key': 'REDACTED,len=515', 'auth_type': <AuthType.APIKey: 'api_key'>, 'type': "openai_chat", 'model': 'llama3.3:70b', 'encoding_model': 'cl100k_base', 'max_tokens': 20000, 'temperature': 0.6, 'top_p': 0.9, 'n': 1, 'frequency_penalty': 0.0, 'presence_penalty': 0.0, 'request_timeout': 180.0, 'api_base': 'http://localhost:11434/v1', 'api_version': None, 'deployment_name': None, 'organization': None, 'proxy': None, 'audience': None, 'model_supports_json': True, 'tokens_per_minute': 50000, 'requests_per_minute': 1000, 'max_retries': 10, 'max_retry_wait': 10.0, 'sleep_on_rate_limit_recommendation': True, 'concurrent_requests': 25, 'responses': None, 'parallelization_stagger': 0.3, 'parallelization_num_threads': 50, 'async_mode': <AsyncType.Threaded: 'threaded'>}
+creating embedding llm client with {'api_key': 'REDACTED,len=515', 'auth_type': <AuthType.APIKey: 'api_key'>, 'type': "openai_embedding", 'model': 'nomic-embed-text', 'encoding_model': 'cl100k_base', 'max_tokens': 20000, 'temperature': 0.6, 'top_p': 0.9, 'n': 1, 'frequency_penalty': 0.0, 'presence_penalty': 0.0, 'request_timeout': 180.0, 'api_base': 'http://localhost:11434/v1', 'api_version': None, 'deployment_name': None, 'organization': None, 'proxy': None, 'audience': None, 'model_supports_json': None, 'tokens_per_minute': 50000, 'requests_per_minute': 1000, 'max_retries': 10, 'max_retry_wait': 10.0, 'sleep_on_rate_limit_recommendation': True, 'concurrent_requests': 25, 'responses': None, 'parallelization_stagger': 0.3, 'parallelization_num_threads': 50, 'async_mode': <AsyncType.Threaded: 'threaded'>}
+search_prompt:  
+---Role---
+
+You are a helpful assistant responding to questions about data in the tables provided.
+
+
+---Goal---
+
+Generate a response of the target length and format that responds to the user's question, summarizing all information in the input data tables appropriate for the response length and format, and incorporating any relevant general knowledge.
+
+If you don't know the answer, just say so. Do not make anything up.
+
+Points supported by data should list their data references as follows:
+
+"This is an example sentence supported by multiple data references [Data: <dataset name> (record ids); <dataset name> (record ids)]."
+
+Do not list more than 5 record ids in a single reference. Instead, list the top 5 most relevant record ids and add "+more" to indicate that there are more.
+
+For example:
+
+"Person X is the owner of Company Y and subject to many allegations of wrongdoing [Data: Sources (15, 16), Reports (1), Entities (5, 7); Relationships (23); Claims (2, 7, 34, 46, 64, +more)]."
+
+where 15, 16, 1, 5, 7, 23, 2, 7, 34, 46, and 64 represent the id (not the index) of the relevant data record.
+
+Do not include information where the supporting evidence for it is not provided.
+
+
+---Target response length and format---
+
+Multiple Paragraphs
+
+
+---Data tables---
+
+-----Entities-----
+id|entity|description|number of relationships
+50909|hyperplasia of kidney|hyperplasia of kidney|2
+50891|disorder of kidney and/or ureter|disorder of kidney and/or ureter|3
+88204|disorder of urethra|disorder of urethra|10
+50930|structural and functional abnormalities of the kidney|structural and functional abnormalities of the kidney|7
+36771|degenerative disorder of urethra|degenerative disorder of urethra|4
+50889|renal dysplasia|renal dysplasia|6
+7240|obstructive nephropathy due to prostatic hypertrophy|obstructive nephropathy due to prostatic hypertrophy|2
+10733|obstruction of urethra|obstruction of urethra|24
+84225|primary renal dysplasia|primary renal dysplasia|3
+88197|congenital obstruction of urethra|congenital obstruction of urethra|1
+84244|secondary renal dysplasia|secondary renal dysplasia|3
+84315|bilateral renal dysplasia|bilateral renal dysplasia|4
+32128|disorder of renal parenchyma|disorder of renal parenchyma|6
+32142|nephropathy due to acquired urinary tract obstruction|nephropathy due to acquired urinary tract obstruction|2
+50885|dysplasia of blood vessel of kidney|dysplasia of blood vessel of kidney|2
+68546|chronic kidney disease due to benign hypertension|chronic kidney disease due to benign hypertension|2
+33118|renal pelvis and ureter obstructive defects|renal pelvis and ureter obstructive defects|5
+5684|chronic kidney disease due to hypertension|chronic kidney disease due to hypertension|3
+84316|bilateral secondary renal dysplasia|bilateral secondary renal dysplasia|5
+6249|bilateral multicystic renal dysplasia|bilateral multicystic renal dysplasia|5
+
+
+-----Relationships-----
+id|source|target|description|weight|links
+170985|renal dysplasia|pathological developmental process|renal dysplasia process of pathological developmental process||8
+29629|bilateral multicystic renal dysplasia|pathological developmental process|bilateral multicystic renal dysplasia process of pathological developmental process||8
+114123|renal pelvis and ureter obstructive defects|pathological developmental process|renal pelvis and ureter obstructive defects process of pathological developmental process||8
+268662|bilateral secondary renal dysplasia|pathological developmental process|bilateral secondary renal dysplasia process of pathological developmental process||8
+268660|bilateral renal dysplasia|pathological developmental process|bilateral renal dysplasia process of pathological developmental process||8
+268438|primary renal dysplasia|pathological developmental process|primary renal dysplasia process of pathological developmental process||8
+268452|secondary renal dysplasia|pathological developmental process|secondary renal dysplasia process of pathological developmental process||8
+171032|hyperplasia of kidney|pathological developmental process|hyperplasia of kidney process of pathological developmental process||8
+170984|renal dysplasia|congenital|renal dysplasia occurs in congenital||8
+29628|bilateral multicystic renal dysplasia|congenital|bilateral multicystic renal dysplasia occurs in congenital||8
+114122|renal pelvis and ureter obstructive defects|congenital|renal pelvis and ureter obstructive defects occurs in congenital||8
+268661|bilateral secondary renal dysplasia|congenital|bilateral secondary renal dysplasia occurs in congenital||8
+268659|bilateral renal dysplasia|congenital|bilateral renal dysplasia occurs in congenital||8
+268437|primary renal dysplasia|congenital|primary renal dysplasia occurs in congenital||8
+268451|secondary renal dysplasia|congenital|secondary renal dysplasia occurs in congenital||8
+171031|hyperplasia of kidney|congenital|hyperplasia of kidney occurs in congenital||8
+277727|urethral|obstruction of urethra|urethral location of obstruction of urethra||4
+277668|urethral|disorder of urethra|urethral location of disorder of urethra||4
+277660|urethral|degenerative disorder of urethra|urethral location of degenerative disorder of urethra||4
+277653|urethral|congenital obstruction of urethra|urethral location of congenital obstruction of urethra||4
+265431|kidney structure|renal dysplasia|kidney structure location of renal dysplasia||3
+265392|kidney structure|primary renal dysplasia|kidney structure location of primary renal dysplasia||3
+265472|kidney structure|secondary renal dysplasia|kidney structure location of secondary renal dysplasia||3
+268646|left kidney structure|bilateral multicystic renal dysplasia|left kidney structure location of bilateral multicystic renal dysplasia||3
+268650|left kidney structure|bilateral secondary renal dysplasia|left kidney structure location of bilateral secondary renal dysplasia||3
+268702|right kidney structure|bilateral multicystic renal dysplasia|right kidney structure location of bilateral multicystic renal dysplasia||3
+268706|right kidney structure|bilateral secondary renal dysplasia|right kidney structure location of bilateral secondary renal dysplasia||3
+268648|left kidney structure|bilateral renal dysplasia|left kidney structure location of bilateral renal dysplasia||3
+268704|right kidney structure|bilateral renal dysplasia|right kidney structure location of bilateral renal dysplasia||3
+26249|chronic kidney disease due to hypertension|impaired|chronic kidney disease due to hypertension associated with impaired||2
+227806|chronic kidney disease due to benign hypertension|impaired|chronic kidney disease due to benign hypertension associated with impaired||2
+111829|kidney disease|disorder of renal parenchyma|kidney disease is a disorder of renal parenchyma||2
+111848|kidney disease|nephropathy due to acquired urinary tract obstruction|kidney disease is a nephropathy due to acquired urinary tract obstruction||2
+336018|measurement of renal function|chronic kidney disease due to hypertension|measurement of renal function analyzes chronic kidney disease due to hypertension||2
+336017|measurement of renal function|chronic kidney disease due to benign hypertension|measurement of renal function analyzes chronic kidney disease due to benign hypertension||2
+268610|kidney part|nephropathy due to acquired urinary tract obstruction|kidney part location of nephropathy due to acquired urinary tract obstruction||2
+268615|kidney part|obstructive nephropathy due to prostatic hypertrophy|kidney part location of obstructive nephropathy due to prostatic hypertrophy||2
+54128|morphologically abnormal structure|renal pelvis and ureter obstructive defects|morphologically abnormal structure associated with renal pelvis and ureter obstructive defects||1
+33390|degeneration|degenerative disorder of urethra|degeneration associated with degenerative disorder of urethra||1
+24391|hypertensive disorder|chronic kidney disease due to hypertension|hypertensive disorder causes chronic kidney disease due to hypertension||1
+283470|soft tissue lesion|dysplasia of blood vessel of kidney|soft tissue lesion is a dysplasia of blood vessel of kidney||1
+58464|tuberculosis|obstruction of urethra|tuberculosis brings about obstruction of urethra||1
+31736|obstruction|obstructive nephropathy due to prostatic hypertrophy|obstruction associated with obstructive nephropathy due to prostatic hypertrophy||1
+58209|mycobacterium tuberculosis|obstruction of urethra|mycobacterium tuberculosis brings about obstruction of urethra||1
+45939|obstruction of urethra|renal impairment|obstruction of urethra brings about renal impairment||1
+45934|obstruction of urethra|azotemia|obstruction of urethra brings about azotemia||1
+45936|obstruction of urethra|increased blood npn|obstruction of urethra brings about increased blood npn||1
+45938|obstruction of urethra|renal failure syndrome|obstruction of urethra brings about renal failure syndrome||1
+68269|radiation therapy procedure or service|obstruction of urethra|radiation therapy procedure or service brings about obstruction of urethra||1
+204798|ionizing radiation|obstruction of urethra|ionizing radiation brings about obstruction of urethra||1
+60628|gonorrhea|obstruction of urethra|gonorrhea brings about obstruction of urethra||1
+204906|radiotherapeutic|obstruction of urethra|radiotherapeutic brings about obstruction of urethra||1
+219598|radiotherapy (finding)|obstruction of urethra|radiotherapy (finding) brings about obstruction of urethra||1
+203282|neisseria gonorrhoeae|obstruction of urethra|neisseria gonorrhoeae brings about obstruction of urethra||1
+133948|prune belly syndrome|obstruction of urethra|prune belly syndrome brings about obstruction of urethra||1
+31133|lichen sclerosus et atrophicus|obstruction of urethra|lichen sclerosus et atrophicus brings about obstruction of urethra||1
+268598|kidney lesion|renal dysplasia|kidney lesion is a renal dysplasia||1
+45901|urethral catheterization|obstruction of urethra|urethral catheterization brings about obstruction of urethra||1
+45937|obstruction of urethra|oliguria|obstruction of urethra conceptual part of oliguria||1
+277838|disorder of urethra|urethritis|disorder of urethra is a urethritis||1
+113621|congenital malformation of the urinary system|renal pelvis and ureter obstructive defects|congenital malformation of the urinary system is a renal pelvis and ureter obstructive defects||1
+138542|urethral catheter|obstruction of urethra|urethral catheter brings about obstruction of urethra||1
+45933|obstruction of urethra|anuria|obstruction of urethra conceptual part of anuria||1
+277835|disorder of urethra|urethral stenosis|disorder of urethra is a urethral stenosis||1
+45935|obstruction of urethra|decreased urine output|obstruction of urethra conceptual part of decreased urine output||1
+171099|structural and functional abnormalities of the kidney|nephrocalcinosis|structural and functional abnormalities of the kidney is a nephrocalcinosis||1
+130419|congenital posterior urethral valves|obstruction of urethra|congenital posterior urethral valves brings about obstruction of urethra||1
+220602|prostatic hypertrophy|obstruction of urethra|prostatic hypertrophy brings about obstruction of urethra||1
+196448|benign prostatic hypertrophy|obstruction of urethra|benign prostatic hypertrophy brings about obstruction of urethra||1
+220351|benign prostatic hyperplasia|obstruction of urethra|benign prostatic hyperplasia brings about obstruction of urethra||1
+170986|renal dysplasia|ulbright hodes syndrome|renal dysplasia is a ulbright hodes syndrome||1
+130087|congenital anomaly of the kidney|renal dysplasia|congenital anomaly of the kidney is a renal dysplasia||1
+171101|structural and functional abnormalities of the kidney|salt-losing nephropathy|structural and functional abnormalities of the kidney is a salt-losing nephropathy||1
+111958|disorder of renal parenchyma|nephritis|disorder of renal parenchyma is a nephritis||1
+170995|disorder of kidney and/or ureter|upper urinary tract infection|disorder of kidney and/or ureter is a upper urinary tract infection||1
+111955|disorder of renal parenchyma|glomerular disease|disorder of renal parenchyma is a glomerular disease||1
+171102|structural and functional abnormalities of the kidney|specific renal tubule transport defect|structural and functional abnormalities of the kidney is a specific renal tubule transport defect||1
+277985|urethral finding|disorder of urethra|urethral finding is a disorder of urethra||1
+277833|disorder of urethra|urethral fistula|disorder of urethra is a urethral fistula||1
+277836|disorder of urethra|urethral syndrome|disorder of urethra is a urethral syndrome||1
+277831|disorder of urethra|bladder sphincter paralysis|disorder of urethra is a bladder sphincter paralysis||1
+277832|disorder of urethra|urethral abscess|disorder of urethra is a urethral abscess||1
+277834|disorder of urethra|urethral hypermobility|disorder of urethra is a urethral hypermobility||1
+277837|disorder of urethra|urethral ulcer|disorder of urethra is a urethral ulcer||1
+111957|disorder of renal parenchyma|mesoblastic nephroma|disorder of renal parenchyma is a mesoblastic nephroma||1
+111959|disorder of renal parenchyma|page kidney|disorder of renal parenchyma is a page kidney||1
+171100|structural and functional abnormalities of the kidney|renal interstitial fibrosis|structural and functional abnormalities of the kidney is a renal interstitial fibrosis||1
+171096|structural and functional abnormalities of the kidney|fanconi-like syndrome|structural and functional abnormalities of the kidney is a fanconi-like syndrome||1
+171097|structural and functional abnormalities of the kidney|hemoglobinuric nephrosis|structural and functional abnormalities of the kidney is a hemoglobinuric nephrosis||1
+171098|structural and functional abnormalities of the kidney|magnesium-losing nephropathy|structural and functional abnormalities of the kidney is a magnesium-losing nephropathy||1
+29540|multiple cysts|bilateral multicystic renal dysplasia|multiple cysts associated with bilateral multicystic renal dysplasia||1
+308756|both kidneys|bilateral secondary renal dysplasia|both kidneys location of bilateral secondary renal dysplasia||1
+111956|disorder of renal parenchyma|intrarenal hematoma|disorder of renal parenchyma is a intrarenal hematoma||1
+112025|renal vascular disorder|dysplasia of blood vessel of kidney|renal vascular disorder is a dysplasia of blood vessel of kidney||1
+125175|degenerative disorder of urethra|urethral diverticulum|degenerative disorder of urethra is a urethral diverticulum||1
+293640|structure of upper urinary tract proper|renal pelvis and ureter obstructive defects|structure of upper urinary tract proper location of renal pelvis and ureter obstructive defects||1
+170993|disorder of kidney and/or ureter|upper urinary tract dilatation and obstruction|disorder of kidney and/or ureter is a upper urinary tract dilatation and obstruction||1
+170994|disorder of kidney and/or ureter|upper urinary tract hematuria|disorder of kidney and/or ureter is a upper urinary tract hematuria||1
+125174|degenerative disorder of urethra|urethral atrophy|degenerative disorder of urethra is a urethral atrophy||1
+
+
+
+
+
+---Goal---
+
+Generate a response of the target length and format that responds to the user's question, summarizing all information in the input data tables appropriate for the response length and format, and incorporating any relevant general knowledge.
+
+If you don't know the answer, just say so. Do not make anything up.
+
+Points supported by data should list their data references as follows:
+
+"This is an example sentence supported by multiple data references [Data: <dataset name> (record ids); <dataset name> (record ids)]."
+
+Do not list more than 5 record ids in a single reference. Instead, list the top 5 most relevant record ids and add "+more" to indicate that there are more.
+
+For example:
+
+"Person X is the owner of Company Y and subject to many allegations of wrongdoing [Data: Sources (15, 16), Reports (1), Entities (5, 7); Relationships (23); Claims (2, 7, 34, 46, 64, +more)]."
+
+where 15, 16, 1, 5, 7, 23, 2, 7, 34, 46, and 64 represent the id (not the index) of the relevant data record.
+
+Do not include information where the supporting evidence for it is not provided.
+
+
+---Target response length and format---
+
+Multiple Paragraphs
+
+Add sections and commentary to the response as appropriate for the length and format. Style the response in markdown.
+
+
+SUCCESS: Local Search Response:
+The correct answer is C. Atrophy.
+
+Chronic urethral obstruction due to benign prostatic hyperplasia (BPH) can lead to a series of complications in the urinary system. One of the potential consequences of this obstruction is the increase in pressure within the urinary tract, which can back up all the way to the kidneys. This increased pressure can impede the normal flow of urine from the kidneys, potentially causing damage over time.
+
+The kidney parenchyma, which includes the functional parts of the kidney such as the nephrons where filtration occurs, can undergo changes due to this increased pressure and reduced function. The most likely change among the options provided is atrophy. Atrophy refers to a reduction in size or shrinkage of cell size or number, which in this context would be due to the chronic obstruction leading to decreased renal function and potentially scarring over time.
+
+Here's why the other options are less correct:
+- A. Hyperplasia: This refers to an increase in cell number within an organ or tissue, typically leading to increased volume. While certain parts of the urinary system might experience hyperplastic changes due to obstruction (e.g., bladder wall thickening), this is not the most direct consequence for kidney parenchyma.
+- B. Hypertrophy: This refers to an increase in cell size without cell division, which can occur as a response to increased workload. While some components of the urinary system might hypertrophy in response to obstruction (e.g., bladder muscle), this isn't the primary change expected in the kidney parenchyma due to chronic obstruction.
+- D. Dysplasia: This term refers to abnormal development or maturation of cells within tissues, often used to describe precancerous changes. While dysplastic changes can occur in various conditions affecting the kidneys, they are not a direct consequence of chronic urethral obstruction due to BPH.
+
+In summary, the most accurate answer is C. Atrophy, as it reflects the potential long-term damage and reduction in kidney function that can result from chronic urethral obstruction caused by benign prostatic hyperplasia.

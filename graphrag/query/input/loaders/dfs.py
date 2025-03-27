@@ -42,8 +42,8 @@ def read_entities(
             id=to_str(row, id_col),
             short_id=to_optional_str(row, short_id_col) if short_id_col else str(idx),
             title=to_str(row, title_col),
-            type=to_optional_str(row, type_col),
-            description=to_optional_str(row, description_col),
+            type=to_optional_str(row, type_col) if type_col else None,
+            description=to_optional_str(row, description_col) if description_col else None,
             name_embedding=to_optional_list(row, name_embedding_col, item_type=float),
             description_embedding=to_optional_list(
                 row, description_embedding_col, item_type=float

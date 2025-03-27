@@ -56,3 +56,4 @@ docsite/
 
 # Jupyter notebook
 .ipynb_checkpoints/
+50k_seq_lim2_unique_triples_prompts.txt

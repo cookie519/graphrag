@@ -347,9 +347,9 @@ async def multi_index_global_search(
 async def local_search(
     config: GraphRagConfig,
     entities: pd.DataFrame,
-    communities: pd.DataFrame,
-    community_reports: pd.DataFrame,
-    text_units: pd.DataFrame,
+    communities: pd.DataFrame | None,
+    community_reports: pd.DataFrame | None,
+    text_units: pd.DataFrame | None,
     relationships: pd.DataFrame,
     covariates: pd.DataFrame | None,
     community_level: int,
@@ -395,8 +395,8 @@ async def local_search(
     prompt = load_search_prompt(config.root_dir, config.local_search.prompt)
     search_engine = get_local_search_engine(
         config=config,
-        reports=read_indexer_reports(community_reports, communities, community_level),
-        text_units=read_indexer_text_units(text_units),
+        reports=read_indexer_reports(community_reports, communities, community_level) if (community_reports is not None and communities is not None) else None,
+        text_units=read_indexer_text_units(text_units) if text_units is not None else None,
         entities=entities_,
         relationships=read_indexer_relationships(relationships),
         covariates={"claims": covariates_},

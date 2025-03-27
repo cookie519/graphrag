@@ -145,21 +145,16 @@ def run_local_search(
     cli_overrides = {}
     if data_dir:
         cli_overrides["output.base_dir"] = str(data_dir)
+    # raise NotImplementedError("This function is not implemented yet.")
     config = load_config(root, config_filepath, cli_overrides)
-    print("config in cli.query.py 125:", config)
-
+    #print("config in cli.query.py 125:", config)
+    file_list = ["relationships", "entities"] #"communities","community_reports","text_units",
     dataframe_dict = _resolve_output_files(
         config=config,
-        output_list=[
-            "communities",
-            "community_reports",
-            "text_units",
-            "relationships",
-            "entities",
-        ],
-        optional_list=[
-            "covariates",
-        ],
+        output_list=file_list,
+        # optional_list=[
+        #     "covariates",
+        # ],
     )
     # Call the Multi-Index Local Search API
     if dataframe_dict["multi-index"]:
@@ -198,12 +193,12 @@ def run_local_search(
         return response, context_data
 
     # Otherwise, call the Single-Index Local Search API
-    final_communities: pd.DataFrame = dataframe_dict["communities"]
-    final_community_reports: pd.DataFrame = dataframe_dict["community_reports"]
-    final_text_units: pd.DataFrame = dataframe_dict["text_units"]
+    final_communities = dataframe_dict.get("communities", None)
+    final_community_reports = dataframe_dict.get("community_reports", None)
+    final_text_units = dataframe_dict.get("text_units", None)
     final_relationships: pd.DataFrame = dataframe_dict["relationships"]
     final_entities: pd.DataFrame = dataframe_dict["entities"]
-    final_covariates: pd.DataFrame | None = dataframe_dict["covariates"]
+    final_covariates = dataframe_dict.get("covariates", None)
 
     # call the Query API
     print("streaming: ", streaming)

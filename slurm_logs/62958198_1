@@ -1,0 +1,457 @@
+INFO 03-17 18:57:12 __init__.py:190] Automatically detected platform cuda.
+INFO:__main__:batch size: 1000
+INFO:__main__:num: 400
+INFO:__main__:start_idx: 400000
+INFO:__main__:stop_idx: 800000
+INFO:__main__:Loading LLM
+INFO 03-17 18:57:22 config.py:542] This model supports multiple tasks: {'embed', 'score', 'classify', 'reward', 'generate'}. Defaulting to 'generate'.
+INFO 03-17 18:57:22 config.py:1401] Defaulting to use mp for distributed inference
+WARNING 03-17 18:57:22 arg_utils.py:1135] Chunked prefill is enabled by default for models with max_model_len > 32K. Currently, chunked prefill might not work with some features or models. If you encounter any issues, please disable chunked prefill by setting --enable-chunked-prefill=False.
+INFO 03-17 18:57:22 config.py:1556] Chunked prefill is enabled with max_num_batched_tokens=2048.
+INFO 03-17 18:57:22 llm_engine.py:234] Initializing a V0 LLM engine (v0.7.2) with config: model='/scratch/gpfs/JHA/models/Llama-3.1-8B-Instruct', speculative_config=None, tokenizer='/scratch/gpfs/JHA/models/Llama-3.1-8B-Instruct', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, override_neuron_config=None, tokenizer_revision=None, trust_remote_code=False, dtype=torch.bfloat16, max_seq_len=131072, download_dir=None, load_format=LoadFormat.AUTO, tensor_parallel_size=2, pipeline_parallel_size=1, disable_custom_all_reduce=False, quantization=None, enforce_eager=False, kv_cache_dtype=auto,  device_config=cuda, decoding_config=DecodingConfig(guided_decoding_backend='xgrammar'), observability_config=ObservabilityConfig(otlp_traces_endpoint=None, collect_model_forward_time=False, collect_model_execute_time=False), seed=0, served_model_name=/scratch/gpfs/JHA/models/Llama-3.1-8B-Instruct, num_scheduler_steps=1, multi_step_stream_outputs=True, enable_prefix_caching=False, chunked_prefill_enabled=True, use_async_output_proc=True, disable_mm_preprocessor_cache=False, mm_processor_kwargs=None, pooler_config=None, compilation_config={"splitting_ops":[],"compile_sizes":[],"cudagraph_capture_sizes":[256,248,240,232,224,216,208,200,192,184,176,168,160,152,144,136,128,120,112,104,96,88,80,72,64,56,48,40,32,24,16,8,4,2,1],"max_capture_size":256}, use_cached_outputs=False, 
+INFO 03-17 18:57:22 custom_cache_manager.py:19] Setting Triton cache manager to: vllm.triton_utils.custom_cache_manager:CustomCacheManager
+[1;36m(VllmWorkerProcess pid=1308660)[0;0m INFO 03-17 18:57:22 multiproc_worker_utils.py:229] Worker ready; awaiting tasks
+/home/jx0800/.conda/envs/graphrag/lib/python3.11/site-packages/vllm/executor/mp_distributed_executor.py:110: UserWarning: Failed to get the IP address, using 0.0.0.0 by default.The value can be set by the environment variable VLLM_HOST_IP or HOST_IP.
+  get_ip(), get_open_port())
+INFO 03-17 18:57:23 cuda.py:230] Using Flash Attention backend.
+[1;36m(VllmWorkerProcess pid=1308660)[0;0m INFO 03-17 18:57:23 cuda.py:230] Using Flash Attention backend.
+INFO 03-17 18:57:25 utils.py:950] Found nccl from library libnccl.so.2
+INFO 03-17 18:57:25 pynccl.py:69] vLLM is using nccl==2.21.5
+[1;36m(VllmWorkerProcess pid=1308660)[0;0m INFO 03-17 18:57:25 utils.py:950] Found nccl from library libnccl.so.2
+[1;36m(VllmWorkerProcess pid=1308660)[0;0m INFO 03-17 18:57:25 pynccl.py:69] vLLM is using nccl==2.21.5
+[1;36m(VllmWorkerProcess pid=1308660)[0;0m INFO 03-17 18:57:29 custom_all_reduce_utils.py:244] reading GPU P2P access cache from /home/jx0800/.cache/vllm/gpu_p2p_access_cache_for_0,1.json
+INFO 03-17 18:57:29 custom_all_reduce_utils.py:244] reading GPU P2P access cache from /home/jx0800/.cache/vllm/gpu_p2p_access_cache_for_0,1.json
+INFO 03-17 18:57:29 shm_broadcast.py:258] vLLM message queue communication handle: Handle(connect_ip='127.0.0.1', local_reader_ranks=[1], buffer_handle=(1, 4194304, 6, 'psm_892fdaab'), local_subscribe_port=50167, remote_subscribe_port=None)
+INFO 03-17 18:57:29 model_runner.py:1110] Starting to load model /scratch/gpfs/JHA/models/Llama-3.1-8B-Instruct...
+[1;36m(VllmWorkerProcess pid=1308660)[0;0m INFO 03-17 18:57:29 model_runner.py:1110] Starting to load model /scratch/gpfs/JHA/models/Llama-3.1-8B-Instruct...
+Loading safetensors checkpoint shards:   0% Completed | 0/4 [00:00<?, ?it/s]
+Loading safetensors checkpoint shards:  25% Completed | 1/4 [00:04<00:13,  4.62s/it]
+Loading safetensors checkpoint shards:  50% Completed | 2/4 [00:09<00:09,  4.54s/it]
+Loading safetensors checkpoint shards:  75% Completed | 3/4 [00:10<00:03,  3.20s/it]
+[1;36m(VllmWorkerProcess pid=1308660)[0;0m INFO 03-17 18:57:43 model_runner.py:1115] Loading model weights took 7.5123 GB
+Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:14<00:00,  3.52s/it]
+Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:14<00:00,  3.68s/it]
+
+INFO 03-17 18:57:44 model_runner.py:1115] Loading model weights took 7.5123 GB
+[1;36m(VllmWorkerProcess pid=1308660)[0;0m INFO 03-17 18:57:53 worker.py:267] Memory profiling takes 8.61 seconds
+[1;36m(VllmWorkerProcess pid=1308660)[0;0m INFO 03-17 18:57:53 worker.py:267] the current vLLM instance can use total_gpu_memory (79.19GiB) x gpu_memory_utilization (0.90) = 71.27GiB
+[1;36m(VllmWorkerProcess pid=1308660)[0;0m INFO 03-17 18:57:53 worker.py:267] model weights take 7.51GiB; non_torch_memory takes 1.58GiB; PyTorch activation peak memory takes 0.24GiB; the rest of the memory reserved for KV Cache is 61.94GiB.
+INFO 03-17 18:57:53 worker.py:267] Memory profiling takes 9.10 seconds
+INFO 03-17 18:57:53 worker.py:267] the current vLLM instance can use total_gpu_memory (79.19GiB) x gpu_memory_utilization (0.90) = 71.27GiB
+INFO 03-17 18:57:53 worker.py:267] model weights take 7.51GiB; non_torch_memory takes 1.83GiB; PyTorch activation peak memory takes 1.21GiB; the rest of the memory reserved for KV Cache is 60.72GiB.
+INFO 03-17 18:57:53 executor_base.py:110] # CUDA blocks: 62178, # CPU blocks: 4096
+INFO 03-17 18:57:53 executor_base.py:115] Maximum concurrency for 131072 tokens per request: 7.59x
+INFO 03-17 18:57:56 model_runner.py:1434] Capturing cudagraphs for decoding. This may lead to unexpected consequences if the model is not static. To run the model in eager mode, set 'enforce_eager=True' or use '--enforce-eager' in the CLI. If out-of-memory error occurs during cudagraph capture, consider decreasing `gpu_memory_utilization` or switching to eager mode. You can also reduce the `max_num_seqs` as needed to decrease memory usage.
+Capturing CUDA graph shapes:   0%|          | 0/35 [00:00<?, ?it/s][1;36m(VllmWorkerProcess pid=1308660)[0;0m INFO 03-17 18:57:56 model_runner.py:1434] Capturing cudagraphs for decoding. This may lead to unexpected consequences if the model is not static. To run the model in eager mode, set 'enforce_eager=True' or use '--enforce-eager' in the CLI. If out-of-memory error occurs during cudagraph capture, consider decreasing `gpu_memory_utilization` or switching to eager mode. You can also reduce the `max_num_seqs` as needed to decrease memory usage.
+Capturing CUDA graph shapes:   3%|▎         | 1/35 [00:00<00:29,  1.17it/s]Capturing CUDA graph shapes:   6%|▌         | 2/35 [00:01<00:26,  1.24it/s]Capturing CUDA graph shapes:   9%|▊         | 3/35 [00:02<00:25,  1.25it/s]Capturing CUDA graph shapes:  11%|█▏        | 4/35 [00:03<00:24,  1.26it/s]Capturing CUDA graph shapes:  14%|█▍        | 5/35 [00:03<00:23,  1.28it/s]Capturing CUDA graph shapes:  17%|█▋        | 6/35 [00:04<00:22,  1.28it/s]Capturing CUDA graph shapes:  20%|██        | 7/35 [00:05<00:21,  1.28it/s]Capturing CUDA graph shapes:  23%|██▎       | 8/35 [00:06<00:21,  1.28it/s]Capturing CUDA graph shapes:  26%|██▌       | 9/35 [00:07<00:20,  1.26it/s]Capturing CUDA graph shapes:  29%|██▊       | 10/35 [00:07<00:20,  1.23it/s]Capturing CUDA graph shapes:  31%|███▏      | 11/35 [00:08<00:19,  1.23it/s]Capturing CUDA graph shapes:  34%|███▍      | 12/35 [00:10<00:21,  1.06it/s]Capturing CUDA graph shapes:  37%|███▋      | 13/35 [00:10<00:19,  1.11it/s]Capturing CUDA graph shapes:  40%|████      | 14/35 [00:11<00:18,  1.11it/s]Capturing CUDA graph shapes:  43%|████▎     | 15/35 [00:12<00:17,  1.13it/s]Capturing CUDA graph shapes:  46%|████▌     | 16/35 [00:13<00:16,  1.15it/s]Capturing CUDA graph shapes:  49%|████▊     | 17/35 [00:14<00:15,  1.14it/s]Capturing CUDA graph shapes:  51%|█████▏    | 18/35 [00:15<00:14,  1.16it/s]Capturing CUDA graph shapes:  54%|█████▍    | 19/35 [00:16<00:13,  1.16it/s]Capturing CUDA graph shapes:  57%|█████▋    | 20/35 [00:16<00:13,  1.15it/s]Capturing CUDA graph shapes:  60%|██████    | 21/35 [00:17<00:12,  1.15it/s]Capturing CUDA graph shapes:  63%|██████▎   | 22/35 [00:18<00:11,  1.17it/s]Capturing CUDA graph shapes:  66%|██████▌   | 23/35 [00:19<00:10,  1.15it/s]Capturing CUDA graph shapes:  69%|██████▊   | 24/35 [00:20<00:09,  1.15it/s]Capturing CUDA graph shapes:  71%|███████▏  | 25/35 [00:21<00:08,  1.14it/s]Capturing CUDA graph shapes:  74%|███████▍  | 26/35 [00:22<00:08,  1.05it/s]Capturing CUDA graph shapes:  77%|███████▋  | 27/35 [00:23<00:07,  1.09it/s]Capturing CUDA graph shapes:  80%|████████  | 28/35 [00:23<00:05,  1.21it/s]Capturing CUDA graph shapes:  83%|████████▎ | 29/35 [00:24<00:04,  1.21it/s]Capturing CUDA graph shapes:  86%|████████▌ | 30/35 [00:25<00:04,  1.21it/s]Capturing CUDA graph shapes:  89%|████████▊ | 31/35 [00:26<00:03,  1.18it/s]Capturing CUDA graph shapes:  91%|█████████▏| 32/35 [00:27<00:02,  1.22it/s]Capturing CUDA graph shapes:  94%|█████████▍| 33/35 [00:27<00:01,  1.20it/s]Capturing CUDA graph shapes:  97%|█████████▋| 34/35 [00:28<00:00,  1.19it/s]Capturing CUDA graph shapes: 100%|██████████| 35/35 [00:30<00:00,  1.02s/it]Capturing CUDA graph shapes: 100%|██████████| 35/35 [00:30<00:00,  1.16it/s]
+INFO 03-17 18:58:27 custom_all_reduce.py:226] Registering 2275 cuda graph addresses
+[1;36m(VllmWorkerProcess pid=1308660)[0;0m INFO 03-17 18:58:27 custom_all_reduce.py:226] Registering 2275 cuda graph addresses
+[1;36m(VllmWorkerProcess pid=1308660)[0;0m INFO 03-17 18:58:27 model_runner.py:1562] Graph capturing finished in 30 secs, took 0.25 GiB
+INFO 03-17 18:58:27 model_runner.py:1562] Graph capturing finished in 30 secs, took 0.25 GiB
+INFO 03-17 18:58:27 llm_engine.py:431] init engine (profile, create kv cache, warmup model) took 42.57 seconds
+INFO:__main__:Processing batch to idx 999:
+INFO 03-17 18:58:27 chat_utils.py:332] Detected the chat template content format to be 'string'. You can set `--chat-template-content-format` to override this.
+INFO:__main__:Processing batch to idx 1999:
+INFO:__main__:Processing batch to idx 2999:
+INFO:__main__:Processing batch to idx 3999:
+INFO:__main__:Processing batch to idx 4999:
+INFO:__main__:Processing batch to idx 5999:
+INFO:__main__:Processing batch to idx 6999:
+INFO:__main__:Processing batch to idx 7999:
+INFO:__main__:Processing batch to idx 8999:
+INFO:__main__:Processing batch to idx 9999:
+INFO:__main__:Processing batch to idx 10999:
+INFO:__main__:Processing batch to idx 11999:
+INFO:__main__:Processing batch to idx 12999:
+INFO:__main__:Processing batch to idx 13999:
+INFO:__main__:Processing batch to idx 14999:
+INFO:__main__:Processing batch to idx 15999:
+INFO:__main__:Processing batch to idx 16999:
+INFO:__main__:Processing batch to idx 17999:
+INFO:__main__:Processing batch to idx 18999:
+INFO:__main__:Processing batch to idx 19999:
+INFO:__main__:Processing batch to idx 20999:
+INFO:__main__:Processing batch to idx 21999:
+INFO:__main__:Processing batch to idx 22999:
+INFO:__main__:Processing batch to idx 23999:
+INFO:__main__:Processing batch to idx 24999:
+INFO:__main__:Processing batch to idx 25999:
+INFO:__main__:Processing batch to idx 26999:
+INFO:__main__:Processing batch to idx 27999:
+INFO:__main__:Processing batch to idx 28999:
+INFO:__main__:Processing batch to idx 29999:
+INFO:__main__:Processing batch to idx 30999:
+INFO:__main__:Processing batch to idx 31999:
+INFO:__main__:Processing batch to idx 32999:
+INFO:__main__:Processing batch to idx 33999:
+INFO:__main__:Processing batch to idx 34999:
+INFO:__main__:Processing batch to idx 35999:
+INFO:__main__:Processing batch to idx 36999:
+INFO:__main__:Processing batch to idx 37999:
+INFO:__main__:Processing batch to idx 38999:
+INFO:__main__:Processing batch to idx 39999:
+INFO:__main__:Processing batch to idx 40999:
+INFO:__main__:Processing batch to idx 41999:
+INFO:__main__:Processing batch to idx 42999:
+INFO:__main__:Processing batch to idx 43999:
+INFO:__main__:Processing batch to idx 44999:
+INFO:__main__:Processing batch to idx 45999:
+INFO:__main__:Processing batch to idx 46999:
+INFO:__main__:Processing batch to idx 47999:
+INFO:__main__:Processing batch to idx 48999:
+INFO:__main__:Processing batch to idx 49999:
+INFO:__main__:Processing batch to idx 50999:
+INFO:__main__:Processing batch to idx 51999:
+INFO:__main__:Processing batch to idx 52999:
+INFO:__main__:Processing batch to idx 53999:
+INFO:__main__:Processing batch to idx 54999:
+INFO:__main__:Processing batch to idx 55999:
+INFO:__main__:Processing batch to idx 56999:
+INFO:__main__:Processing batch to idx 57999:
+INFO:__main__:Processing batch to idx 58999:
+INFO:__main__:Processing batch to idx 59999:
+INFO:__main__:Processing batch to idx 60999:
+INFO:__main__:Processing batch to idx 61999:
+INFO:__main__:Processing batch to idx 62999:
+INFO:__main__:Processing batch to idx 63999:
+INFO:__main__:Processing batch to idx 64999:
+INFO:__main__:Processing batch to idx 65999:
+INFO:__main__:Processing batch to idx 66999:
+INFO:__main__:Processing batch to idx 67999:
+INFO:__main__:Processing batch to idx 68999:
+INFO:__main__:Processing batch to idx 69999:
+INFO:__main__:Processing batch to idx 70999:
+INFO:__main__:Processing batch to idx 71999:
+INFO:__main__:Processing batch to idx 72999:
+INFO:__main__:Processing batch to idx 73999:
+INFO:__main__:Processing batch to idx 74999:
+INFO:__main__:Processing batch to idx 75999:
+INFO:__main__:Processing batch to idx 76999:
+INFO:__main__:Processing batch to idx 77999:
+INFO:__main__:Processing batch to idx 78999:
+INFO:__main__:Processing batch to idx 79999:
+INFO:__main__:Processing batch to idx 80999:
+INFO:__main__:Processing batch to idx 81999:
+INFO:__main__:Processing batch to idx 82999:
+INFO:__main__:Processing batch to idx 83999:
+INFO:__main__:Processing batch to idx 84999:
+INFO:__main__:Processing batch to idx 85999:
+INFO:__main__:Processing batch to idx 86999:
+INFO:__main__:Processing batch to idx 87999:
+INFO:__main__:Processing batch to idx 88999:
+INFO:__main__:Processing batch to idx 89999:
+INFO:__main__:Processing batch to idx 90999:
+INFO:__main__:Processing batch to idx 91999:
+INFO:__main__:Processing batch to idx 92999:
+INFO:__main__:Processing batch to idx 93999:
+INFO:__main__:Processing batch to idx 94999:
+INFO:__main__:Processing batch to idx 95999:
+INFO:__main__:Processing batch to idx 96999:
+INFO:__main__:Processing batch to idx 97999:
+INFO:__main__:Processing batch to idx 98999:
+INFO:__main__:Processing batch to idx 99999:
+INFO:__main__:Processing batch to idx 100999:
+INFO:__main__:Processing batch to idx 101999:
+INFO:__main__:Processing batch to idx 102999:
+INFO:__main__:Processing batch to idx 103999:
+INFO:__main__:Processing batch to idx 104999:
+INFO:__main__:Processing batch to idx 105999:
+INFO:__main__:Processing batch to idx 106999:
+INFO:__main__:Processing batch to idx 107999:
+INFO:__main__:Processing batch to idx 108999:
+INFO:__main__:Processing batch to idx 109999:
+INFO:__main__:Processing batch to idx 110999:
+INFO:__main__:Processing batch to idx 111999:
+INFO:__main__:Processing batch to idx 112999:
+INFO:__main__:Processing batch to idx 113999:
+INFO:__main__:Processing batch to idx 114999:
+INFO:__main__:Processing batch to idx 115999:
+INFO:__main__:Processing batch to idx 116999:
+INFO:__main__:Processing batch to idx 117999:
+INFO:__main__:Processing batch to idx 118999:
+INFO:__main__:Processing batch to idx 119999:
+INFO:__main__:Processing batch to idx 120999:
+INFO:__main__:Processing batch to idx 121999:
+INFO:__main__:Processing batch to idx 122999:
+INFO:__main__:Processing batch to idx 123999:
+INFO:__main__:Processing batch to idx 124999:
+INFO:__main__:Processing batch to idx 125999:
+INFO:__main__:Processing batch to idx 126999:
+INFO:__main__:Processing batch to idx 127999:
+INFO:__main__:Processing batch to idx 128999:
+INFO:__main__:Processing batch to idx 129999:
+INFO:__main__:Processing batch to idx 130999:
+INFO:__main__:Processing batch to idx 131999:
+INFO:__main__:Processing batch to idx 132999:
+INFO:__main__:Processing batch to idx 133999:
+INFO:__main__:Processing batch to idx 134999:
+INFO:__main__:Processing batch to idx 135999:
+INFO:__main__:Processing batch to idx 136999:
+INFO:__main__:Processing batch to idx 137999:
+INFO:__main__:Processing batch to idx 138999:
+INFO:__main__:Processing batch to idx 139999:
+INFO:__main__:Processing batch to idx 140999:
+INFO:__main__:Processing batch to idx 141999:
+INFO:__main__:Processing batch to idx 142999:
+INFO:__main__:Processing batch to idx 143999:
+INFO:__main__:Processing batch to idx 144999:
+INFO:__main__:Processing batch to idx 145999:
+INFO:__main__:Processing batch to idx 146999:
+INFO:__main__:Processing batch to idx 147999:
+INFO:__main__:Processing batch to idx 148999:
+INFO:__main__:Processing batch to idx 149999:
+INFO:__main__:Processing batch to idx 150999:
+INFO:__main__:Processing batch to idx 151999:
+INFO:__main__:Processing batch to idx 152999:
+INFO:__main__:Processing batch to idx 153999:
+INFO:__main__:Processing batch to idx 154999:
+INFO:__main__:Processing batch to idx 155999:
+INFO:__main__:Processing batch to idx 156999:
+INFO:__main__:Processing batch to idx 157999:
+INFO:__main__:Processing batch to idx 158999:
+INFO:__main__:Processing batch to idx 159999:
+INFO:__main__:Processing batch to idx 160999:
+INFO:__main__:Processing batch to idx 161999:
+INFO:__main__:Processing batch to idx 162999:
+INFO:__main__:Processing batch to idx 163999:
+INFO:__main__:Processing batch to idx 164999:
+INFO:__main__:Processing batch to idx 165999:
+INFO:__main__:Processing batch to idx 166999:
+INFO:__main__:Processing batch to idx 167999:
+INFO:__main__:Processing batch to idx 168999:
+INFO:__main__:Processing batch to idx 169999:
+INFO:__main__:Processing batch to idx 170999:
+INFO:__main__:Processing batch to idx 171999:
+INFO:__main__:Processing batch to idx 172999:
+INFO:__main__:Processing batch to idx 173999:
+INFO:__main__:Processing batch to idx 174999:
+INFO:__main__:Processing batch to idx 175999:
+INFO:__main__:Processing batch to idx 176999:
+INFO:__main__:Processing batch to idx 177999:
+INFO:__main__:Processing batch to idx 178999:
+INFO:__main__:Processing batch to idx 179999:
+INFO:__main__:Processing batch to idx 180999:
+INFO:__main__:Processing batch to idx 181999:
+INFO:__main__:Processing batch to idx 182999:
+INFO:__main__:Processing batch to idx 183999:
+INFO:__main__:Processing batch to idx 184999:
+INFO:__main__:Processing batch to idx 185999:
+INFO:__main__:Processing batch to idx 186999:
+INFO:__main__:Processing batch to idx 187999:
+INFO:__main__:Processing batch to idx 188999:
+INFO:__main__:Processing batch to idx 189999:
+INFO:__main__:Processing batch to idx 190999:
+INFO:__main__:Processing batch to idx 191999:
+INFO:__main__:Processing batch to idx 192999:
+INFO:__main__:Processing batch to idx 193999:
+INFO:__main__:Processing batch to idx 194999:
+INFO:__main__:Processing batch to idx 195999:
+INFO:__main__:Processing batch to idx 196999:
+INFO:__main__:Processing batch to idx 197999:
+INFO:__main__:Processing batch to idx 198999:
+INFO:__main__:Processing batch to idx 199999:
+INFO:__main__:Processing batch to idx 200999:
+INFO:__main__:Processing batch to idx 201999:
+INFO:__main__:Processing batch to idx 202999:
+INFO:__main__:Processing batch to idx 203999:
+INFO:__main__:Processing batch to idx 204999:
+INFO:__main__:Processing batch to idx 205999:
+INFO:__main__:Processing batch to idx 206999:
+INFO:__main__:Processing batch to idx 207999:
+INFO:__main__:Processing batch to idx 208999:
+INFO:__main__:Processing batch to idx 209999:
+INFO:__main__:Processing batch to idx 210999:
+INFO:__main__:Processing batch to idx 211999:
+INFO:__main__:Processing batch to idx 212999:
+INFO:__main__:Processing batch to idx 213999:
+INFO:__main__:Processing batch to idx 214999:
+INFO:__main__:Processing batch to idx 215999:
+INFO:__main__:Processing batch to idx 216999:
+INFO:__main__:Processing batch to idx 217999:
+INFO:__main__:Processing batch to idx 218999:
+INFO:__main__:Processing batch to idx 219999:
+INFO:__main__:Processing batch to idx 220999:
+INFO:__main__:Processing batch to idx 221999:
+INFO:__main__:Processing batch to idx 222999:
+INFO:__main__:Processing batch to idx 223999:
+INFO:__main__:Processing batch to idx 224999:
+INFO:__main__:Processing batch to idx 225999:
+INFO:__main__:Processing batch to idx 226999:
+INFO:__main__:Processing batch to idx 227999:
+INFO:__main__:Processing batch to idx 228999:
+INFO:__main__:Processing batch to idx 229999:
+INFO:__main__:Processing batch to idx 230999:
+INFO:__main__:Processing batch to idx 231999:
+INFO:__main__:Processing batch to idx 232999:
+INFO:__main__:Processing batch to idx 233999:
+INFO:__main__:Processing batch to idx 234999:
+INFO:__main__:Processing batch to idx 235999:
+INFO:__main__:Processing batch to idx 236999:
+INFO:__main__:Processing batch to idx 237999:
+INFO:__main__:Processing batch to idx 238999:
+INFO:__main__:Processing batch to idx 239999:
+INFO:__main__:Processing batch to idx 240999:
+INFO:__main__:Processing batch to idx 241999:
+INFO:__main__:Processing batch to idx 242999:
+INFO:__main__:Processing batch to idx 243999:
+INFO:__main__:Processing batch to idx 244999:
+INFO:__main__:Processing batch to idx 245999:
+INFO:__main__:Processing batch to idx 246999:
+INFO:__main__:Processing batch to idx 247999:
+INFO:__main__:Processing batch to idx 248999:
+INFO:__main__:Processing batch to idx 249999:
+INFO:__main__:Processing batch to idx 250999:
+INFO:__main__:Processing batch to idx 251999:
+INFO:__main__:Processing batch to idx 252999:
+INFO:__main__:Processing batch to idx 253999:
+INFO:__main__:Processing batch to idx 254999:
+INFO:__main__:Processing batch to idx 255999:
+INFO:__main__:Processing batch to idx 256999:
+INFO:__main__:Processing batch to idx 257999:
+INFO:__main__:Processing batch to idx 258999:
+INFO:__main__:Processing batch to idx 259999:
+INFO:__main__:Processing batch to idx 260999:
+INFO:__main__:Processing batch to idx 261999:
+INFO:__main__:Processing batch to idx 262999:
+INFO:__main__:Processing batch to idx 263999:
+INFO:__main__:Processing batch to idx 264999:
+INFO:__main__:Processing batch to idx 265999:
+INFO:__main__:Processing batch to idx 266999:
+INFO:__main__:Processing batch to idx 267999:
+INFO:__main__:Processing batch to idx 268999:
+INFO:__main__:Processing batch to idx 269999:
+INFO:__main__:Processing batch to idx 270999:
+INFO:__main__:Processing batch to idx 271999:
+INFO:__main__:Processing batch to idx 272999:
+INFO:__main__:Processing batch to idx 273999:
+INFO:__main__:Processing batch to idx 274999:
+INFO:__main__:Processing batch to idx 275999:
+INFO:__main__:Processing batch to idx 276999:
+INFO:__main__:Processing batch to idx 277999:
+INFO:__main__:Processing batch to idx 278999:
+INFO:__main__:Processing batch to idx 279999:
+INFO:__main__:Processing batch to idx 280999:
+INFO:__main__:Processing batch to idx 281999:
+INFO:__main__:Processing batch to idx 282999:
+INFO:__main__:Processing batch to idx 283999:
+INFO:__main__:Processing batch to idx 284999:
+INFO:__main__:Processing batch to idx 285999:
+INFO:__main__:Processing batch to idx 286999:
+INFO:__main__:Processing batch to idx 287999:
+INFO:__main__:Processing batch to idx 288999:
+INFO:__main__:Processing batch to idx 289999:
+INFO:__main__:Processing batch to idx 290999:
+INFO:__main__:Processing batch to idx 291999:
+INFO:__main__:Processing batch to idx 292999:
+INFO:__main__:Processing batch to idx 293999:
+INFO:__main__:Processing batch to idx 294999:
+INFO:__main__:Processing batch to idx 295999:
+INFO:__main__:Processing batch to idx 296999:
+INFO:__main__:Processing batch to idx 297999:
+INFO:__main__:Processing batch to idx 298999:
+INFO:__main__:Processing batch to idx 299999:
+INFO:__main__:Processing batch to idx 300999:
+INFO:__main__:Processing batch to idx 301999:
+INFO:__main__:Processing batch to idx 302999:
+INFO:__main__:Processing batch to idx 303999:
+INFO:__main__:Processing batch to idx 304999:
+INFO:__main__:Processing batch to idx 305999:
+INFO:__main__:Processing batch to idx 306999:
+INFO:__main__:Processing batch to idx 307999:
+INFO:__main__:Processing batch to idx 308999:
+INFO:__main__:Processing batch to idx 309999:
+INFO:__main__:Processing batch to idx 310999:
+INFO:__main__:Processing batch to idx 311999:
+INFO:__main__:Processing batch to idx 312999:
+INFO:__main__:Processing batch to idx 313999:
+INFO:__main__:Processing batch to idx 314999:
+INFO:__main__:Processing batch to idx 315999:
+INFO:__main__:Processing batch to idx 316999:
+INFO:__main__:Processing batch to idx 317999:
+INFO:__main__:Processing batch to idx 318999:
+INFO:__main__:Processing batch to idx 319999:
+INFO:__main__:Processing batch to idx 320999:
+INFO:__main__:Processing batch to idx 321999:
+INFO:__main__:Processing batch to idx 322999:
+INFO:__main__:Processing batch to idx 323999:
+INFO:__main__:Processing batch to idx 324999:
+INFO:__main__:Processing batch to idx 325999:
+INFO:__main__:Processing batch to idx 326999:
+INFO:__main__:Processing batch to idx 327999:
+INFO:__main__:Processing batch to idx 328999:
+INFO:__main__:Processing batch to idx 329999:
+INFO:__main__:Processing batch to idx 330999:
+INFO:__main__:Processing batch to idx 331999:
+INFO:__main__:Processing batch to idx 332999:
+INFO:__main__:Processing batch to idx 333999:
+INFO:__main__:Processing batch to idx 334999:
+INFO:__main__:Processing batch to idx 335999:
+INFO:__main__:Processing batch to idx 336999:
+INFO:__main__:Processing batch to idx 337999:
+INFO:__main__:Processing batch to idx 338999:
+INFO:__main__:Processing batch to idx 339999:
+INFO:__main__:Processing batch to idx 340999:
+INFO:__main__:Processing batch to idx 341999:
+INFO:__main__:Processing batch to idx 342999:
+INFO:__main__:Processing batch to idx 343999:
+INFO:__main__:Processing batch to idx 344999:
+INFO:__main__:Processing batch to idx 345999:
+INFO:__main__:Processing batch to idx 346999:
+INFO:__main__:Processing batch to idx 347999:
+INFO:__main__:Processing batch to idx 348999:
+INFO:__main__:Processing batch to idx 349999:
+INFO:__main__:Processing batch to idx 350999:
+INFO:__main__:Processing batch to idx 351999:
+INFO:__main__:Processing batch to idx 352999:
+INFO:__main__:Processing batch to idx 353999:
+INFO:__main__:Processing batch to idx 354999:
+INFO:__main__:Processing batch to idx 355999:
+INFO:__main__:Processing batch to idx 356999:
+INFO:__main__:Processing batch to idx 357999:
+INFO:__main__:Processing batch to idx 358999:
+INFO:__main__:Processing batch to idx 359999:
+INFO:__main__:Processing batch to idx 360999:
+INFO:__main__:Processing batch to idx 361999:
+INFO:__main__:Processing batch to idx 362999:
+INFO:__main__:Processing batch to idx 363999:
+INFO:__main__:Processing batch to idx 364999:
+INFO:__main__:Processing batch to idx 365999:
+INFO:__main__:Processing batch to idx 366999:
+INFO:__main__:Processing batch to idx 367999:
+INFO:__main__:Processing batch to idx 368999:
+INFO:__main__:Processing batch to idx 369999:
+INFO:__main__:Processing batch to idx 370999:
+INFO:__main__:Processing batch to idx 371999:
+INFO:__main__:Processing batch to idx 372999:
+INFO:__main__:Processing batch to idx 373999:
+INFO:__main__:Processing batch to idx 374999:
+INFO:__main__:Processing batch to idx 375999:
+INFO:__main__:Processing batch to idx 376999:
+INFO:__main__:Processing batch to idx 377999:
+INFO:__main__:Processing batch to idx 378999:
+INFO:__main__:Processing batch to idx 379999:
+INFO:__main__:Processing batch to idx 380999:
+INFO:__main__:Processing batch to idx 381999:
+INFO:__main__:Processing batch to idx 382999:
+INFO:__main__:Processing batch to idx 383999:
+INFO:__main__:Processing batch to idx 384999:
+INFO:__main__:Processing batch to idx 385999:
+INFO:__main__:Processing batch to idx 386999:
+INFO:__main__:Processing batch to idx 387999:
+INFO:__main__:Processing batch to idx 388999:
+INFO:__main__:Processing batch to idx 389999:
+INFO:__main__:Processing batch to idx 390999:
+INFO:__main__:Processing batch to idx 391999:
+INFO:__main__:Processing batch to idx 392999:
+INFO:__main__:Processing batch to idx 393999:
+INFO:__main__:Processing batch to idx 394999:
+INFO:__main__:Processing batch to idx 395999:
+INFO:__main__:Processing batch to idx 396999:
+INFO:__main__:Processing batch to idx 397999:
+INFO:__main__:Processing batch to idx 398999:
+INFO:__main__:Processing batch to idx 399999:
+ERROR 03-17 23:29:56 multiproc_worker_utils.py:124] Worker VllmWorkerProcess pid 1308660 died, exit code: -15
+INFO 03-17 23:29:56 multiproc_worker_utils.py:128] Killing local vLLM worker processes
+[rank0]:[W317 23:29:56.608702425 ProcessGroupNCCL.cpp:1250] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())
+/home/jx0800/.conda/envs/graphrag/lib/python3.11/multiprocessing/resource_tracker.py:224: UserWarning: resource_tracker: There appear to be 1 leaked shared_memory objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '

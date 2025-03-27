@@ -1,0 +1,131 @@
+INFO 02-24 11:07:23 __init__.py:190] Automatically detected platform cuda.
+INFO 02-24 11:07:24 api_server.py:840] vLLM API server version 0.7.2
+INFO 02-24 11:07:24 api_server.py:841] args: Namespace(subparser='serve', model_tag='/projects/JHA/jx0800/models/Llama-3.3-70B-Instruct', config='', host=None, port=11434, uvicorn_log_level='info', allow_credentials=False, allowed_origins=['*'], allowed_methods=['*'], allowed_headers=['*'], api_key=None, lora_modules=None, prompt_adapters=None, chat_template=None, chat_template_content_format='auto', response_role='assistant', ssl_keyfile=None, ssl_certfile=None, ssl_ca_certs=None, ssl_cert_reqs=0, root_path=None, middleware=[], return_tokens_as_token_ids=False, disable_frontend_multiprocessing=False, enable_request_id_headers=False, enable_auto_tool_choice=False, enable_reasoning=False, reasoning_parser=None, tool_call_parser=None, tool_parser_plugin='', model='/projects/JHA/jx0800/models/Llama-3.3-70B-Instruct', task='auto', tokenizer=None, skip_tokenizer_init=False, revision=None, code_revision=None, tokenizer_revision=None, tokenizer_mode='auto', trust_remote_code=False, allowed_local_media_path=None, download_dir=None, load_format='auto', config_format=<ConfigFormat.AUTO: 'auto'>, dtype='auto', kv_cache_dtype='auto', max_model_len=None, guided_decoding_backend='xgrammar', logits_processor_pattern=None, model_impl='auto', distributed_executor_backend=None, pipeline_parallel_size=1, tensor_parallel_size=4, max_parallel_loading_workers=None, ray_workers_use_nsight=False, block_size=None, enable_prefix_caching=None, disable_sliding_window=False, use_v2_block_manager=True, num_lookahead_slots=0, seed=0, swap_space=4, cpu_offload_gb=0, gpu_memory_utilization=0.9, num_gpu_blocks_override=None, max_num_batched_tokens=None, max_num_seqs=None, max_logprobs=20, disable_log_stats=False, quantization='fp8', rope_scaling=None, rope_theta=None, hf_overrides=None, enforce_eager=False, max_seq_len_to_capture=8192, disable_custom_all_reduce=False, tokenizer_pool_size=0, tokenizer_pool_type='ray', tokenizer_pool_extra_config=None, limit_mm_per_prompt=None, mm_processor_kwargs=None, disable_mm_preprocessor_cache=False, enable_lora=False, enable_lora_bias=False, max_loras=1, max_lora_rank=16, lora_extra_vocab_size=256, lora_dtype='auto', long_lora_scaling_factors=None, max_cpu_loras=None, fully_sharded_loras=False, enable_prompt_adapter=False, max_prompt_adapters=1, max_prompt_adapter_token=0, device='cuda', num_scheduler_steps=1, multi_step_stream_outputs=True, scheduler_delay_factor=0.0, enable_chunked_prefill=None, speculative_model=None, speculative_model_quantization=None, num_speculative_tokens=None, speculative_disable_mqa_scorer=False, speculative_draft_tensor_parallel_size=None, speculative_max_model_len=None, speculative_disable_by_batch_size=None, ngram_prompt_lookup_max=None, ngram_prompt_lookup_min=None, spec_decoding_acceptance_method='rejection_sampler', typical_acceptance_sampler_posterior_threshold=None, typical_acceptance_sampler_posterior_alpha=None, disable_logprobs_during_spec_decoding=None, model_loader_extra_config=None, ignore_patterns=[], preemption_mode=None, served_model_name=None, qlora_adapter_name_or_path=None, otlp_traces_endpoint=None, collect_detailed_traces=None, disable_async_output_proc=False, scheduling_policy='fcfs', override_neuron_config=None, override_pooler_config=None, compilation_config=None, kv_transfer_config=None, worker_cls='auto', generation_config=None, override_generation_config={'temperature': 0.6, 'top_p': 0.95, 'top_k': 100, 'max_tokens': 2048}, enable_sleep_mode=False, calculate_kv_scales=False, disable_log_requests=False, max_log_len=None, disable_fastapi_docs=False, enable_prompt_tokens_details=False, dispatch_function=<function serve at 0x1503ef026d40>)
+INFO 02-24 11:07:24 api_server.py:206] Started engine process with PID 4169440
+INFO 02-24 11:07:32 __init__.py:190] Automatically detected platform cuda.
+INFO 02-24 11:07:36 config.py:542] This model supports multiple tasks: {'generate', 'embed', 'classify', 'reward', 'score'}. Defaulting to 'generate'.
+INFO 02-24 11:07:36 config.py:1401] Defaulting to use mp for distributed inference
+WARNING 02-24 11:07:36 arg_utils.py:1135] Chunked prefill is enabled by default for models with max_model_len > 32K. Currently, chunked prefill might not work with some features or models. If you encounter any issues, please disable chunked prefill by setting --enable-chunked-prefill=False.
+INFO 02-24 11:07:36 config.py:1556] Chunked prefill is enabled with max_num_batched_tokens=2048.
+INFO 02-24 11:07:42 config.py:542] This model supports multiple tasks: {'reward', 'score', 'classify', 'embed', 'generate'}. Defaulting to 'generate'.
+INFO 02-24 11:07:42 config.py:1401] Defaulting to use mp for distributed inference
+WARNING 02-24 11:07:42 arg_utils.py:1135] Chunked prefill is enabled by default for models with max_model_len > 32K. Currently, chunked prefill might not work with some features or models. If you encounter any issues, please disable chunked prefill by setting --enable-chunked-prefill=False.
+INFO 02-24 11:07:42 config.py:1556] Chunked prefill is enabled with max_num_batched_tokens=2048.
+INFO 02-24 11:07:43 llm_engine.py:234] Initializing a V0 LLM engine (v0.7.2) with config: model='/projects/JHA/jx0800/models/Llama-3.3-70B-Instruct', speculative_config=None, tokenizer='/projects/JHA/jx0800/models/Llama-3.3-70B-Instruct', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, override_neuron_config=None, tokenizer_revision=None, trust_remote_code=False, dtype=torch.bfloat16, max_seq_len=131072, download_dir=None, load_format=LoadFormat.AUTO, tensor_parallel_size=4, pipeline_parallel_size=1, disable_custom_all_reduce=False, quantization=fp8, enforce_eager=False, kv_cache_dtype=auto,  device_config=cuda, decoding_config=DecodingConfig(guided_decoding_backend='xgrammar'), observability_config=ObservabilityConfig(otlp_traces_endpoint=None, collect_model_forward_time=False, collect_model_execute_time=False), seed=0, served_model_name=/projects/JHA/jx0800/models/Llama-3.3-70B-Instruct, num_scheduler_steps=1, multi_step_stream_outputs=True, enable_prefix_caching=False, chunked_prefill_enabled=True, use_async_output_proc=True, disable_mm_preprocessor_cache=False, mm_processor_kwargs=None, pooler_config=None, compilation_config={"splitting_ops":[],"compile_sizes":[],"cudagraph_capture_sizes":[256,248,240,232,224,216,208,200,192,184,176,168,160,152,144,136,128,120,112,104,96,88,80,72,64,56,48,40,32,24,16,8,4,2,1],"max_capture_size":256}, use_cached_outputs=True, 
+INFO 02-24 11:07:43 custom_cache_manager.py:19] Setting Triton cache manager to: vllm.triton_utils.custom_cache_manager:CustomCacheManager
+/home/jx0800/.conda/envs/graphrag/lib/python3.11/site-packages/vllm/executor/mp_distributed_executor.py:110: UserWarning: Failed to get the IP address, using 0.0.0.0 by default.The value can be set by the environment variable VLLM_HOST_IP or HOST_IP.
+  get_ip(), get_open_port())
+INFO 02-24 11:07:44 cuda.py:230] Using Flash Attention backend.
+INFO 02-24 11:07:55 __init__.py:190] Automatically detected platform cuda.
+INFO 02-24 11:07:55 __init__.py:190] Automatically detected platform cuda.
+INFO 02-24 11:07:55 __init__.py:190] Automatically detected platform cuda.
+[1;36m(VllmWorkerProcess pid=4169498)[0;0m INFO 02-24 11:08:00 multiproc_worker_utils.py:229] Worker ready; awaiting tasks
+[1;36m(VllmWorkerProcess pid=4169496)[0;0m INFO 02-24 11:08:00 multiproc_worker_utils.py:229] Worker ready; awaiting tasks
+[1;36m(VllmWorkerProcess pid=4169497)[0;0m INFO 02-24 11:08:00 multiproc_worker_utils.py:229] Worker ready; awaiting tasks
+[1;36m(VllmWorkerProcess pid=4169498)[0;0m INFO 02-24 11:08:01 cuda.py:230] Using Flash Attention backend.
+[1;36m(VllmWorkerProcess pid=4169496)[0;0m INFO 02-24 11:08:01 cuda.py:230] Using Flash Attention backend.
+[1;36m(VllmWorkerProcess pid=4169497)[0;0m INFO 02-24 11:08:01 cuda.py:230] Using Flash Attention backend.
+[1;36m(VllmWorkerProcess pid=4169497)[0;0m INFO 02-24 11:08:03 utils.py:950] Found nccl from library libnccl.so.2
+[1;36m(VllmWorkerProcess pid=4169497)[0;0m INFO 02-24 11:08:03 pynccl.py:69] vLLM is using nccl==2.21.5
+INFO 02-24 11:08:03 utils.py:950] Found nccl from library libnccl.so.2
+INFO 02-24 11:08:03 pynccl.py:69] vLLM is using nccl==2.21.5
+[1;36m(VllmWorkerProcess pid=4169496)[0;0m INFO 02-24 11:08:03 utils.py:950] Found nccl from library libnccl.so.2
+[1;36m(VllmWorkerProcess pid=4169496)[0;0m INFO 02-24 11:08:03 pynccl.py:69] vLLM is using nccl==2.21.5
+[1;36m(VllmWorkerProcess pid=4169498)[0;0m INFO 02-24 11:08:03 utils.py:950] Found nccl from library libnccl.so.2
+[1;36m(VllmWorkerProcess pid=4169498)[0;0m INFO 02-24 11:08:03 pynccl.py:69] vLLM is using nccl==2.21.5
+[1;36m(VllmWorkerProcess pid=4169496)[0;0m INFO 02-24 11:08:16 custom_all_reduce_utils.py:244] reading GPU P2P access cache from /home/jx0800/.cache/vllm/gpu_p2p_access_cache_for_0,1,2,3.json
+INFO 02-24 11:08:16 custom_all_reduce_utils.py:244] reading GPU P2P access cache from /home/jx0800/.cache/vllm/gpu_p2p_access_cache_for_0,1,2,3.json
+[1;36m(VllmWorkerProcess pid=4169497)[0;0m INFO 02-24 11:08:16 custom_all_reduce_utils.py:244] reading GPU P2P access cache from /home/jx0800/.cache/vllm/gpu_p2p_access_cache_for_0,1,2,3.json
+[1;36m(VllmWorkerProcess pid=4169498)[0;0m INFO 02-24 11:08:16 custom_all_reduce_utils.py:244] reading GPU P2P access cache from /home/jx0800/.cache/vllm/gpu_p2p_access_cache_for_0,1,2,3.json
+INFO 02-24 11:08:16 shm_broadcast.py:258] vLLM message queue communication handle: Handle(connect_ip='127.0.0.1', local_reader_ranks=[1, 2, 3], buffer_handle=(3, 4194304, 6, 'psm_c6e90880'), local_subscribe_port=58819, remote_subscribe_port=None)
+INFO 02-24 11:08:16 model_runner.py:1110] Starting to load model /projects/JHA/jx0800/models/Llama-3.3-70B-Instruct...
+[1;36m(VllmWorkerProcess pid=4169497)[0;0m INFO 02-24 11:08:16 model_runner.py:1110] Starting to load model /projects/JHA/jx0800/models/Llama-3.3-70B-Instruct...
+[1;36m(VllmWorkerProcess pid=4169498)[0;0m INFO 02-24 11:08:16 model_runner.py:1110] Starting to load model /projects/JHA/jx0800/models/Llama-3.3-70B-Instruct...
+[1;36m(VllmWorkerProcess pid=4169496)[0;0m INFO 02-24 11:08:16 model_runner.py:1110] Starting to load model /projects/JHA/jx0800/models/Llama-3.3-70B-Instruct...
+Loading safetensors checkpoint shards:   0% Completed | 0/30 [00:00<?, ?it/s]
+Loading safetensors checkpoint shards:   3% Completed | 1/30 [00:12<06:03, 12.53s/it]
+Loading safetensors checkpoint shards:   7% Completed | 2/30 [00:25<06:04, 13.03s/it]
+Loading safetensors checkpoint shards:  10% Completed | 3/30 [00:38<05:44, 12.75s/it]
+Loading safetensors checkpoint shards:  13% Completed | 4/30 [00:50<05:24, 12.47s/it]
+Loading safetensors checkpoint shards:  17% Completed | 5/30 [01:03<05:21, 12.86s/it]
+Loading safetensors checkpoint shards:  20% Completed | 6/30 [01:20<05:42, 14.25s/it]
+Loading safetensors checkpoint shards:  23% Completed | 7/30 [01:36<05:39, 14.76s/it]
+Loading safetensors checkpoint shards:  27% Completed | 8/30 [01:52<05:34, 15.20s/it]
+Loading safetensors checkpoint shards:  30% Completed | 9/30 [02:07<05:17, 15.12s/it]
+Loading safetensors checkpoint shards:  33% Completed | 10/30 [02:24<05:11, 15.56s/it]
+Loading safetensors checkpoint shards:  37% Completed | 11/30 [02:40<05:01, 15.88s/it]
+Loading safetensors checkpoint shards:  40% Completed | 12/30 [02:52<04:20, 14.45s/it]
+Loading safetensors checkpoint shards:  43% Completed | 13/30 [03:08<04:14, 14.97s/it]
+Loading safetensors checkpoint shards:  47% Completed | 14/30 [03:24<04:06, 15.41s/it]
+Loading safetensors checkpoint shards:  50% Completed | 15/30 [03:44<04:11, 16.74s/it]
+Loading safetensors checkpoint shards:  53% Completed | 16/30 [04:00<03:49, 16.41s/it]
+Loading safetensors checkpoint shards:  57% Completed | 17/30 [04:15<03:28, 16.03s/it]
+Loading safetensors checkpoint shards:  60% Completed | 18/30 [04:30<03:09, 15.75s/it]
+Loading safetensors checkpoint shards:  63% Completed | 19/30 [04:48<03:01, 16.51s/it]
+Loading safetensors checkpoint shards:  67% Completed | 20/30 [05:02<02:36, 15.66s/it]
+Loading safetensors checkpoint shards:  70% Completed | 21/30 [05:19<02:25, 16.12s/it]
+Loading safetensors checkpoint shards:  73% Completed | 22/30 [05:34<02:05, 15.67s/it]
+Loading safetensors checkpoint shards:  77% Completed | 23/30 [05:39<01:27, 12.51s/it]
+Loading safetensors checkpoint shards:  80% Completed | 24/30 [05:53<01:18, 13.02s/it]
+Loading safetensors checkpoint shards:  83% Completed | 25/30 [06:09<01:09, 13.95s/it]
+Loading safetensors checkpoint shards:  87% Completed | 26/30 [06:25<00:58, 14.56s/it]
+Loading safetensors checkpoint shards:  90% Completed | 27/30 [06:40<00:43, 14.54s/it]
+Loading safetensors checkpoint shards:  93% Completed | 28/30 [06:56<00:29, 14.95s/it]
+Loading safetensors checkpoint shards:  97% Completed | 29/30 [07:13<00:15, 15.69s/it]
+Loading safetensors checkpoint shards: 100% Completed | 30/30 [07:29<00:00, 15.84s/it]
+Loading safetensors checkpoint shards: 100% Completed | 30/30 [07:29<00:00, 14.99s/it]
+
+[1;36m(VllmWorkerProcess pid=4169497)[0;0m WARNING 02-24 11:15:47 marlin_utils_fp8.py:54] Your GPU does not have native support for FP8 computation but FP8 quantization is being used. Weight-only FP8 compression will be used leveraging the Marlin kernel. This may degrade performance for compute-heavy workloads.
+[1;36m(VllmWorkerProcess pid=4169496)[0;0m WARNING 02-24 11:15:47 marlin_utils_fp8.py:54] Your GPU does not have native support for FP8 computation but FP8 quantization is being used. Weight-only FP8 compression will be used leveraging the Marlin kernel. This may degrade performance for compute-heavy workloads.
+[1;36m(VllmWorkerProcess pid=4169498)[0;0m WARNING 02-24 11:15:47 marlin_utils_fp8.py:54] Your GPU does not have native support for FP8 computation but FP8 quantization is being used. Weight-only FP8 compression will be used leveraging the Marlin kernel. This may degrade performance for compute-heavy workloads.
+WARNING 02-24 11:15:47 marlin_utils_fp8.py:54] Your GPU does not have native support for FP8 computation but FP8 quantization is being used. Weight-only FP8 compression will be used leveraging the Marlin kernel. This may degrade performance for compute-heavy workloads.
+[1;36m(VllmWorkerProcess pid=4169497)[0;0m INFO 02-24 11:15:51 model_runner.py:1115] Loading model weights took 16.9593 GB
+[1;36m(VllmWorkerProcess pid=4169498)[0;0m INFO 02-24 11:15:51 model_runner.py:1115] Loading model weights took 16.9593 GB
+[1;36m(VllmWorkerProcess pid=4169496)[0;0m INFO 02-24 11:15:52 model_runner.py:1115] Loading model weights took 16.9593 GB
+INFO 02-24 11:15:54 model_runner.py:1115] Loading model weights took 16.9593 GB
+[1;36m(VllmWorkerProcess pid=4169497)[0;0m INFO 02-24 11:16:28 worker.py:267] Memory profiling takes 33.28 seconds
+[1;36m(VllmWorkerProcess pid=4169497)[0;0m INFO 02-24 11:16:28 worker.py:267] the current vLLM instance can use total_gpu_memory (39.49GiB) x gpu_memory_utilization (0.90) = 35.55GiB
+[1;36m(VllmWorkerProcess pid=4169497)[0;0m INFO 02-24 11:16:28 worker.py:267] model weights take 16.96GiB; non_torch_memory takes 2.10GiB; PyTorch activation peak memory takes 0.24GiB; the rest of the memory reserved for KV Cache is 16.25GiB.
+[1;36m(VllmWorkerProcess pid=4169496)[0;0m INFO 02-24 11:16:28 worker.py:267] Memory profiling takes 33.46 seconds
+[1;36m(VllmWorkerProcess pid=4169496)[0;0m INFO 02-24 11:16:28 worker.py:267] the current vLLM instance can use total_gpu_memory (39.49GiB) x gpu_memory_utilization (0.90) = 35.55GiB
+[1;36m(VllmWorkerProcess pid=4169496)[0;0m INFO 02-24 11:16:28 worker.py:267] model weights take 16.96GiB; non_torch_memory takes 2.10GiB; PyTorch activation peak memory takes 0.24GiB; the rest of the memory reserved for KV Cache is 16.25GiB.
+[1;36m(VllmWorkerProcess pid=4169498)[0;0m INFO 02-24 11:16:28 worker.py:267] Memory profiling takes 33.47 seconds
+[1;36m(VllmWorkerProcess pid=4169498)[0;0m INFO 02-24 11:16:28 worker.py:267] the current vLLM instance can use total_gpu_memory (39.49GiB) x gpu_memory_utilization (0.90) = 35.55GiB
+[1;36m(VllmWorkerProcess pid=4169498)[0;0m INFO 02-24 11:16:28 worker.py:267] model weights take 16.96GiB; non_torch_memory takes 1.82GiB; PyTorch activation peak memory takes 0.24GiB; the rest of the memory reserved for KV Cache is 16.53GiB.
+INFO 02-24 11:16:29 worker.py:267] Memory profiling takes 33.60 seconds
+INFO 02-24 11:16:29 worker.py:267] the current vLLM instance can use total_gpu_memory (39.49GiB) x gpu_memory_utilization (0.90) = 35.55GiB
+INFO 02-24 11:16:29 worker.py:267] model weights take 16.96GiB; non_torch_memory takes 2.20GiB; PyTorch activation peak memory takes 1.20GiB; the rest of the memory reserved for KV Cache is 15.19GiB.
+INFO 02-24 11:16:29 executor_base.py:110] # CUDA blocks: 12440, # CPU blocks: 3276
+INFO 02-24 11:16:29 executor_base.py:115] Maximum concurrency for 131072 tokens per request: 1.52x
+Traceback (most recent call last):
+  File "/home/jx0800/.conda/envs/graphrag/bin/vllm", line 8, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/home/jx0800/.conda/envs/graphrag/lib/python3.11/site-packages/vllm/scripts.py", line 204, in main
+    args.dispatch_function(args)
+  File "/home/jx0800/.conda/envs/graphrag/lib/python3.11/site-packages/vllm/scripts.py", line 44, in serve
+    uvloop.run(run_server(args))
+  File "/home/jx0800/.conda/envs/graphrag/lib/python3.11/site-packages/uvloop/__init__.py", line 105, in run
+    return runner.run(wrapper())
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jx0800/.conda/envs/graphrag/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "uvloop/loop.pyx", line 1517, in uvloop.loop.Loop.run_until_complete
+  File "/home/jx0800/.conda/envs/graphrag/lib/python3.11/site-packages/uvloop/__init__.py", line 61, in wrapper
+    return await main
+           ^^^^^^^^^^
+  File "/home/jx0800/.conda/envs/graphrag/lib/python3.11/site-packages/vllm/entrypoints/openai/api_server.py", line 875, in run_server
+    async with build_async_engine_client(args) as engine_client:
+  File "/home/jx0800/.conda/envs/graphrag/lib/python3.11/contextlib.py", line 204, in __aenter__
+    return await anext(self.gen)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jx0800/.conda/envs/graphrag/lib/python3.11/site-packages/vllm/entrypoints/openai/api_server.py", line 136, in build_async_engine_client
+    async with build_async_engine_client_from_engine_args(
+  File "/home/jx0800/.conda/envs/graphrag/lib/python3.11/contextlib.py", line 204, in __aenter__
+    return await anext(self.gen)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jx0800/.conda/envs/graphrag/lib/python3.11/site-packages/vllm/entrypoints/openai/api_server.py", line 230, in build_async_engine_client_from_engine_args
+    raise RuntimeError(
+RuntimeError: Engine process failed to start. See stack trace for the root cause.
+slurmstepd: error: Detected 4 oom_kill events in StepId=62479185.batch. Some of the step tasks have been OOM Killed.

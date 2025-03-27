@@ -52,18 +52,3 @@ if __name__ == "__main__":
 
     # # validate
     # assert os.path.exists(os.path.join(tiktoken_cache_dir, cache_key))
-    from openai import OpenAI
-    client = OpenAI(
-        base_url="http://localhost:11434/v1",
-    )
-
-    completion = client.chat.completions.create(
-    model="/scratch/gpfs/jx0800/models/Llama-3.2-3B-Instruct",
-    messages=[
-        {"role": "user", "content": "Hello!"}
-    ]
-    )
-
-    print(completion.choices[0].message)
-
-

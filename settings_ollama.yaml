@@ -8,7 +8,7 @@ models:
   default_chat_model:
     api_key: ${GRAPHRAG_API_KEY} # set this in the generated .env file
     type: openai_chat # or azure_openai_chat
-    model: llama3.2:3b #meta-llama/Llama-3.3-70B-Instruct #llama3.1:8b #gpt-4-turbo-preview
+    model: llama3.2:1b #meta-llama/Llama-3.3-70B-Instruct #llama3.1:8b #gpt-4-turbo-preview
     model_supports_json: true # recommended if this is available for your model.
     #parallelization_num_threads: 50
     #parallelization_stagger: 0.3
